@@ -1,0 +1,43 @@
+/* eslint-env node */
+module.exports = {
+  env: {
+    GA_ID: process.env.GA_ID,
+    BASE_URL: process.env.BASE_URL,
+  },
+  exportTrailingSlash: true,
+  experimental: {
+    modern: true,
+    polyfillsOptimization: true,
+  },
+  cssLoaderOptions: {
+    url: false,
+  },
+  webpack(config) {
+    config.module.rules.push(
+      {
+        test: /\.(svg|md)$/,
+        loader: 'raw-loader',
+      },
+    )
+
+    const splitChunks = config.optimization && config.optimization.splitChunks
+    if (splitChunks) {
+      const cacheGroups = splitChunks.cacheGroups
+      const preactModules = /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/
+      if (cacheGroups.framework) {
+        cacheGroups.preact = Object.assign({}, cacheGroups.framework, {
+          test: preactModules,
+        })
+        cacheGroups.commons.name = 'framework'
+      } else {
+        cacheGroups.preact = {
+          name: 'commons',
+          chunks: 'all',
+          test: preactModules,
+        }
+      }
+    }
+
+    return config
+  },
+}

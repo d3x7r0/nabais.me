@@ -1,0 +1,22 @@
+@import "../00_base/variables";
+
+.m-site-title {
+  margin: 0;
+
+  &__text {
+    color: $colorSiteTitle;
+    font-size: 4rem;
+    text-decoration: none;
+    text-shadow: 0.05em -0.05em $colorBorderText;
+    text-transform: lowercase;
+    transition: $transitionDuration text-shadow;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $colorSiteTitle;
+      text-decoration: none;
+      text-shadow: 0.05em 0.05em $colorBorderText;
+    }
+  }
+}

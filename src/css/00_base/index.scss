@@ -1,0 +1,9 @@
+@import "variables";
+@import "fonts";
+@import "reset";
+@import "base";
+
+:root {
+  --dominantColor: #{$dominantColor};
+  --dominantColorLight: #{$dominantColorLight};
+}

@@ -1,0 +1,38 @@
+/*  Color Palette */
+$color1: #E8E8E8;
+$color2: #555753;
+$color3: #282828;
+$color4: #224B85;
+
+/*  Color Settings */
+$dominantColor: $color4;
+$dominantColorLight: lighten($color4, 25%);
+
+/*  Breakpoints */
+$tabletBreakpoint: 720px;
+$desktopBreakpoint: 1280px;
+$largeScreenBreakpoint: 1920px;
+
+/*  Colors */
+$colorBackground: $color3;
+$colorText: $color1;
+$colorLink: $color1;
+$colorLinkHover: $color3;
+$colorLinkActive: var(--dominantColor, #{$dominantColor});
+$colorTextDarkBg: $color1;
+$colorHeaderNavigationBg: $color2;
+$colorBorderText: $color3;
+$colorSiteTitle: $color1;
+$colorIcons: var(--dominantColorLight, #{$dominantColorLight});
+
+/* Toast */
+$colorToastBg: $color3;
+$colorToastBorder: $color2;
+$colorToastLink: var(--dominantColor, #{$dominantColor});
+
+/*  Fonts */
+$fontRobotoCondensed: 'Roboto Condensed', sans-serif;
+
+/*  Durations */
+$loadingDuration: 2s;
+$transitionDuration: 300ms;
