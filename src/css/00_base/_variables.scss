@@ -28,7 +28,7 @@ $colorIcons: var(--dominantColorLight, #{$dominantColorLight});
 /* Toast */
 $colorToastBg: $color3;
 $colorToastBorder: $color2;
-$colorToastLink: var(--dominantColor, #{$dominantColor});
+$colorToastLink: var(--dominantColorLight, #{$dominantColorLight});
 
 /*  Fonts */
 $fontRobotoCondensed: 'Roboto Condensed', sans-serif;
