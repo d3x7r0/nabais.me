@@ -37,6 +37,10 @@ export const PATHS = {
 
 export const MENU_ENTRIES = [
   {
+    path: "https://blog.nonsensebb.com",
+    label: 'Blog',
+  },
+  {
     path: PATHS.ABOUT,
     label: 'About me',
     internal: true,
