@@ -1,0 +1,38 @@
+kind: pipeline
+type: docker
+name: build
+
+concurrency:
+  limit: 1
+
+steps:
+  - name: Install dependencies
+    image: node:lts
+    commands:
+      - npm ci
+
+  - name: Build app
+    image: node:lts
+    commands:
+      - npm run build
+
+  - name: Upload to bucket
+    image: plugins/s3
+    settings:
+      bucket: nabais.me
+      source: build/**/*
+      endpoint: http://minio:9000
+      region: eu-west-1
+      strip_prefix: build/
+      path_style: true
+      access_key:
+        from_secret: aws_access_key_id
+      secret_key:
+        from_secret: aws_secret_access_key
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+    - custom

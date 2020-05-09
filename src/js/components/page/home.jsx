@@ -1,11 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
-
-import { TITLES } from '../../config'
-
-const Home = () => (
-  <>
-  </>
-)
+const Home = () => null
 
 export default Home
