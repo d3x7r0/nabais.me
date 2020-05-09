@@ -17,7 +17,7 @@ $largeScreenBreakpoint: 1920px;
 $colorBackground: $color3;
 $colorText: $color1;
 $colorLink: $color1;
-$colorLinkHover: $color3;
+$colorLinkHover: var(--dominantColorLight, #{$dominantColorLight});
 $colorLinkActive: var(--dominantColor, #{$dominantColor});
 $colorTextDarkBg: $color1;
 $colorHeaderNavigationBg: $color2;

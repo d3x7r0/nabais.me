@@ -3,9 +3,14 @@ import { h } from 'preact'
 import { useMemo } from 'preact/hooks'
 import marked from 'marked'
 
+const MARKED_OPTS = {
+  gfm: true,
+  breaks: true,
+}
+
 const MarkdownPage = ({ title, content }) => {
   const body = useMemo(
-    () => marked(content),
+    () => marked(content, MARKED_OPTS),
     [content],
   )
 

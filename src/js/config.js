@@ -20,7 +20,6 @@ export const TITLES = {
   HOME: 'Home',
   CV: 'CV',
   COOKIE_POLICY: 'Cookie Policy',
-  CONTACTS: 'Contacts',
   ABOUT: 'About Me',
   NOT_FOUND: 'Page not Found',
 }
@@ -32,17 +31,11 @@ export const BASE_URL = process.env.BASE_URL || '/'
 export const PATHS = {
   HOME: '/',
   ABOUT: '/about-me',
-  CONTACTS: '/contacts',
   CV: '/cv',
   COOKIE_POLICY: '/cookie-policy',
 }
 
 export const MENU_ENTRIES = [
-  {
-    path: PATHS.HOME,
-    label: 'Home',
-    internal: true,
-  },
   {
     path: PATHS.ABOUT,
     label: 'About me',
@@ -51,11 +44,6 @@ export const MENU_ENTRIES = [
   {
     path: PATHS.CV,
     label: 'CV',
-    internal: true,
-  },
-  {
-    path: PATHS.CONTACTS,
-    label: 'Contacts',
     internal: true,
   },
 ]
