@@ -24,6 +24,8 @@ $colorHeaderNavigationBg: $color2;
 $colorBorderText: $color3;
 $colorSiteTitle: $color1;
 $colorIcons: var(--dominantColorLight, #{$dominantColorLight});
+$colorFigureOutline: var(--dominantColorLight, #{$dominantColorLight});
+$colorSquareBorder: $color2;
 
 /* Toast */
 $colorToastBg: $color3;

@@ -3,6 +3,8 @@
 @import "reset";
 @import "base";
 
+@import "~react-image-lightbox/style.css";
+
 :root {
   --dominantColor: #{$dominantColor};
   --dominantColorLight: #{$dominantColorLight};

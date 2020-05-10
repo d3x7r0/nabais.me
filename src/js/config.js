@@ -13,6 +13,11 @@ export const SITE_KEYWORDS = [
   'Lisboa',
   'Lisbon',
   'js',
+  'Software Development',
+  'Engineering',
+  'Ireland',
+  'Dublin',
+  'photography',
 ]
 
 export const TITLES = {
@@ -21,6 +26,7 @@ export const TITLES = {
   CV: 'CV',
   COOKIE_POLICY: 'Cookie Policy',
   ABOUT: 'About Me',
+  PHOTOS: 'Photos',
   NOT_FOUND: 'Page not Found',
 }
 
@@ -31,15 +37,12 @@ export const BASE_URL = process.env.BASE_URL || '/'
 export const PATHS = {
   HOME: '/',
   ABOUT: '/about-me',
+  PHOTOS: '/photos',
   CV: '/cv',
   COOKIE_POLICY: '/cookie-policy',
 }
 
 export const MENU_ENTRIES = [
-  {
-    path: "https://blog.nonsensebb.com",
-    label: 'Blog',
-  },
   {
     path: PATHS.ABOUT,
     label: 'About me',
@@ -49,6 +52,15 @@ export const MENU_ENTRIES = [
     path: PATHS.CV,
     label: 'CV',
     internal: true,
+  },
+  {
+    path: PATHS.PHOTOS,
+    label: 'Photography',
+    internal: true,
+  },
+  {
+    path: 'https://blog.nonsensebb.com',
+    label: 'Blog',
   },
 ]
 
