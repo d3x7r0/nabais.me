@@ -4,7 +4,7 @@ import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { pageview } from 'react-ga/core'
+import { pageview, event } from 'react-ga/core'
 
 import Spinner from '../js/components/atom/spinner'
 import CookieDisclaimer from '../js/components/organism/cookie-disclaimer'
@@ -20,6 +20,17 @@ import { useRoute } from '../js/components/router/match'
 import '../js/analytics'
 
 import '../css/00_base/index.scss'
+
+export function reportWebVitals({ id, name, label, value }) {
+  event({
+    category: `Next.js ${ label } metric`,
+    action: name,
+    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    label: id, // id unique to current page load
+    nonInteraction: true, // avoids affecting bounce rate.
+  })
+}
+
 
 function WebsiteApp({ Component, pageProps }) {
   const router = useRouter()

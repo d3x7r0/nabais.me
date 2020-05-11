@@ -32,8 +32,6 @@ export const TITLES = {
 
 export const TITLE_SEPARATOR = ' // '
 
-export const BASE_URL = process.env.BASE_URL || '/'
-
 export const PATHS = {
   HOME: '/',
   ABOUT: '/about-me',
@@ -92,11 +90,9 @@ export const SOCIAL_LINKS = [
 ]
 
 
-export const ANALYTICS_ID = process.env.GA_ID || 'none'
+export const ANALYTICS_ID = process.env.NEXT_PUBLIC_GA_ID || 'none'
 
 export const ANALYTICS_OPTS = {
   debug: false,
   ...(ANALYTICS_ID !== 'none' ? { legacyCookieDomain: '.nonsensebb.com' } : {}),
 }
-
-export const SERVER_TIMEZONE = 'Europe/Lisbon'

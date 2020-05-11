@@ -1,9 +1,5 @@
 /* eslint-env node */
 module.exports = {
-  env: {
-    GA_ID: process.env.GA_ID,
-    BASE_URL: process.env.BASE_URL,
-  },
   exportTrailingSlash: true,
   experimental: {
     modern: true,
