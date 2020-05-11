@@ -9,9 +9,8 @@ class BlogDocument extends Document {
   }
 
   render() {
-    // TODO: set lang properly when translation is put in place
     return (
-      <Html lang="pt-PT">
+      <Html lang="en-GB">
         <Head />
         <body>
         <Main />
