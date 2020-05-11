@@ -17,7 +17,7 @@ const SiteTitle = ({ className, ...rest }) => (
       title={TITLES.SITE}
       internal
     >
-      {TITLES.SITE}
+      Nabais<span>.me</span>
     </LinkWrapper>
   </h1>
 )
