@@ -1,8 +1,8 @@
 /** @jsx h*/
 import { h } from 'preact'
 import classNames from 'classnames'
+import { LinkWrapper } from '@nonsensebb/components'
 
-import LinkWrapper from '../router/link'
 import { PATHS, TITLES } from '../../config'
 import styles from '../../../css/02_molecule/site-title.module.scss'
 

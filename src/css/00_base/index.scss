@@ -7,4 +7,11 @@
 :root {
   --dominantColor: #{$dominantColor};
   --dominantColorLight: #{$dominantColorLight};
+
+  // Shared Components
+  --dominant-color: #{$dominantColor};
+  --alt-dominant-color: #{$dominantColorLight};
+  --alt-color: #{$color1Light};
+  --bg-color: #{$color3};
+  --border-color: #{$color2};
 }

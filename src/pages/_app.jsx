@@ -4,10 +4,9 @@ import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { pageview, event } from 'react-ga/core'
+import { event, pageview } from 'react-ga/core'
+import { LinkProvider, Spinner, CookieDisclaimer } from '@nonsensebb/components'
 
-import Spinner from '../js/components/atom/spinner'
-import CookieDisclaimer from '../js/components/organism/cookie-disclaimer'
 import { MENU_ENTRIES, PATHS, TITLES } from '../js/config'
 import { buildTitle } from '../js/meta'
 import VerticalThirds from '../js/components/template/vertical-thirds'
@@ -15,6 +14,7 @@ import SiteNavigation from '../js/components/molecule/site-navigation'
 import SiteTitle from '../js/components/molecule/site-title'
 import SiteMenu from '../js/components/organism/site-menu'
 import SiteFooter from '../js/components/organism/site-footer'
+import NextLinkWrapper from '../js/components/router/link'
 import { useRoute } from '../js/components/router/match'
 
 import '../js/analytics'
@@ -64,45 +64,48 @@ function WebsiteApp({ Component, pageProps }) {
   const { matches: isHome } = useRoute(PATHS.HOME)
 
   return (
-    <VerticalThirds
-      open={!isHome}
-      header={<SiteTitle />}
-      footer={<SiteFooter />}
-      nav={
-        <SiteNavigation>
-          <SiteMenu entries={MENU_ENTRIES} />
-        </SiteNavigation>
-      }
-    >
-      <Head>
-        <link rel="icon" sizes="196x196" href="/icon.png" />
+    <LinkProvider value={NextLinkWrapper}>
+      <VerticalThirds
+        open={!isHome}
+        header={<SiteTitle />}
+        footer={<SiteFooter />}
+        nav={
+          <SiteNavigation>
+            <SiteMenu entries={MENU_ENTRIES} />
+          </SiteNavigation>
+        }
+      >
+        <Head>
+          <link rel="icon" sizes="196x196" href="/icon.png" />
 
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-6-plus.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-ipad-retina.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-ipad-pro.png" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-6-plus.png" />
+          <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-ipad-retina.png" />
+          <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-ipad-pro.png" />
 
-        <meta name="theme-color" content="#224B85" />
+          <meta name="theme-color" content="#224B85" />
 
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
+          <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
 
-        <title key="title">{buildTitle()}</title>
+          <title key="title">{buildTitle()}</title>
 
-        <meta name="author" content="Luis Nabais" />
+          <meta name="author" content="Luis Nabais" />
 
-        <meta property="og:site_name" content={TITLES.SITE} />
-      </Head>
+          <meta property="og:site_name" content={TITLES.SITE} />
+        </Head>
 
-      <>
         {loading ? (
           <Spinner active />
         ) : (
           <Component {...pageProps} />
         )}
-      </>
 
-      <CookieDisclaimer />
-    </VerticalThirds>
+        <CookieDisclaimer
+          link={PATHS.COOKIE_POLICY}
+          linkProps={{ internal: true }}
+        />
+      </VerticalThirds>
+    </LinkProvider>
   )
 }
 

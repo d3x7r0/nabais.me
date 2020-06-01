@@ -7,6 +7,7 @@ $color4: #224B85;
 /*  Color Settings */
 $dominantColor: $color4;
 $dominantColorLight: lighten($color4, 25%);
+$color1Light: #E8E8E8;
 
 /*  Breakpoints */
 $tabletBreakpoint: 720px;
@@ -23,19 +24,10 @@ $colorTextDarkBg: $color1;
 $colorHeaderNavigationBg: $color2;
 $colorBorderText: $color3;
 $colorSiteTitle: $color1;
-$colorIcons: var(--dominantColorLight, #{$dominantColorLight});
-$colorFigureOutline: var(--dominantColorLight, #{$dominantColorLight});
-$colorSquareBorder: $color2;
-
-/* Toast */
-$colorToastBg: $color3;
-$colorToastBorder: $color2;
-$colorToastLink: var(--dominantColorLight, #{$dominantColorLight});
 
 /*  Fonts */
 $fontRobotoCondensed: 'Roboto Condensed', sans-serif;
 $fontPlay: 'Play', 'Roboto Condensed', sans-serif;
 
-/*  Durations */
-$loadingDuration: 2s;
+///*  Durations */
 $transitionDuration: 300ms;

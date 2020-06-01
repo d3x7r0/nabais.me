@@ -5,9 +5,20 @@ export const useRoute = (path) => {
   const router = useRouter()
 
   return useMemo(() => {
-    const currentRoute = router.asPath.replace(/\?.+$/, '')
-    const matches = currentRoute === path
+    const currentRoute = cleanPath(router.asPath)
+    const matches = path && currentRoute === cleanPath(path)
 
-    return { matches, currentRoute }
+    return {
+      matches,
+      currentRoute,
+    }
   }, [path, router.asPath])
+}
+
+function cleanPath(path) {
+  if (!path) {
+    return
+  }
+
+  return path.replace(/\?.+$/, '').replace(/\/?$/, '')
 }

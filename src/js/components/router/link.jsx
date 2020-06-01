@@ -2,7 +2,7 @@
 import { h } from 'preact'
 import Link from 'next/link'
 
-const LinkWrapper = (props) => {
+const NextLinkWrapper = (props) => {
   const {
     href, as, internal, linkProps, children, ...rest
   } = props
@@ -26,14 +26,4 @@ const LinkWrapper = (props) => {
   )
 }
 
-export const OptionalLink = (props) => {
-  if (props.href) {
-    return (
-      <LinkWrapper {...props} />
-    )
-  } else {
-    return props.children
-  }
-}
-
-export default LinkWrapper
+export default NextLinkWrapper
