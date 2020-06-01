@@ -25,7 +25,7 @@ const NotFound = () => (
       </li>
       <li>
         Try a <LinkWrapper href="https://www.google.com/search?q=site%3Anabais.me">Google search of
-        the website.</LinkWrapper>
+          the website.</LinkWrapper>
       </li>
     </ul>
   </>

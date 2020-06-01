@@ -17,6 +17,8 @@
     "debug:serve": "NODE_ENV=development next",
     "debug:test": "BABEL_ENV=test jest --watch --maxWorkers=2",
     "serve": "cd build && http-server -b -g",
+    "analyze": "npm run analyze:web",
+    "analyze:web": "ANALYZE=true NODE_ENV=production next build",
     "fix": "npm run fix:js && npm run fix:styles",
     "fix:js": "eslint --fix --ext .js --ext .jsx src tests *.js",
     "fix:styles": "stylelint src/**/*.sass src/**/*.scss src/**/*.css --fix",
@@ -66,8 +68,9 @@
     "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.4.4",
     "@babel/plugin-proposal-export-default-from": "^7.10.1",
-    "@nonsensebb/eslint-config-preact": "^0.1.4",
+    "@nonsensebb/eslint-config-preact": "^0.1.7",
     "@nonsensebb/stylelint-config-scss": "^0.1.4",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
