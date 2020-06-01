@@ -119,11 +119,11 @@ export const LightboxWrapper = (props) => {
 
   useLayoutEffect(() => {
     const order = []
-    for (let node of document.querySelectorAll(`[data-lightbox]`)) {
+    for (const node of document.querySelectorAll(`[data-lightbox]`)) {
       order.push(node.dataset.lightboxId)
     }
 
-    for (let group of Object.values(entriesRef.current)) {
+    for (const group of Object.values(entriesRef.current)) {
       group.sort((a, b) => {
         return order.indexOf(a.id) - order.indexOf(b.id)
       })
