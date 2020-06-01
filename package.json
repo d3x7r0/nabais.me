@@ -64,8 +64,8 @@
     "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
-    "@nonsensebb/eslint-config-preact": "^0.1.2",
-    "@nonsensebb/stylelint-config-scss": "^0.1.2",
+    "@nonsensebb/eslint-config-preact": "^0.1.4",
+    "@nonsensebb/stylelint-config-scss": "^0.1.4",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "dotenv-flow": "^3.1.0",
