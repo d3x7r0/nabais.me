@@ -13,8 +13,8 @@ class BlogDocument extends Document {
       <Html lang="en-GB">
         <Head />
         <body>
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )

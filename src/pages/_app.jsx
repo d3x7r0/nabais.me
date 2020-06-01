@@ -23,7 +23,7 @@ import '../css/00_base/index.scss'
 
 export function reportWebVitals({ id, name, label, value }) {
   event({
-    category: `Next.js ${ label } metric`,
+    category: `Next.js ${label} metric`,
     action: name,
     value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
     label: id, // id unique to current page load
@@ -69,9 +69,9 @@ function WebsiteApp({ Component, pageProps }) {
       header={<SiteTitle />}
       footer={<SiteFooter />}
       nav={
-          <SiteNavigation>
-            <SiteMenu entries={MENU_ENTRIES} />
-          </SiteNavigation>
+        <SiteNavigation>
+          <SiteMenu entries={MENU_ENTRIES} />
+        </SiteNavigation>
       }
     >
       <Head>
