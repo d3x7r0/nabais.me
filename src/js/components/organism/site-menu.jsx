@@ -1,14 +1,18 @@
 /** @jsx h */
 import { h } from 'preact'
+import {
+  HorizontalNavMenu,
+  HorizontalNavMenuEntry,
+  HorizontalMenuLink,
+} from '@nonsensebb/components'
 
-import { HorizontalMenu, HorizontalMenuLink } from '../atom/horizontal-menu'
 import { useRoute } from '../router/match'
 
 function SiteMenu(props) {
   const { entries = [], ...rest } = props
 
   return (
-    <HorizontalMenu {...rest}>
+    <HorizontalNavMenu {...rest}>
       {entries.map(
         (entry) => (
           <SiteMenuEntry
@@ -17,7 +21,7 @@ function SiteMenu(props) {
           />
         ),
       )}
-    </HorizontalMenu>
+    </HorizontalNavMenu>
   )
 }
 
@@ -27,13 +31,15 @@ function SiteMenuEntry(props) {
   const { matches } = useRoute(path)
 
   return (
-    <HorizontalMenuLink
-      active={matches}
-      href={path}
-      {...rest}
-    >
-      {label}
-    </HorizontalMenuLink>
+    <HorizontalNavMenuEntry>
+      <HorizontalMenuLink
+        active={matches}
+        href={path}
+        {...rest}
+      >
+        {label}
+      </HorizontalMenuLink>
+    </HorizontalNavMenuEntry>
   )
 }
 

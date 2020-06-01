@@ -1,5 +1,10 @@
 /* eslint-env node */
-module.exports = {
+const { resolve } = require('path')
+const withTM = require('next-transpile-modules')([
+  '@nonsensebb/components',
+])
+
+module.exports = withTM({
   exportTrailingSlash: true,
   experimental: {
     modern: true,
@@ -9,6 +14,11 @@ module.exports = {
     url: false,
   },
   webpack(config) {
+    config.resolve.alias['react'] = resolve(__dirname, '.', 'node_modules', 'react')
+    config.resolve.alias['react-dom'] = resolve(__dirname, '.', 'node_modules', 'react-dom')
+    config.resolve.alias['react-ssr-prepass'] = resolve(__dirname, '.', 'node_modules', 'react-ssr-prepass')
+    config.resolve.alias['preact'] = resolve(__dirname, '.', 'node_modules', 'preact')
+
     config.module.rules.push(
       {
         test: /\.(svg|md)$/,
@@ -36,4 +46,4 @@ module.exports = {
 
     return config
   },
-}
+})

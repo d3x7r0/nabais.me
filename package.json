@@ -52,10 +52,12 @@
     ]
   },
   "dependencies": {
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components",
     "classnames": "^2.2.6",
     "feather-icons": "^4.28.0",
     "lodash": "^4.17.15",
     "marked": "^1.1.0",
+    "next-transpile-modules": "^3.3.0",
     "normalize.css": "^8.0.1",
     "preact": "^10.4.4",
     "react-feather": "^2.0.8",
@@ -64,6 +66,7 @@
     "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.10.1",
     "@nonsensebb/eslint-config-preact": "^0.1.4",
     "@nonsensebb/stylelint-config-scss": "^0.1.4",
     "babel-eslint": "^10.1.0",

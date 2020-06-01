@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h } from 'preact'
+import { LinkWrapper } from '@nonsensebb/components'
 
 import { PATHS, TITLES } from '../../config'
-import LinkWrapper from '../router/link'
 
 const NotFound = () => (
   <>
