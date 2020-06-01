@@ -9,7 +9,7 @@ steps:
   - name: Install dependencies
     image: node:lts
     commands:
-      - git config --global url."https://${{ GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
+      - git config --global url."https://$${GITHUB_TOKEN}@github.com/".insteadOf ssh://git@github.com/
       - npm ci
     environment:
       GITHUB_TOKEN:
