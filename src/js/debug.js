@@ -1,7 +1,3 @@
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-  require('preact/debug')
-}
-
 import { options } from 'preact'
 
 if (process.env.NODE_ENV !== 'production') {
