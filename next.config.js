@@ -58,7 +58,6 @@ const nextConfig = {
     // Install webpack aliases:
     const aliases = config.resolve.alias || (config.resolve.alias = {})
     aliases.react = aliases['react-dom'] = 'preact/compat'
-    aliases.preact = resolve(__dirname, 'node_modules', "preact")
 
     // inject Preact DevTools
     if (dev && !isServer) {
