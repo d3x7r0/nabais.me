@@ -55,7 +55,7 @@
     ]
   },
   "dependencies": {
-    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.6.4",
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.6.5",
     "classnames": "^2.2.6",
     "feather-icons": "^4.28.0",
     "lodash": "^4.17.15",
@@ -64,8 +64,7 @@
     "preact": "^10.4.4",
     "react-feather": "^2.0.8",
     "react-ga": "^3.0.0",
-    "react-image-lightbox": "^5.1.1",
-    "use-persisted-state": "^0.3.0"
+    "react-image-lightbox": "^5.1.1"
   },
   "devDependencies": {
     "@prefresh/next": "^0.3.1",
@@ -74,20 +73,20 @@
     "@nonsensebb/eslint-config-preact": "^0.1.7",
     "@nonsensebb/stylelint-config-scss": "^0.1.4",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.0.1",
-    "dotenv-flow": "^3.1.0",
+    "babel-jest": "^26.1.0",
+    "dotenv-flow": "^3.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^2.2.0",
     "enzyme-to-json": "^3.5.0",
-    "eslint": "^7.3.0",
-    "eslint-plugin-import": "^2.21.2",
+    "eslint": "^7.3.1",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "next": "^9.4.4",
     "next-transpile-modules": "^3.3.0",
     "preact-render-to-string": "^5.1.9",
@@ -96,7 +95,7 @@
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
     "react-refresh": "^0.8.3",
-    "sass": "^1.26.8",
+    "sass": "^1.26.9",
     "stylelint": "^13.6.1",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0"
