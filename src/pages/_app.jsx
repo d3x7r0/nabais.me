@@ -31,6 +31,7 @@ export function reportWebVitals({ id, name, label, value }) {
   })
 }
 
+const GOOGLE_FONTS_URL = "https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Roboto+Condensed&display=swap"
 
 function WebsiteApp({ Component, pageProps }) {
   const router = useRouter()
@@ -86,6 +87,19 @@ function WebsiteApp({ Component, pageProps }) {
           <meta name="theme-color" content="#224B85" />
 
           <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
+
+          <link rel="preload"
+                as="style"
+                href={GOOGLE_FONTS_URL} />
+
+          <link rel="stylesheet"
+                href={GOOGLE_FONTS_URL}
+                media="print" onLoad="this.media='all'" />
+          <noscript>
+            <link rel="stylesheet"
+                  href={GOOGLE_FONTS_URL}
+                  media="all" />
+          </noscript>
 
           <title key="title">{buildTitle()}</title>
 
