@@ -1,5 +1,7 @@
 @import "../00_base/variables";
 
+$closedHeight: 5.6em;
+
 .t-vertical-thirds {
   display: flex;
   flex-direction: column;
@@ -11,9 +13,10 @@
     flex-grow: 0;
     flex-shrink: 0;
     height: 40vh;
-    min-height: 5.6em;
+    min-height: $closedHeight;
     position: sticky;
     top: #{min(calc(-40vh + 5em), -5em)};
+    transition: height $transitionDuration;
 
     &-inner {
       display: flex;
@@ -23,6 +26,10 @@
       margin: 0 auto;
       max-width: $tabletBreakpoint;
       padding: 0 1em;
+    }
+
+    @media (prefers-reduced-motion) {
+      transition: none;
     }
   }
 
@@ -58,6 +65,6 @@
 }
 
 .t-vertical-thirds--open .t-vertical-thirds__header {
-  height: auto;
+  height: $closedHeight;
   top: 0;
 }
