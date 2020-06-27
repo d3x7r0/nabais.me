@@ -8,6 +8,11 @@ $closedHeight: 5.6em;
   justify-content: space-between;
   min-height: 100%;
 
+  &__nav,
+  &__header {
+    z-index: 1;
+  }
+
   &__header {
     background: $dominantColor;
     flex-grow: 0;

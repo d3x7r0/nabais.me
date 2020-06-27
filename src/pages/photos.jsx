@@ -19,6 +19,7 @@ function getAllListings(source) {
 
 const FILE_EXTENSION_REGEX = /\.(webp|png|jpe?g)$/i
 const THUMB_PREFIX = 'thumb-'
+const THUMB_RETINA_PREFIX = 'thumb-2x-'
 
 function loadImages(folder, basePath = '/photos') {
   return getAllListings(folder)
@@ -55,11 +56,22 @@ function loadImages(folder, basePath = '/photos') {
       }
 
       const thumbFileName = join(folder, `${THUMB_PREFIX}${fileName}`)
+      const thumbRetinaFileName = join(folder, `${THUMB_RETINA_PREFIX}${fileName}`)
 
       if (existsSync(thumbFileName)) {
         result = {
           ...result,
           src: join(basePath, `${THUMB_PREFIX}${fileName}`),
+        }
+
+        if (existsSync(thumbRetinaFileName)) {
+          result = {
+            ...result,
+            srcset: [
+              join(basePath, `${THUMB_PREFIX}${fileName}`) + " 1x",
+              join(basePath, `${THUMB_RETINA_PREFIX}${fileName}`) + " 2x"
+            ].join(", ")
+          }
         }
       }
 
