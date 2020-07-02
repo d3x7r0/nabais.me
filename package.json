@@ -4,7 +4,7 @@
   "private": true,
   "description": "nabais.me website",
   "author": "Luis Nabais <luis@nabais.me>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "src/pages/index.jsx",
   "engines": {
     "node": ">= 10.0.0"
