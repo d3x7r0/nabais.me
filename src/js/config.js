@@ -94,5 +94,4 @@ export const ANALYTICS_ID = process.env.NEXT_PUBLIC_GA_ID || 'none'
 
 export const ANALYTICS_OPTS = {
   debug: false,
-  ...(ANALYTICS_ID !== 'none' ? { legacyCookieDomain: '.nonsensebb.com' } : {}),
 }
