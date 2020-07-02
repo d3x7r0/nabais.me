@@ -19,6 +19,9 @@ steps:
     image: node:lts
     commands:
       - npm run build
+    environment:
+      NEXT_PUBLIC_GA_ID:
+        from_secret: ga_id
 
   - name: Upload to bucket
     image: plugins/s3
