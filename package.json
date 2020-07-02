@@ -61,7 +61,7 @@
     "lodash": "^4.17.15",
     "marked": "^1.1.0",
     "normalize.css": "^8.0.1",
-    "preact": "^10.4.4",
+    "preact": "^10.4.5",
     "react-feather": "^2.0.8",
     "react-ga": "^3.0.0",
     "react-image-lightbox": "^5.1.1"
@@ -69,7 +69,7 @@
   "devDependencies": {
     "@prefresh/next": "^0.3.1",
     "@next/bundle-analyzer": "^9.4.4",
-    "@babel/plugin-proposal-export-default-from": "^7.10.1",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@nonsensebb/eslint-config-preact": "^0.1.7",
     "@nonsensebb/stylelint-config-scss": "^0.1.4",
     "babel-eslint": "^10.1.0",
@@ -82,8 +82,8 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.5",
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
