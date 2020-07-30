@@ -1,4 +1,4 @@
-import { Facebook, GitHub, Linkedin, Twitter } from 'react-feather'
+import { GitHub, Instagram, Linkedin, Twitter } from 'react-feather'
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
 
@@ -70,10 +70,10 @@ export const SOCIAL_LINKS = [
     label: 'Twitter',
   },
   {
-    id: 'facebook',
-    href: 'https://www.facebook.com/d3x7r0/',
-    IconComponent: Facebook,
-    label: 'Facebook',
+    id: 'instagram',
+    href: 'https://www.instagram.com/d3x7r0/',
+    IconComponent: Instagram,
+    label: 'Instagram',
   },
   {
     id: 'linkedin',
