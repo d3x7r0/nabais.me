@@ -55,9 +55,10 @@
     ]
   },
   "dependencies": {
-    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.6.6",
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.7.0",
     "classnames": "^2.2.6",
     "feather-icons": "^4.28.0",
+    "keen-slider": "^5.2.2",
     "lodash": "^4.17.19",
     "marked": "^1.1.1",
     "normalize.css": "^8.0.1",

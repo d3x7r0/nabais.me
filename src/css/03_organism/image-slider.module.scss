@@ -1,0 +1,54 @@
+@import "../00_base/variables";
+
+.o-image-slider {
+  margin: 0 -1em;
+  mask-image: linear-gradient(to right, transparent 0, black 1em, black calc(100% - 1em), transparent 100%);
+  position: relative;
+  width: calc(100% + 2 * 1em);
+
+  &__button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    opacity: 0.4;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity $transitionDuration;
+
+    &--prev {
+      left: 1em;
+    }
+
+    &--next {
+      right: 1em;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    filter: drop-shadow(0 0 4px black);
+  }
+
+  @media screen and (min-width: $tabletBreakpoint + $tabletBreakpoint*0.5) {
+    margin: 0 -25%;
+    mask-image: linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%);
+    width: 150%;
+
+    &__button--prev {
+      left: 16.5%;
+    }
+
+    &__button--next {
+      right: 16.5%;
+    }
+  }
+}
