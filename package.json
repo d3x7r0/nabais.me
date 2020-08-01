@@ -87,7 +87,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.2.1",
+    "jest": "^26.2.2",
     "next": "^9.5.1",
     "next-transpile-modules": "^4.0.2",
     "preact-render-to-string": "^5.1.10",
