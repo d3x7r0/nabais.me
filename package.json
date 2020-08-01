@@ -74,7 +74,7 @@
     "@nonsensebb/eslint-config-preact": "^0.2.0",
     "@nonsensebb/stylelint-config-scss": "^0.2.0",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.2.1",
+    "babel-jest": "^26.2.2",
     "dotenv-flow": "^3.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^2.2.1",
