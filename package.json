@@ -27,7 +27,7 @@
     "lint:styles": "stylelint src/**/*.sass src/**/*.scss src/**/*.css",
     "start": "npm run debug",
     "test": "npm run test:js",
-    "test:js": "NODE_ENV=test jest ${JEST_OPTS}",
+    "test:js": "NODE_ENV=test jest --passWithNoTests ${JEST_OPTS}",
     "test:js:update": "NODE_ENV=test jest -u"
   },
   "browserslist": [
