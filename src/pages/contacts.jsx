@@ -3,13 +3,13 @@ import { h } from 'preact'
 import Head from 'next/head'
 
 import { SITE_DESCRIPTION, SITE_KEYWORDS, TITLES } from '../js/config'
-import About from '../js/components/page/about-me'
 import { buildTitle } from '../js/meta'
+import Contacts from '../js/components/page/contacts'
 
-const AboutPage = () => (
+const ContactsPage = () => (
   <>
     <Head>
-      <title key="title">{buildTitle(TITLES.ABOUT)}</title>
+      <title key="title">{buildTitle(TITLES.CONTACTS)}</title>
 
       <meta
         key="description"
@@ -26,8 +26,8 @@ const AboutPage = () => (
       />
     </Head>
 
-    <About />
+    <Contacts />
   </>
 )
 
-export default AboutPage
+export default ContactsPage

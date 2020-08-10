@@ -22,6 +22,8 @@ steps:
     environment:
       NEXT_PUBLIC_GA_ID:
         from_secret: ga_id
+      NEXT_PUBLIC_CONTACT_FORM_URL:
+        from_secret: contact_form_url
 
   - name: Upload to bucket
     image: plugins/s3

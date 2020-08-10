@@ -26,6 +26,7 @@ export const TITLES = {
   CV: 'CV',
   COOKIE_POLICY: 'Cookie Policy',
   ABOUT: 'About Me',
+  CONTACTS: 'Contacts',
   PHOTOS: 'Photos',
   NOT_FOUND: 'Page not Found',
 }
@@ -35,6 +36,7 @@ export const TITLE_SEPARATOR = ' // '
 export const PATHS = {
   HOME: '/',
   ABOUT: '/about-me',
+  CONTACTS: '/contacts',
   PHOTOS: '/photos',
   CV: '/cv',
   COOKIE_POLICY: '/cookie-policy',
@@ -49,6 +51,11 @@ export const MENU_ENTRIES = [
   {
     path: PATHS.CV,
     label: 'CV',
+    internal: true,
+  },
+  {
+    path: PATHS.CONTACTS,
+    label: 'Contacts',
     internal: true,
   },
   {
@@ -95,3 +102,5 @@ export const ANALYTICS_ID = process.env.NEXT_PUBLIC_GA_ID || 'none'
 export const ANALYTICS_OPTS = {
   debug: false,
 }
+
+export const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || ""

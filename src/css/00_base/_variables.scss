@@ -3,6 +3,8 @@ $color1: #E8E8E8;
 $color2: #555753;
 $color3: #282828;
 $color4: #224B85;
+$color6: #DD3F2E;
+$color7: #4A9521;
 
 /*  Color Settings */
 $dominantColor: $color4;
@@ -15,6 +17,7 @@ $desktopBreakpoint: 1280px;
 $largeScreenBreakpoint: 1920px;
 
 /*  Colors */
+$colorSquareBorder: $color2;
 $colorBackground: $color3;
 $colorText: $color1;
 $colorLink: $color1;
@@ -24,6 +27,19 @@ $colorTextDarkBg: $color1;
 $colorHeaderNavigationBg: $color2;
 $colorBorderText: $color3;
 $colorSiteTitle: $color1;
+
+/* Forms */
+$colorFormEntryColor: $color1;
+$colorFormEntryBg: $color2;
+$colorFormEntryBorder: $color1;
+$colorFormInvalid: $color6;
+$colorFormSuccess: $color7;
+$colorFormButtonBg: var(--dominant-color, #{$dominantColor});
+$colorFormButton: $color1;
+$colorFormButtonHoverBg: var(--alt-dominant-color, #{$dominantColorLight});
+$colorFormButtonHover: $color1;
+$colorFormButtonDisabledBg: $color2;
+$colorFormButtonDisabled: mix($colorFormButton, $colorFormButtonDisabledBg, 80%);
 
 /*  Fonts */
 $fontRobotoCondensed: 'Roboto Condensed', sans-serif;
