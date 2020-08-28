@@ -8,12 +8,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const TRANSPILED_MODULES = [
   '@nonsensebb/components',
+  'lodash-es',
 ]
 
 const withTM = require('next-transpile-modules')(TRANSPILED_MODULES)
 
 const nextConfig = {
-  exportTrailingSlash: true,
+  trailingSlash: true,
   experimental: {
     modern: true,
     polyfillsOptimization: true,

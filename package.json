@@ -51,19 +51,19 @@
       "enzyme-to-json/serializer"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!@nonsensebb/components)"
+      "node_modules/(?!@nonsensebb/components|lodash-es)"
     ]
   },
   "dependencies": {
-    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.8.0",
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.8.1",
     "classnames": "^2.2.6",
     "feather-icons": "^4.28.0",
     "formik": "^2.1.5",
-    "keen-slider": "^5.2.2",
-    "lodash": "^4.17.20",
+    "keen-slider": "^5.2.3",
+    "lodash-es": "^4.17.15",
     "marked": "^1.1.1",
     "normalize.css": "^8.0.1",
-    "preact": "^10.4.7",
+    "preact": "^10.4.8",
     "react-feather": "^2.0.8",
     "react-ga": "^3.1.2",
     "react-image-lightbox": "^5.1.1",
@@ -89,7 +89,7 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.4.1",
+    "jest": "^26.4.2",
     "next": "^9.5.2",
     "next-transpile-modules": "^4.1.0",
     "preact-render-to-string": "^5.1.10",
