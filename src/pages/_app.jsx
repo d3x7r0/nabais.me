@@ -5,7 +5,7 @@ import { useEffect, useState } from 'preact/hooks'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { event, pageview } from 'react-ga/core'
-import { LinkProvider, Spinner, CookieDisclaimer } from '@nonsensebb/components'
+import { LinkProvider, Spinner, CookieDisclaimer, useMounted } from '@nonsensebb/components'
 
 import { MENU_ENTRIES, PATHS, TITLES } from '../js/config'
 import { buildTitle } from '../js/meta'
@@ -36,6 +36,7 @@ const GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Play:wght@400
 function WebsiteApp({ Component, pageProps }) {
   const router = useRouter()
 
+  const isMounted = useMounted()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -87,7 +88,28 @@ function WebsiteApp({ Component, pageProps }) {
           <meta name="theme-color" content="#224B85" />
 
           <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
-          <link rel="stylesheet" href={GOOGLE_FONTS_URL} />
+          <link
+            key="googleFontPreload"
+            rel="preload"
+            as="style"
+            href={GOOGLE_FONTS_URL}
+          />
+
+          <link
+            key="googleFontJs"
+            rel="stylesheet"
+            href={GOOGLE_FONTS_URL}
+            media={isMounted ? 'all' : 'print'}
+          />
+
+          <noscript key="GoogleFontNoScriptFallback">
+            <link
+              key="googleFontFallback"
+              rel="stylesheet"
+              href={GOOGLE_FONTS_URL}
+              media="all"
+            />
+          </noscript>
 
           <title key="title">{buildTitle()}</title>
 
