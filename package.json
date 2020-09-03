@@ -70,8 +70,8 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@prefresh/next": "^1.0.0",
-    "@next/bundle-analyzer": "^9.5.2",
+    "@prefresh/next": "^1.1.0",
+    "@next/bundle-analyzer": "^9.5.3",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@nonsensebb/eslint-config-preact": "^0.2.0",
     "@nonsensebb/stylelint-config-scss": "^0.2.0",
@@ -81,7 +81,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^2.2.3",
     "enzyme-to-json": "^3.5.0",
-    "eslint": "^7.7.0",
+    "eslint": "^7.8.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-promise": "^4.2.1",
@@ -90,7 +90,7 @@
     "http-server": "^0.12.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
-    "next": "^9.5.2",
+    "next": "^9.5.3",
     "next-transpile-modules": "^4.1.0",
     "preact-render-to-string": "^5.1.10",
     "raw-loader": "^4.0.1",
@@ -99,7 +99,7 @@
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
     "react-refresh": "^0.8.3",
     "sass": "^1.26.10",
-    "stylelint": "^13.6.1",
+    "stylelint": "^13.7.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0"
   }
