@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-no-literals */
-/** @jsx h */
-import { h } from 'preact'
 import { useEffect, useMemo, useState } from 'preact/hooks'
 import { useFormik } from 'formik'
 import { Spinner, useMounted } from '@nonsensebb/components'

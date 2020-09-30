@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-no-literals */
-/** @jsx h */
-import { h } from 'preact'
 import { LinkWrapper } from '@nonsensebb/components'
 
 import { PATHS, TITLES } from '../../config'

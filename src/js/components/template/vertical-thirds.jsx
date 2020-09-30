@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import classNames from 'classnames'
 
 import styles from '../../../css/04_template/vertical-thirds.module.scss'

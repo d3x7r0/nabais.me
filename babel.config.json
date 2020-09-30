@@ -1,6 +1,15 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    "next/babel"
+  ],
   "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "runtime": "automatic",
+        "importSource": "preact"
+      }
+    ],
     "@babel/plugin-proposal-export-default-from"
   ]
 }

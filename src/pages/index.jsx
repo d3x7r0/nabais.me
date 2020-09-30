@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import Head from 'next/head'
 
 import Home from '../js/components/page/home'

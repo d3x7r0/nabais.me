@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import Head from 'next/head'
 
 import NotFound from '../js/components/page/not-found'

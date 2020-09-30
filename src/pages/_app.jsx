@@ -1,6 +1,5 @@
-/** @jsx h */
 import '../js/debug'
-import { h } from 'preact'
+
 import { useEffect, useState } from 'preact/hooks'
 import Head from 'next/head'
 import { useRouter } from 'next/router'

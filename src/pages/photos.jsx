@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import Head from 'next/head'
 import { join } from 'path'
 import { existsSync, lstatSync, readdirSync, readFileSync } from 'fs'

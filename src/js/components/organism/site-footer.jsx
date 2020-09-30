@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import { IconLink, SIDE_LEFT, VerticalList, VerticalListEntry } from '@nonsensebb/components'
 
 import { SOCIAL_LINKS } from '../../config'

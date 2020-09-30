@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import Link from 'next/link'
 
 const NextLinkWrapper = (props) => {

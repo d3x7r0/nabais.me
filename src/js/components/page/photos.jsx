@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact'
 import { useMemo } from 'preact/hooks'
 import classNames from 'classnames'
 
