@@ -1,5 +1,9 @@
+**Frontend Engineer @ InnoTech**
+_Oct 2020 – present_
+Lisbon, Portugal
+
 **Senior Software Engineer @ HubSpot**
-_May 2020 – Present_
+_May 2020 – Aug 2020_
 Dublin, Ireland
 
 **Full Stack Engineer @ Stripe**

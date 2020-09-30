@@ -1,4 +1,4 @@
-My name's Luís Nabais and I'm a web software developer by profession, software engineer by training and currently reside in Dublin, Republic of Ireland. I was born in Lisbon, Portugal in the second half of the 1980s.
+My name's Luís Nabais and I'm a web software developer by profession, software engineer by training from Lisbon, Portugal.
 
 I have a Bachelor's degree in Software Engineering from [ISCTE-IUL] in Lisbon and have been developing software professionally since 2012.
 
