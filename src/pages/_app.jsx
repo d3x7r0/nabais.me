@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { event, pageview } from 'react-ga/core'
 import { LinkProvider, Spinner, CookieDisclaimer, useMounted } from '@nonsensebb/components'
+import * as Sentry from '@sentry/node'
 
 import { MENU_ENTRIES, PATHS, TITLES } from '../js/config'
 import { buildTitle } from '../js/meta'
@@ -20,6 +21,14 @@ import '../js/analytics'
 
 import '../css/00_base/index.scss'
 
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  Sentry.init({
+    enabled: process.env.NODE_ENV === 'production',
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    release: process.env.NEXT_PUBLIC_COMMIT_HASH,
+  })
+}
+
 export function reportWebVitals({ id, name, label, value }) {
   event({
     category: `Next.js ${label} metric`,
@@ -32,7 +41,7 @@ export function reportWebVitals({ id, name, label, value }) {
 
 const GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Roboto+Condensed&display=swap'
 
-function WebsiteApp({ Component, pageProps }) {
+function WebsiteApp({ Component, pageProps, err }) {
   const router = useRouter()
 
   const isMounted = useMounted()
@@ -120,7 +129,7 @@ function WebsiteApp({ Component, pageProps }) {
         {loading ? (
           <Spinner active />
         ) : (
-          <Component {...pageProps} />
+          <Component {...pageProps} err={err} />
         )}
 
         <CookieDisclaimer

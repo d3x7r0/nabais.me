@@ -24,6 +24,10 @@ steps:
         from_secret: ga_id
       NEXT_PUBLIC_CONTACT_FORM_URL:
         from_secret: contact_form_url
+      NEXT_PUBLIC_SENTRY_DSN:
+        from_secret: sentry_dsn
+      SENTRY_AUTH_TOKEN:
+        from_secret: sentry_auth_token
 
   - name: Upload to bucket
     image: plugins/s3
