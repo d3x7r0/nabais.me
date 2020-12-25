@@ -6,6 +6,11 @@ import ImageSlider from '../organism/image-slider'
 import styles from '../../../css/05_page/photos.module.scss'
 import fontStyles from '../../../css/06_utils/fonts.module.scss'
 
+const RATIO = {
+  width: 3,
+  height: 2,
+}
+
 const Photos = ({ images = [] }) => {
   const entries = useMemo(
     () => images.map((entry) => {
@@ -28,10 +33,7 @@ const Photos = ({ images = [] }) => {
           className: classNames(picture.className, styles['p-photos__image']),
           loading: 'lazy',
         },
-        ratio: {
-          width: 3,
-          height: 2,
-        },
+        ratio: RATIO,
       }
     }),
     [images],
@@ -40,7 +42,7 @@ const Photos = ({ images = [] }) => {
   return (
     <SmartImgSettingsProvider
       crop="3x2"
-      sizes="(max-width: 720px) 95vw, 695px"
+      sizes="(max-width: 720px) 95vw, 65vw"
       maxSize={1440}
       defaultSize={320}
     >

@@ -10,17 +10,18 @@ const VerticalThirds = (props) => {
     children,
     className,
     open,
+    limited,
     ...rest
   } = props
 
   return (
     <div
       {...rest}
-      className={classNames(
+      className={buildClassNames({
         className,
-        styles['t-vertical-thirds'],
-        { [styles['t-vertical-thirds--open']]: open },
-      )}
+        open,
+        limited,
+      })}
     >
       <header className={styles['t-vertical-thirds__header']}>
         <div className={styles['t-vertical-thirds__header-inner']}>
@@ -48,6 +49,21 @@ const VerticalThirds = (props) => {
         </footer>
       ) : null}
     </div>
+  )
+}
+
+function buildClassNames({
+  className,
+  open,
+  limited = true,
+}) {
+  return classNames(
+    className,
+    styles['t-vertical-thirds'],
+    {
+      [styles['t-vertical-thirds--open']]: open,
+      [styles['t-vertical-thirds--limited']]: limited,
+    },
   )
 }
 

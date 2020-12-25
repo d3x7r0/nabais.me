@@ -72,11 +72,13 @@ function WebsiteApp({ Component, pageProps, err }) {
   )
 
   const { matches: isHome } = useRoute(PATHS.HOME)
+  const { matches: isPhotos } = useRoute(PATHS.PHOTOS)
 
   return (
     <LinkProvider value={NextLinkWrapper}>
       <VerticalThirds
         open={!isHome}
+        limited={!isPhotos}
         header={<SiteTitle />}
         footer={<SiteFooter />}
         nav={
