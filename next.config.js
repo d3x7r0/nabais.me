@@ -81,7 +81,9 @@ const nextConfig = {
     // and upload the source maps to sentry.
     // This is an alternative to manually uploading the source maps
     // Note: This is disabled in development mode.
+    // Note: Only run this in client mode since we don't run Next.js on the server
     if (
+      !options.isServer &&
       SENTRY_DSN &&
       SENTRY_ORG &&
       SENTRY_PROJECT &&
