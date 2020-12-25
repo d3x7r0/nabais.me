@@ -103,4 +103,6 @@ export const ANALYTICS_OPTS = {
   debug: false,
 }
 
+export const ENABLE_TRANSFORMED_IMAGES = process.env.NEXT_PUBLIC_ENABLE_TRANSFORMED_IMAGES !== 'false'
+
 export const CONTACT_FORM_URL = process.env.NEXT_PUBLIC_CONTACT_FORM_URL || ""

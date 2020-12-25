@@ -1,6 +1,7 @@
 import { useMemo } from 'preact/hooks'
 import classNames from 'classnames'
 
+import NBBSmartImg, { SmartImgSettingsProvider } from '../atom/smart-img'
 import ImageSlider from '../organism/image-slider'
 import styles from '../../../css/05_page/photos.module.scss'
 import fontStyles from '../../../css/06_utils/fonts.module.scss'
@@ -15,12 +16,14 @@ const Photos = ({ images = [] }) => {
         picture,
       } = entry
 
+      const src = `${process.env.NEXT_PUBLIC_BASE_PHOTOS_URL}${href}`
+
       return {
         caption,
-        href,
+        href: src,
         picture: {
           ...picture,
-          src: href,
+          src,
           alt,
           className: classNames(picture.className, styles['p-photos__image']),
           loading: 'lazy',
@@ -35,10 +38,18 @@ const Photos = ({ images = [] }) => {
   )
 
   return (
-    <ImageSlider
-      className={fontStyles['u-font-roboto-condensed']}
-      entries={entries}
-    />
+    <SmartImgSettingsProvider
+      crop="3x2"
+      sizes="(max-width: 720px) 95vw, 695px"
+      maxSize={1440}
+      defaultSize={320}
+    >
+      <ImageSlider
+        ImgComponent={NBBSmartImg}
+        className={fontStyles['u-font-roboto-condensed']}
+        entries={entries}
+      />
+    </SmartImgSettingsProvider>
   )
 }
 

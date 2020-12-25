@@ -55,7 +55,7 @@
     ]
   },
   "dependencies": {
-    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.12.0",
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.12.1",
     "@sentry/browser": "^5.29.2",
     "@sentry/integrations": "^5.29.2",
     "@sentry/node": "^5.29.2",
@@ -64,6 +64,7 @@
     "classnames": "^2.2.6",
     "feather-icons": "^4.28.0",
     "formik": "^2.2.6",
+    "iso-url": "^1.0.0",
     "keen-slider": "^5.3.5",
     "lodash-es": "^4.17.20",
     "marked": "^1.2.7",

@@ -11,7 +11,7 @@ let COUNTER = 0
 const ImageSlider = (props) => {
   // FIXME: due to a bug in preact 10.5.2 we need to make sure to remove className from the props if we want to override it
   // eslint-disable-next-line no-unused-vars
-  const { entries = [], className, ...rest } = props
+  const { entries = [], className, ImgComponent, ...rest } = props
 
   const [sliderRef, slider] = useKeenSlider({
     initial: 0,
@@ -69,6 +69,7 @@ const ImageSlider = (props) => {
         <div ref={sliderRef} className="keen-slider">
           {parsedEntries.map((entry, idx) => (
             <GalleryEntry
+              ImgComponent={ImgComponent}
               {...entry}
               lightbox={lightboxGroup}
               key={entry.id || idx}
@@ -116,11 +117,12 @@ const GalleryEntry = (props) => {
     href,
     lightbox,
     className,
+    ImgComponent = 'img',
     ...rest
   } = props
 
   const img = (
-    <img alt={alt} {...picture} />
+    <ImgComponent alt={alt} {...picture} />
   )
 
   let inner = img
