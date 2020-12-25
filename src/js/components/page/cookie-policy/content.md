@@ -9,4 +9,4 @@ By continuing to visit this website you authorize the usage of cookies for neces
 This website shares data with the following entities:
 - [Cloudflare](https://www.cloudflare.com) [[Privacy Policy](https://www.cloudflare.com/privacypolicy/)]
 - [Google Analytics](https://analytics.google.com) [[Privacy Policy](https://policies.google.com/privacy)]
-- [Amazon Web Services](https://aws.amazon.com) [[Privacy Policy](https://aws.amazon.com/privacy/)]
+- [Sentry](https://sentry.io) [[Privacy Policy](https://sentry.io/privacy/)]
