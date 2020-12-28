@@ -1,7 +1,11 @@
 {
   "alt": "Close up of the wheel of a Red Jaguar E-Type",
-  "caption": "Jaguar E-Type (Summer 2018)",
-  "picture": {
-    "caption": "Close up of the wheel of a Red Jaguar E-Type taken at the Toyota Mega Web in Odaiba, Tokyo, Japan (Summer 2018)\n[Camera: Sony RX100 III]"
+  "caption": "Jaguar E-Type (Autumn 2018)",
+  "meta": {
+    "description": "Close up of the wheel of a Red Jaguar E-Type taken at the Toyota Mega Web in Daiba, Tokyo, Japan",
+    "time": "Autumn 2018",
+    "camera": "Sony RX100 III",
+    "location": "Daiba, Tokyo, Japan",
+    "map": "https://goo.gl/maps/1RFtBMj9wj1BdTL79"
   }
 }

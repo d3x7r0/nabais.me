@@ -1,0 +1,21 @@
+.o-image-details {
+  display: grid;
+  grid-template-columns: max-content auto;
+
+  &__label,
+  &__value {
+    line-height: 1.4;
+    margin: 0 0.3em 0.4em;
+    padding: 0;
+  }
+
+  &__label {
+    font-weight: bold;
+    grid-column: 1 / span 1;
+  }
+
+  &__value {
+    grid-column: span 1;
+    margin-top: 0.15em;
+  }
+}

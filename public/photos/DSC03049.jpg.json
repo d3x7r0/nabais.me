@@ -1,7 +1,11 @@
 {
   "alt": "Kõln Hauptbahnhof (Summer 2019)",
   "caption": "Kõln Hauptbahnhof (Summer 2019)",
-  "picture": {
-    "caption": "Photo of the Kõln Hauptbahnhof [lit. Cologne Main Train Station] (Summer 2019)\n[Camera: Sony RX100 III]"
+  "meta": {
+    "description": "Photo of the Kõln Hauptbahnhof [lit. Cologne Main Train Station]",
+    "time": "Summer 2019",
+    "camera": "Sony RX100 III",
+    "location": "Kõln, Germany",
+    "map": "https://goo.gl/maps/p6T7KmxynCJBdwWF8"
   }
 }

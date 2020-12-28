@@ -15,19 +15,12 @@ function getAllListings(source) {
   return readdirSync(source).map(name => join(source, name))
 }
 
-const FILE_EXTENSION_REGEX = /\.(webp|png|jpe?g)$/i
-const THUMB_PREFIX = 'thumb-'
-const THUMB_RETINA_PREFIX = 'thumb-2x-'
+const FILE_EXTENSION_REGEX = /\.(avif|webp|png|jpe?g)$/i
 
 function loadImages(folder, basePath = '/photos') {
   return getAllListings(folder)
     .filter(isFile)
     .filter((src = '') => src.match(FILE_EXTENSION_REGEX))
-    .filter((src = '') => {
-      const fileName = src.substring(folder.length).replace(/^\//, '')
-
-      return !fileName.startsWith(THUMB_PREFIX)
-    })
     .map(src => {
       const fileName = src.substring(folder.length).replace(/^\//, '')
 
@@ -51,26 +44,6 @@ function loadImages(folder, basePath = '/photos') {
         }
       } catch (e) {
         console.warn('Error reading details file %s', detailsFileName, e)
-      }
-
-      const thumbFileName = join(folder, `${THUMB_PREFIX}${fileName}`)
-      const thumbRetinaFileName = join(folder, `${THUMB_RETINA_PREFIX}${fileName}`)
-
-      if (existsSync(thumbFileName)) {
-        result = {
-          ...result,
-          src: join(basePath, `${THUMB_PREFIX}${fileName}`),
-        }
-
-        if (existsSync(thumbRetinaFileName)) {
-          result = {
-            ...result,
-            srcset: [
-              join(basePath, `${THUMB_PREFIX}${fileName}`) + " 1x",
-              join(basePath, `${THUMB_RETINA_PREFIX}${fileName}`) + " 2x"
-            ].join(", ")
-          }
-        }
       }
 
       return result

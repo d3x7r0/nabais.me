@@ -1,7 +1,11 @@
 {
   "alt": "Photo of Akihabara at night",
   "caption": "Akihabara at night (Autumn 2018)",
-  "picture": {
-    "caption": "Akihabara, Tokyo, Japan at night (Summer 2018)\n[Camera: Sony RX100 III]"
+  "meta": {
+    "description": "Akihabara, Tokyo, Japan at night",
+    "time": "Autumn 2018",
+    "camera": "Sony RX100 III",
+    "location": "Akihabara, Tokyo, Japan",
+    "map": "https://goo.gl/maps/ABy8LXymoU94h84V7"
   }
 }

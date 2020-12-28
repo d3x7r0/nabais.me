@@ -1,7 +1,11 @@
 {
   "alt": "Night photo of Shibuya at night",
   "caption": "Shibuya at night (Autumn 2018)",
-  "picture": {
-    "caption": "Photo of Shibuya, Tokyo, Japan taken at night during Halloween (Autumn 2018)\n[Camera: Sony RX100 III]"
+  "meta": {
+    "description": "Photo of Shibuya, Tokyo, Japan taken at night during Halloween",
+    "time": "Autumn 2018",
+    "camera": "Sony RX100 III",
+    "location": "Shibuya, Tokyo, Japan",
+    "map": "https://goo.gl/maps/ArkRUPRMqz1YmMAw5"
   }
 }

@@ -55,7 +55,8 @@
     ]
   },
   "dependencies": {
-    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.12.1",
+    "@nonsensebb/components": "github:d3x7r0/nonsensebb-components#v2020.12.3",
+    "@rooks/use-key": "^4.5.0",
     "@sentry/browser": "^5.29.2",
     "@sentry/integrations": "^5.29.2",
     "@sentry/node": "^5.29.2",

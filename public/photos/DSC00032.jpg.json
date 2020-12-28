@@ -1,7 +1,11 @@
 {
   "alt": "Long exposure of car lights at night in Tauentzienstraße, Berlin, Germany",
   "caption": "Tauentzienstraße, Berlin (Summer 2018)",
-  "picture": {
-    "caption": "Long exposure of car lights at night in Tauentzienstraße, Berlin, Germany (Summer 2018)\n[Camera: Sony RX100 III]"
+  "meta": {
+    "description": "Long exposure of car lights at night in Tauentzienstraße, Berlin, Germany",
+    "time": "Summer 2018",
+    "camera": "Sony RX100 III",
+    "location": "Tauentzienstraße, Berlin, Germany",
+    "map": "https://goo.gl/maps/kYdyNYXnC14yKxqV6"
   }
 }

@@ -1,7 +1,12 @@
 {
   "alt": "Grating on Rua do Alecrim, Lisboa",
   "caption": "Rua do Alecrim, Lisboa (Summer 2006)",
-  "picture": {
-    "caption": "Photo of some grating on Rua do Alecrim, Lisboa, Portugal overlooking Rua de S. Paulo (Summer 2006)\n[Camera: Nikon D60, Lens: Nikkor 18-55]"
+  "meta": {
+    "description": "Photo of some grating on Rua do Alecrim, Lisboa, Portugal overlooking Rua de S. Paulo",
+    "time": "Summer 2006",
+    "camera": "Nikon D60",
+    "lens": "Nikkor 18-55",
+    "location": "Lisboa, Portugal",
+    "map": "https://goo.gl/maps/3S4oMsQEtzY5fjxU7"
   }
 }

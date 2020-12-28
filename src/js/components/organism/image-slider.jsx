@@ -1,19 +1,37 @@
 import classNames from 'classnames'
-import { useCallback, useMemo } from 'preact/hooks'
+import useKey from '@rooks/use-key'
+import { useCallback, useMemo, useRef } from 'preact/hooks'
 import { useKeenSlider } from 'keen-slider/react'
 import { Figure, LightboxEntry, LightboxWrapper, LinkWrapper } from '@nonsensebb/components'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
 import styles from '../../../css/03_organism/image-slider.module.scss'
 
+let ID_COUNTER = 0
 let COUNTER = 0
 
 const ImageSlider = (props) => {
   // FIXME: due to a bug in preact 10.5.2 we need to make sure to remove className from the props if we want to override it
   // eslint-disable-next-line no-unused-vars
-  const { entries = [], className, ImgComponent, ...rest } = props
+  const {
+    entries = [],
+    className,
+    ImgComponent,
+    onSlideChange,
+    ...rest
+  } = props
+
+  const id = useMemo(() => `imageSlider${ID_COUNTER++}`, [])
+
+  const onSlideChangedCB = useCallback(
+    slider => onSlideChange(slider.details().relativeSlide),
+    [onSlideChange],
+  )
+
+  const lightboxOpen = useRef(false)
 
   const [sliderRef, slider] = useKeenSlider({
+    slideChanged: onSlideChangedCB,
     initial: 0,
     loop: true,
     mode: 'snap',
@@ -25,6 +43,25 @@ const ImageSlider = (props) => {
       },
     },
   })
+
+  const onArrow = useCallback((e) => {
+    if (lightboxOpen.current) {
+      return
+    }
+
+    if (e.key === 'ArrowLeft') {
+      slider.prev()
+    }
+
+    if (e.key === 'ArrowRight') {
+      slider.next()
+    }
+  }, [slider])
+
+  useKey(
+    ['ArrowLeft', 'ArrowRight'],
+    onArrow,
+  )
 
   const lightboxGroup = useMemo(
     () => `gallery_${COUNTER++}`,
@@ -52,6 +89,8 @@ const ImageSlider = (props) => {
 
   const onLightboxChange = useCallback(
     state => {
+      lightboxOpen.current = state.open && state.group === lightboxGroup
+
       if (
         state.open &&
         state.group === lightboxGroup &&
@@ -64,12 +103,28 @@ const ImageSlider = (props) => {
   )
 
   return (
-    <LightboxWrapper onChange={onLightboxChange}>
-      <div {...rest} className={buildClassName({ className })}>
-        <div ref={sliderRef} className="keen-slider">
-          {parsedEntries.map((entry, idx) => (
+    <LightboxWrapper
+      loop
+      onChange={onLightboxChange}
+    >
+      <div
+        {...rest}
+        className={buildClassName({ className })}
+      >
+        <div
+          ref={sliderRef}
+          aria-roledescription="carousel"
+          aria-label="Photo Gallery"
+          id={id}
+          className="keen-slider"
+          aria-live="off"
+        >
+          {parsedEntries.map((entry, idx, arr) => (
             <GalleryEntry
               ImgComponent={ImgComponent}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${idx + 1} of ${arr.length}`}
               {...entry}
               lightbox={lightboxGroup}
               key={entry.id || idx}
@@ -78,6 +133,7 @@ const ImageSlider = (props) => {
         </div>
 
         <button
+          aria-controls={id}
           aria-label="Previous"
           onClick={onPrevious}
           className={classNames(
@@ -85,10 +141,11 @@ const ImageSlider = (props) => {
             styles['o-image-slider__button--prev'],
           )}
         >
-          <ChevronLeft className={styles['o-image-slider__icon']} size={48} />
+          <ChevronLeft className={styles['o-image-slider__icon']} />
         </button>
 
         <button
+          aria-controls={id}
           aria-label="Next"
           onClick={onNext}
           className={classNames(
@@ -96,7 +153,7 @@ const ImageSlider = (props) => {
             styles['o-image-slider__button--next'],
           )}
         >
-          <ChevronRight className={styles['o-image-slider__icon']} size={48} />
+          <ChevronRight className={styles['o-image-slider__icon']} />
         </button>
       </div>
     </LightboxWrapper>

@@ -13,7 +13,7 @@
     cursor: pointer;
     height: 100%;
     margin: 0;
-    opacity: 0.4;
+    opacity: 0.6;
     outline: none;
     padding: 0;
     position: absolute;
@@ -37,6 +37,10 @@
 
   &__icon {
     filter: drop-shadow(0 0 4px black);
+    font-size: 2.5em;
+    font-size: max(3vw, 2.5em);
+    height: 1em;
+    width: 1em;
   }
 
   @media screen and (min-width: $tabletBreakpoint + $tabletBreakpoint*0.5) {
