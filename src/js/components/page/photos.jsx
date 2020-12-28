@@ -11,6 +11,8 @@ const RATIO = {
   height: 2,
 }
 
+const BREAKPOINT = 720
+
 const Photos = ({ images = [] }) => {
   const entries = useMemo(
     () => images.map((entry) => {
@@ -42,7 +44,7 @@ const Photos = ({ images = [] }) => {
   return (
     <SmartImgSettingsProvider
       crop="3x2"
-      sizes="(max-width: 720px) 95vw, 65vw"
+      sizes={`(max-width: ${BREAKPOINT / 0.65}px) 95vw, 65vw`}
       maxSize={1440}
       defaultSize={320}
     >

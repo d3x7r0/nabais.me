@@ -55,10 +55,14 @@ $closedHeight: 5.6em;
   &__content {
     flex-grow: 1;
     margin: 0 auto;
-    max-width: 65%;
+    max-width: 100%;
     min-height: 20vh;
     padding: 0 1em 2em;
     width: 100%;
+
+    @media screen and (min-width: ($tabletBreakpoint / 0.65)) {
+      max-width: 65%;
+    }
   }
 
   &__footer {
@@ -75,6 +79,8 @@ $closedHeight: 5.6em;
 }
 
 .t-vertical-thirds--limited .t-vertical-thirds__content {
-  max-width: 100%;
-  width: $tabletBreakpoint;
+  @media screen and (min-width: $tabletBreakpoint) {
+    max-width: 100%;
+    width: $tabletBreakpoint;
+  }
 }
