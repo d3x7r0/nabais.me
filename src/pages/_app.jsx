@@ -14,6 +14,7 @@ import SiteNavigation from '../js/components/molecule/site-navigation'
 import SiteTitle from '../js/components/molecule/site-title'
 import SiteMenu from '../js/components/organism/site-menu'
 import SiteFooter from '../js/components/organism/site-footer'
+import CFBeacon from '../js/components/atom/cf-beacon'
 import NextLinkWrapper from '../js/components/router/link'
 import { useRoute } from '../js/components/router/match'
 
@@ -133,6 +134,8 @@ function WebsiteApp({ Component, pageProps, err }) {
           linkProps={{ internal: true }}
         />
       </VerticalThirds>
+
+      <CFBeacon token={process.env.NEXT_PUBLIC_CF_TOKEN} />
     </LinkProvider>
   )
 }
