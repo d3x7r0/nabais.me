@@ -61,16 +61,6 @@ const nextConfig = {
       config.resolve.alias['@sentry/node'] = '@sentry/browser'
     }
 
-    // Define an environment variable so source code can check whether or not
-    // it's running on the server so we can correctly initialize Sentry
-    config.plugins.push(
-      new options.webpack.DefinePlugin({
-        'process.env.NEXT_IS_SERVER': JSON.stringify(
-          options.isServer.toString()
-        ),
-      })
-    )
-
     TRANSPILED_MODULES.forEach((moduleName) => {
       const pkg = require(resolve(__dirname, '.', 'node_modules', moduleName, 'package.json'))
 
