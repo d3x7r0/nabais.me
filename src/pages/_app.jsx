@@ -5,8 +5,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { event, pageview } from 'react-ga/core'
 import { LinkProvider, Spinner, CookieDisclaimer, useMounted } from '@nonsensebb/components'
-import * as Sentry from '@sentry/node'
 
+import { init as initSentry } from '../js/utils/sentry'
 import { MENU_ENTRIES, PATHS, TITLES } from '../js/config'
 import { buildTitle } from '../js/meta'
 import VerticalThirds from '../js/components/template/vertical-thirds'
@@ -21,13 +21,7 @@ import '../js/analytics'
 
 import '../css/00_base/index.scss'
 
-if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
-  Sentry.init({
-    enabled: process.env.NODE_ENV === 'production',
-    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    release: process.env.NEXT_PUBLIC_COMMIT_HASH,
-  })
-}
+initSentry()
 
 export function reportWebVitals({ id, name, label, value }) {
   event({
