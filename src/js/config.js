@@ -53,11 +53,11 @@ export const MENU_ENTRIES = [
     label: 'CV',
     internal: true,
   },
-  {
-    path: PATHS.CONTACTS,
-    label: 'Contacts',
-    internal: true,
-  },
+//  {
+//    path: PATHS.CONTACTS,
+//    label: 'Contacts',
+//    internal: true,
+//  },
   {
     path: PATHS.PHOTOS,
     label: 'Photography',
