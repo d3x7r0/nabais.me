@@ -8,8 +8,14 @@ import PhotosPage from '@/components/page/Photos'
 import BaseLayout from '@/layouts/default.astro'
 
 const images = await loadImages(join(process.cwd(), 'public/photos'))
+
+const baseURL = import.meta.env.PUBLIC_BASE_PHOTOS_URL
 ---
 
 <BaseLayout title={TITLES.PHOTOS}>
+  {baseURL && (
+    <link rel="preconnect" href={baseURL} slot="head" />
+  )}
+
   <PhotosPage images={images} client:load="preact" />
 </BaseLayout>
