@@ -5,7 +5,7 @@ import { TITLES } from '@/js/config'
 import { loadImages } from '@/js/photos'
 import PhotosPage from '@/components/page/Photos'
 
-import BaseLayout from '../layouts/default.astro'
+import BaseLayout from '@/layouts/default.astro'
 
 const images = await loadImages(join(process.cwd(), 'public/photos'))
 ---

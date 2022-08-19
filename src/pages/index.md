@@ -1,3 +1,3 @@
 ---
-layout: ../layouts/default.astro
+layout: "@/layouts/markdown.astro"
 ---

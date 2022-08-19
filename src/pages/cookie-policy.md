@@ -1,6 +1,6 @@
 ---
 title: Cookie Policy
-layout: ../layouts/markdown.astro
+layout: "@/layouts/markdown.astro"
 ---
 
 This website uses cookies to function correctly but also to understand which pages are being visited as well as record data to better understand what visitors do on site, details on the user agent and other relevant analytics data.

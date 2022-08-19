@@ -1,6 +1,6 @@
 ---
 title: CV
-layout: ../layouts/markdown.astro
+layout: "@/layouts/markdown.astro"
 ---
 
 **Frontend Engineer @ InnoTech**\
