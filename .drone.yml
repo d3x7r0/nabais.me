@@ -51,10 +51,10 @@ steps:
         - master
     settings:
       bucket: nabais.me
-      source: build/**/*
+      source: dist/**/*
       endpoint: http://minio:9000
       region: eu-west-1
-      strip_prefix: build/
+      strip_prefix: dist/
       path_style: true
       access_key:
         from_secret: aws_access_key_id

@@ -9,7 +9,7 @@
     "shared-node-browser": true
   },
   "ignorePatterns": [
-    "build/"
+    "dist/"
   ],
   "rules": {
     "import/named": "off",
