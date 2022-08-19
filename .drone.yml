@@ -23,7 +23,7 @@ steps:
         path: /tmp/cache
 
   - name: Install dependencies
-    image: node:lts
+    image: node:16
     commands:
       - git config --global url."https://$${GITHUB_TOKEN}@github.com/".insteadOf ssh://git@github.com/
       - npm ci
@@ -32,7 +32,7 @@ steps:
         from_secret: github_token
 
   - name: Build app
-    image: node:lts
+    image: node:16
     commands:
       - npm run build
     environment:
