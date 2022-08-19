@@ -1,0 +1,64 @@
+---
+import "@fontsource/roboto-condensed/latin-ext.css";
+import "@fontsource/play/latin-400.css";
+import "@fontsource/play/latin-700.css";
+import "@/css/00_base/index.scss"
+
+import BaseLayout from '@/components/template/Base'
+import CFBeacon from '@/components/atom/CFBeacon'
+import CookieDisclaimer from '@/components/organism/CookieDisclaimer'
+import { MENU_ENTRIES, TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS } from '@/js/config'
+import { RouterContext } from '@/js/router/context'
+import { buildTitle } from '@/js/meta'
+
+const title = buildTitle(...[].concat(Astro.props.title ?? []))
+---
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="icon" sizes="196x196" href="/icon.png" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-6-plus.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-ipad-pro.png" />
+
+    <meta name="theme-color" content="#224B85" />
+
+    <title>{title}</title>
+
+    <meta name="author" content="Luis Nabais" />
+
+    <meta property="og:site_name" content={TITLES.SITE} />
+
+    <meta
+      name="description"
+      content={SITE_DESCRIPTION}
+    />
+
+    <meta
+      name="keywords"
+      content={SITE_KEYWORDS.join(', ')}
+    />
+
+    <slot name="head" />
+
+    <script>
+      import initSentry from '@/js/sentry'
+      initSentry()
+    </script>
+  </head>
+  <body>
+    <BaseLayout path={Astro.url.pathname}>
+      <slot /> <!-- your content is injected here -->
+    </BaseLayout>
+
+    <CookieDisclaimer
+      client:idle
+      link={PATHS.COOKIE_POLICY}
+    />
+
+    <CFBeacon token={import.meta.env.PUBLIC_CF_TOKEN} />
+  </body>
+</html>

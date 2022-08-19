@@ -1,0 +1,30 @@
+@import "src/css/00_base/variables";
+
+.m-site-title {
+  font-size: 1em;
+  line-height: 1.3;
+  margin: 0;
+
+  &__text {
+    color: $colorSiteTitle;
+    font-family: $fontPlay;
+    font-size: 4.2em;
+    font-weight: normal;
+    text-decoration: none;
+    text-shadow: 0.05em -0.05em $colorBorderText;
+    text-transform: lowercase;
+    transition: $transitionDuration text-shadow;
+
+    span {
+      font-weight: bold;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $colorSiteTitle;
+      text-decoration: none;
+      text-shadow: 0.05em 0.05em $colorBorderText;
+    }
+  }
+}

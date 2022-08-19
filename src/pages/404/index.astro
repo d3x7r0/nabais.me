@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/default.astro'
+
+import { TITLES, PATHS } from '@/js/config'
+---
+<Layout title={TITLES.NOT_FOUND}>
+  <meta key="robots" name="robots" content="noindex" slot="head" />
+
+  <h1>{TITLES.NOT_FOUND}</h1>
+
+  <p>The address you entered was not found, it is possible that the page you are looking for has been removed it's name changed or is temporarily unavailable.</p>
+
+  <p>Please try one of the following options:</p>
+
+  <ul>
+    <li>Double check that there are no typos in the address.</li>
+    <li>Go back to the <a href={PATHS.HOME}>home page</a> and start from there,</li>
+    <li>Try a <a href="https://www.google.com/search?q=site%3Anabais.me">Google search of the website.</a></li>
+  </ul>
+</Layout>

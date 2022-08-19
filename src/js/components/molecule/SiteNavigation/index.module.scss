@@ -1,0 +1,29 @@
+@use "sass:color";
+
+@import "src/css/00_base/variables";
+
+.m-site-navigation {
+  background: $colorHeaderNavigationBg;
+  color: $colorTextDarkBg;
+  font-family: $fontRobotoCondensed;
+
+  a {
+    &,
+    &:visited {
+      background: transparent;
+      color: $colorTextDarkBg;
+      transition: ($transitionDuration * 0.5) background-color;
+    }
+
+    &:hover,
+    &:focus {
+      background: color.mix($dominantColor, $colorHeaderNavigationBg, 20%);
+      color: color.scale($colorTextDarkBg, $lightness: 10%);
+    }
+
+    &:active {
+      background: $dominantColor;
+      color: color.scale($colorTextDarkBg, $lightness: 10%);
+    }
+  }
+}

@@ -18,11 +18,3 @@ options.vnode = vnode => {
 configure({
   adapter: new Adapter(),
 })
-
-if (window.document) {
-  const { JSDOM } = require('jsdom')
-
-  window.document.createRange = () => ({
-    createContextualFragment: (html) => JSDOM.fragment(html),
-  })
-}

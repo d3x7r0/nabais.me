@@ -1,0 +1,87 @@
+@use "sass:math";
+
+@import "src/css/00_base/variables";
+
+$closedHeight: 5.6em;
+
+.t-vertical-thirds {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+
+  &__nav,
+  &__header {
+    z-index: 1;
+  }
+
+  &__header {
+    background: $dominantColor;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 40vh;
+    min-height: $closedHeight;
+    position: sticky;
+    top: #{min(calc(-40vh + 5em), -5em)};
+    transition: height $transitionDuration;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      margin: 0 auto;
+      max-width: $tabletBreakpoint;
+      padding: 0 1em;
+    }
+
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+  }
+
+  &__nav {
+    background: $color2;
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: sticky;
+    top: 5.6em;
+    width: 100%;
+
+    &-inner {
+      margin: 0 auto;
+      max-width: $tabletBreakpoint;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 1em 2em;
+    width: 100%;
+
+    @media screen and (min-width: math.div($tabletBreakpoint, 0.65)) {
+      max-width: 65%;
+    }
+  }
+
+  &__footer {
+    &-inner {
+      margin: 0 auto;
+      max-width: $tabletBreakpoint;
+    }
+  }
+}
+
+.t-vertical-thirds--open .t-vertical-thirds__header {
+  height: $closedHeight;
+  top: 0;
+}
+
+.t-vertical-thirds--limited .t-vertical-thirds__content {
+  @media screen and (min-width: $tabletBreakpoint) {
+    max-width: 100%;
+    width: $tabletBreakpoint;
+  }
+}

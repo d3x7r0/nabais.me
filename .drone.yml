@@ -36,15 +36,12 @@ steps:
     commands:
       - npm run build
     environment:
-      NEXT_PUBLIC_GA_ID:
-        from_secret: ga_id
-      NEXT_PUBLIC_CONTACT_FORM_URL:
-        from_secret: contact_form_url
-      NEXT_PUBLIC_SENTRY_DSN:
+      PUBLIC_COMMIT_HASH: ${DRONE_COMMIT_SHA}
+      PUBLIC_SENTRY_DSN:
         from_secret: sentry_dns
       SENTRY_AUTH_TOKEN:
         from_secret: sentry_auth_token
-      NEXT_PUBLIC_CF_TOKEN:
+      PUBLIC_CF_TOKEN:
         from_secret: cf_token
 
   - name: Upload to bucket

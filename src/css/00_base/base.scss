@@ -25,7 +25,7 @@ body,
 a {
   color: $colorLink;
   text-decoration: underline;
-  transition-duration: ($transitionDuration/2);
+  transition-duration: ($transitionDuration * 0.5);
   transition-property: opacity, color;
 
   &:hover,
