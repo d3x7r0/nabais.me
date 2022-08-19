@@ -1,7 +1,7 @@
 // noinspection ES6UnusedImports
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import useKey from '@rooks/use-key'
 import { useCallback, useMemo, useRef } from 'preact/hooks'
 import { ChevronLeft, ChevronRight } from 'react-feather'

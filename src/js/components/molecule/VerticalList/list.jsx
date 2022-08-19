@@ -1,7 +1,7 @@
 // noinspection ES6UnusedImports
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import PropTypes from 'prop-types'
 
 import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'

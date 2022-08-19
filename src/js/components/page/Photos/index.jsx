@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
 import { useMemo, useState } from 'preact/hooks'
-import classNames from 'classnames'
+import classNames from 'clsx'
 
 import NBBSmartImg, { SmartImgSettingsProvider } from './smart-img'
 import styles from './index.module.scss'
