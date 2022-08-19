@@ -59,6 +59,7 @@ const title = buildTitle(...[].concat(Astro.props.title ?? []))
     <CookieDisclaimer
       client:idle
       link={PATHS.COOKIE_POLICY}
+      linkProps={{ title: "View cookie policy" }}
     />
 
     <CFBeacon token={import.meta.env.PUBLIC_CF_TOKEN} />
