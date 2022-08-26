@@ -53,7 +53,7 @@ const title = buildTitle(...[].concat(Astro.props.title ?? []))
   </head>
   <body>
     <BaseLayout path={Astro.url.pathname}>
-      <slot /> <!-- your content is injected here -->
+      <slot />
     </BaseLayout>
 
     <CookieDisclaimer
