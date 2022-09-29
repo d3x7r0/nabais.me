@@ -1,22 +1,23 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
+import prefetch from "@astrojs/prefetch";
 
-import preact from '@astrojs/preact'
-
+// https://astro.build/config
 export default defineConfig({
-  integrations: [preact({ compat: true })],
+  integrations: [
+    preact({ compat: true }),
+    prefetch(),
+  ],
   // Example: Tell Astro the final URL of your deployed website.
   site: 'https://www.nabais.me',
   vite: {
     resolve: {
       alias: {
-        'lodash': 'lodash-es',
-      },
+        'lodash': 'lodash-es'
+      }
     },
     ssr: {
-      noExternal: [
-        '@rooks/use-key',
-        'keen-slider',
-      ],
-    },
-  },
-})
+      noExternal: ['@rooks/use-key', 'keen-slider']
+    }
+  }
+});

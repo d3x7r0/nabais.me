@@ -21,6 +21,7 @@ function SiteMenu(props) {
         (entry) => (
           <SiteMenuEntry
             key={entry.path}
+            rel="prefetch"
             {...entry}
           />
         ),
