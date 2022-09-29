@@ -9,12 +9,13 @@ import { getDisplayName } from '../../utils'
 import styles from './index.module.scss'
 
 export function AsHorizontalMenu(Component, displayName) {
-  const WrappedComponent = ({ className, balanced, children, ...props }) => (
+  const WrappedComponent = ({ className, balanced, scroll, children, ...props }) => (
     <Component
       {...props}
       className={buildClassNames({
         className,
         balanced,
+        scroll,
       })}
     >
       {children}
@@ -32,11 +33,12 @@ export function AsHorizontalMenu(Component, displayName) {
   return WrappedComponent
 }
 
-function buildClassNames({ className, balanced }) {
+function buildClassNames({ className, balanced, scroll }) {
   return classNames(
     className,
     styles['a-horizontal-menu'],
     {
+      [styles['a-horizontal-menu--scroll']]: scroll,
       [styles['a-horizontal-menu--balanced']]: balanced,
     },
   )

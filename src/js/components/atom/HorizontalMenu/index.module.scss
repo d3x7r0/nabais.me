@@ -56,4 +56,9 @@
       text-align: left;
     }
   }
+
+  &--scroll {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
 }

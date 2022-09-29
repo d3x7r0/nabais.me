@@ -7,6 +7,14 @@
   color: $colorTextDarkBg;
   font-family: $fontRobotoCondensed;
 
+  & > :first-child {
+    padding-left: 1em;
+  }
+
+  & > :last-child {
+    padding-right: 1em;
+  }
+
   a {
     &,
     &:visited {
@@ -25,5 +33,24 @@
       background: $dominantColor;
       color: color.scale($colorTextDarkBg, $lightness: 10%);
     }
+  }
+
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2em;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $colorHeaderNavigationBg, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, $colorHeaderNavigationBg);
   }
 }

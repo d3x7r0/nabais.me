@@ -13,7 +13,10 @@ function SiteMenu(props) {
   const { entries = [], ...rest } = props
 
   return (
-    <HorizontalNavMenu {...rest}>
+    <HorizontalNavMenu
+      scroll
+      {...rest}
+    >
       {entries.map(
         (entry) => (
           <SiteMenuEntry
