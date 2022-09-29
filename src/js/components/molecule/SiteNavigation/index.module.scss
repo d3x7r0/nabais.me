@@ -37,20 +37,20 @@
 
   &::before,
   &::after {
+    bottom: 0;
     content: ' ';
     position: absolute;
     top: 0;
-    bottom: 0;
     width: 2em;
   }
 
   &::before {
-    left: 0;
     background: linear-gradient(to right, $colorHeaderNavigationBg, transparent);
+    left: 0;
   }
 
   &::after {
-    right: 0;
     background: linear-gradient(to right, transparent, $colorHeaderNavigationBg);
+    right: 0;
   }
 }
