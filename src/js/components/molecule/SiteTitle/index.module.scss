@@ -8,7 +8,7 @@
   &__text {
     color: $colorSiteTitle;
     font-family: $fontPlay;
-    font-size: 4.2em;
+    font-size: min(4.2em, 15vw);
     font-weight: normal;
     text-decoration: none;
     text-shadow: 0.05em -0.05em $colorBorderText;
