@@ -57,6 +57,7 @@
     "@astrojs/prefetch": "^0.0.8",
     "@fontsource/play": "^4.5.12",
     "@fontsource/roboto-condensed": "^4.5.9",
+    "@icons-pack/react-simple-icons": "^5.11.0",
     "@rooks/use-key": "^4.11.2",
     "@sentry/browser": "^7.14.2",
     "astro": "^1.4.6",

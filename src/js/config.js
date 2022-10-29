@@ -1,4 +1,10 @@
-import { GitHub, Instagram, Linkedin, Twitter } from 'react-feather'
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Mastodon,
+} from '@icons-pack/react-simple-icons'
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
 
@@ -65,23 +71,33 @@ export const SOCIAL_LINKS = [
     href: 'https://twitter.com/d3x7r0',
     IconComponent: Twitter,
     label: 'Twitter',
+    rel: 'me'
+  },
+  {
+    id: 'mastodon',
+    href: 'https://mastodon.social/@d3x7r0',
+    IconComponent: Mastodon,
+    label: 'Mastodon',
+    rel: 'me'
   },
   {
     id: 'instagram',
     href: 'https://www.instagram.com/d3x7r0/',
     IconComponent: Instagram,
     label: 'Instagram',
+    rel: 'me'
   },
   {
     id: 'linkedin',
     href: 'https://www.linkedin.com/in/luismiguelnabais',
     IconComponent: Linkedin,
     label: 'LinkedIn',
+    rel: 'me'
   },
   {
     id: 'github',
     href: 'https://github.com/d3x7r0/',
-    IconComponent: GitHub,
+    IconComponent: Github,
     label: 'Github',
   },
 ]

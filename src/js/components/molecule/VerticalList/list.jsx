@@ -1,10 +1,11 @@
 // noinspection ES6UnusedImports
 // eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
+import {h} from 'preact'
 import classNames from 'clsx'
 import PropTypes from 'prop-types'
 
-import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
+import {SIDE_LEFT, SIDE_RIGHT} from '../../../constants'
+import {useCSSVariable} from '../../../hooks'
 
 import styles from './index.module.scss'
 
@@ -16,12 +17,20 @@ function VerticalList(props) {
     grid,
     gridMobile,
     noMargin,
+    gridWidthSmall = 2,
+    gridWidthLarge = 4,
     ...rest
   } = props
+
+  let computedStyle = {}
+
+  computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle)
+  computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle)
 
   return (
     <ul
       {...rest}
+      style={computedStyle}
       className={buildClassNames({
         className,
         side,
@@ -62,6 +71,8 @@ VerticalList.propTypes = {
   noMargin: PropTypes.bool,
   grid: PropTypes.bool,
   gridMobile: PropTypes.bool,
+  gridWidthSmall: PropTypes.number,
+  gridWidthLarge: PropTypes.number,
 }
 
 export default VerticalList

@@ -10,7 +10,12 @@ import IconLink from '@/components/atom/IconLink'
 import { SIDE_LEFT } from '@/js/constants'
 
 const SiteFooter = () => (
-  <VerticalList grid noMargin className={styles['o-site-footer']}>
+  <VerticalList
+    grid
+    noMargin
+    gridWidthLarge={Math.max(SOCIAL_LINKS.length, 5)}
+    className={styles['o-site-footer']}
+  >
     {SOCIAL_LINKS.map(({ id, label, ...props }) => (
       <VerticalListEntry key={id}>
         <IconLink {...props} side={SIDE_LEFT}>{label}</IconLink>

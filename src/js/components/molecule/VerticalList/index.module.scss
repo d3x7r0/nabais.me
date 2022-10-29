@@ -26,10 +26,10 @@
   &--grid {
     @supports (display: grid) {
       display: grid;
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: repeat(var(--vertical-list-size-lg, 4), auto);
 
       @media (max-width: $tabletBreakpoint) {
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(var(--vertical-list-size-sm, 2), auto);
       }
     }
   }
@@ -38,12 +38,12 @@
     @supports (display: grid) {
       @media (max-width: $desktopBreakpoint) {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: repeat(var(--vertical-list-size-lg, 4), auto);
       }
 
       @media (max-width: $tabletBreakpoint) {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(var(--vertical-list-size-sm, 2), auto);
       }
     }
   }
