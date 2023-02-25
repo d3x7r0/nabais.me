@@ -1,0 +1,21 @@
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/*.eot
+  Access-Control-Allow-Origin: *
+
+/*.ttf
+  Access-Control-Allow-Origin: *
+
+/*.woff
+  Access-Control-Allow-Origin: *
+
+/*.woff2
+  Access-Control-Allow-Origin: *
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer-when-downgrade
+  Strict-Transport-Security: max-age=2629800; includeSubdomains; preload
