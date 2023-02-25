@@ -81,6 +81,7 @@
     "@babel/preset-env": "^7.20.2",
     "@nonsensebb/eslint-config-preact": "^0.7.0",
     "@nonsensebb/stylelint-config-scss": "^0.7.0",
+    "@sentry/cli": "^2.13.0",
     "babel-jest": "^29.3.1",
     "dotenv-flow": "^3.2.0",
     "enzyme": "^3.11.0",

@@ -34,7 +34,7 @@ steps:
   - name: Build app
     image: node:16
     commands:
-      - npm run build
+      - ./scripts/build.sh
     environment:
       PUBLIC_COMMIT_HASH: ${DRONE_COMMIT_SHA}
       PUBLIC_SENTRY_DSN:
@@ -60,17 +60,6 @@ steps:
         from_secret: aws_access_key_id
       secret_key:
         from_secret: aws_secret_access_key
-
-  - name: Tag release in Sentry
-    image: getsentry/sentry-cli:latest
-    when:
-      branch:
-        - master
-    environment:
-      SENTRY_AUTH_TOKEN:
-        from_secret: sentry_auth_token
-    commands:
-      - ./docker/tag-sentry.sh
 
   - name: Store cache
     image: meltwater/drone-cache:dev
