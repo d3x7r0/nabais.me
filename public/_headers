@@ -13,6 +13,12 @@ https://:project.pages.dev/*
 /*.woff2
   Access-Control-Allow-Origin: *
 
+/_astro/*
+  Cache-Control: public, immutable
+
+/chunks/*
+  Cache-Control: public, immutable
+
 /*
   X-Frame-Options: SAMEORIGIN
   X-XSS-Protection: 1; mode=block
