@@ -9,7 +9,7 @@ export default defineConfig({
     prefetch(),
   ],
   // Example: Tell Astro the final URL of your deployed website.
-  site: 'https://www.nabais.me',
+  site: 'https://www.nabais.me/',
   vite: {
     resolve: {
       alias: {
