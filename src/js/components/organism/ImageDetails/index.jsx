@@ -1,6 +1,5 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
+/* eslint-disable react/jsx-no-literals */
+import { h } from 'preact' // eslint-disable-line no-unused-vars
 import classNames from 'clsx'
 import capitalize from 'lodash-es/capitalize'
 import { Aperture, Camera, MapPin, Clock, FileText } from 'react-feather'
