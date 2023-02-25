@@ -2,20 +2,18 @@
 
 set -a; source .env; set +a
 
-PATH="${PATH};node_modules/.bin/"
+VERSION=$(node_modules/.bin/sentry-cli releases propose-version)
 
-VERSION=$(sentry-cli releases propose-version)
-
-sentry-cli info
+node_modules/.bin/sentry-cli info
 
 echo "Building"
 npm run build
 
 echo "Creating new release [$VERSION]"
-#sentry-cli releases new -p "$SENTRY_PROJECT" "$VERSION"
+node_modules/.bin/sentry-cli releases new -p "$SENTRY_PROJECT" "$VERSION"
 
 echo "Setting release commits [$VERSION]"
-#sentry-cli releases set-commits --auto "$VERSION"
+node_modules/.bin/sentry-cli releases set-commits --auto "$VERSION"
 
 echo "Tagging release as deployed [$VERSION]"
-#sentry-cli releases deploys "$VERSION" new -e production
+node_modules/.bin/sentry-cli releases deploys "$VERSION" new -e production
