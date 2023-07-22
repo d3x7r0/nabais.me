@@ -29,7 +29,7 @@
     "test": "npm run test:js",
     "test:js": "NODE_ENV=test jest --passWithNoTests ${JEST_OPTS}",
     "test:js:update": "NODE_ENV=test jest -u",
-    "test:ci": "NODE_ENV=testjest --ci --passWithNoTests --coverage"
+    "test:ci": "NODE_ENV=test jest --ci --passWithNoTests --coverage"
   },
   "browserslist": [
     "> 0.2%",
