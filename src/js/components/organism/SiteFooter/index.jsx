@@ -2,12 +2,13 @@
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
 
-import styles from './index.module.scss'
 
-import { SOCIAL_LINKS } from '@/js/config'
-import VerticalList, { VerticalListEntry } from '@/components/molecule/VerticalList'
-import IconLink from '@/components/atom/IconLink'
-import { SIDE_LEFT } from '@/js/constants'
+import { SOCIAL_LINKS } from '../../../config'
+import VerticalList, { VerticalListEntry } from '../../molecule/VerticalList'
+import IconLink from '../../atom/IconLink'
+import { SIDE_LEFT } from '../../../constants'
+
+import styles from './index.module.scss'
 
 const SiteFooter = () => (
   <VerticalList

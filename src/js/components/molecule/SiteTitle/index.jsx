@@ -4,9 +4,10 @@
 import { h } from 'preact'
 import classNames from 'clsx'
 
+import { PATHS, TITLES } from '../../../config'
+
 import styles from './index.module.scss'
 
-import { PATHS, TITLES } from '@/js/config'
 
 const SiteTitle = ({ className, ...rest }) => (
   <h1

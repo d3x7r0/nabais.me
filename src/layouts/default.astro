@@ -1,15 +1,14 @@
 ---
-import "@fontsource/roboto-condensed";
-import "@fontsource/play/latin-400.css";
-import "@fontsource/play/latin-700.css";
-import "@/css/00_base/index.scss"
+import "@fontsource/roboto-condensed"
+import "@fontsource/play/latin-400.css"
+import "@fontsource/play/latin-700.css"
+import "../css/00_base/index.scss"
 
-import BaseLayout from '@/components/template/Base'
-import CFBeacon from '@/components/atom/CFBeacon'
-import CookieDisclaimer from '@/components/organism/CookieDisclaimer'
-import { MENU_ENTRIES, TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS } from '@/js/config'
-import { RouterContext } from '@/js/router/context'
-import { buildTitle } from '@/js/meta'
+import BaseLayout from '../js/components/template/Base'
+import CFBeacon from '../js/components/atom/CFBeacon'
+import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
+import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS } from '../js/config'
+import { buildTitle } from '../js/meta'
 
 const title = buildTitle(...[].concat(Astro.props.title ?? []))
 ---
@@ -47,7 +46,7 @@ const title = buildTitle(...[].concat(Astro.props.title ?? []))
     <slot name="head" />
 
     <script>
-      import initSentry from '@/js/sentry'
+      import initSentry from '../js/sentry'
       initSentry()
     </script>
   </head>

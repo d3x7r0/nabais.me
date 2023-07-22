@@ -1,6 +1,6 @@
 ---
 title: About Me
-layout: "@/layouts/markdown.astro"
+layout: "../layouts/markdown.astro"
 ---
 My name's Luís Nabais and I'm a web software developer by profession, software engineer by training from Lisbon, Portugal.
 

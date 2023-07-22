@@ -1,6 +1,3 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
 import { useMemo } from 'preact/hooks'
 import PropTypes from 'prop-types'
 
@@ -98,7 +95,7 @@ function GalleryInner(props) {
   )
 }
 
-const GalleryEntry = (props) => {
+function GalleryEntry(props) {
   const {
     picture,
     alt,

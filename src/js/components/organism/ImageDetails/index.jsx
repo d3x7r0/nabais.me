@@ -1,15 +1,13 @@
-/* eslint-disable react/jsx-no-literals */
-import { h } from 'preact' // eslint-disable-line no-unused-vars
 import classNames from 'clsx'
 import capitalize from 'lodash-es/capitalize'
 import { Aperture, Camera, MapPin, Clock, FileText } from 'react-feather'
 
+import IconText from '../../atom/IconText'
+import { SIDE_LEFT } from '../../../constants'
+
 import styles from './index.module.scss'
 
-import IconText from '@/components/atom/IconText'
-import { SIDE_LEFT } from '@/js/constants'
-
-const ImageDetails = (props) => {
+function ImageDetails(props) {
   const {
     description,
     time,
@@ -67,7 +65,7 @@ const ICONS = {
   location: MapPin,
 }
 
-const ImageDetailsEntry = (props) => {
+function ImageDetailsEntry(props) {
   const {
     label,
     children,

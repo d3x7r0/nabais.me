@@ -2,14 +2,14 @@
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
 
-import SiteFooter from '@/components/organism/SiteFooter'
-import SiteMenu from '@/components/organism/SiteMenu'
-import SiteNavigation from '@/components/molecule/SiteNavigation'
-import SiteTitle from '@/components/molecule/SiteTitle'
-import VerticalThirds from '@/components/template/VerticalThirds'
-import { MENU_ENTRIES, PATHS } from '@/js/config'
-import { RouterProvider } from '@/js/router/context'
-import { useRoute } from '@/js/router/match'
+import SiteFooter from '../../organism/SiteFooter'
+import SiteMenu from '../../organism/SiteMenu'
+import SiteNavigation from '../../molecule/SiteNavigation'
+import SiteTitle from '../../molecule/SiteTitle'
+import VerticalThirds from '../../template/VerticalThirds'
+import { MENU_ENTRIES, PATHS } from '../../../config'
+import { RouterProvider } from '../../../router/context'
+import { useRoute } from '../../../router/match'
 
 const BaseLayout = (props) => {
   const { matches: isHome } = useRoute(PATHS.HOME, props.path)

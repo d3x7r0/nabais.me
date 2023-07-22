@@ -6,11 +6,9 @@ on:
       - master
       - dependabot/**
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - master
-
-env:
-  CI: true
 
 jobs:
   ci:
@@ -18,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out the repo
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -31,6 +30,10 @@ jobs:
 
       - name: Lint
         run: npm run lint
+        env:
+          CI: true
 
       - name: Test
-        run: npm test
+        run: npm run test:ci
+        env:
+          CI: true

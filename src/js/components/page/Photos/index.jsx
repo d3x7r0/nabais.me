@@ -4,12 +4,13 @@ import { h } from 'preact'
 import { useMemo, useState } from 'preact/hooks'
 import classNames from 'clsx'
 
-import NBBSmartImg, { SmartImgSettingsProvider } from './smart-img'
-import styles from './index.module.scss'
 
-import fontStyles from '@/css/06_utils/fonts.module.scss'
-import ImageSlider from '@/components/organism/ImageSlider'
-import ImageDetails from '@/components/organism/ImageDetails'
+import fontStyles from '../../../../css/06_utils/fonts.module.scss'
+import ImageSlider from '../../organism/ImageSlider'
+import ImageDetails from '../../organism/ImageDetails'
+
+import styles from './index.module.scss'
+import NBBSmartImg, { SmartImgSettingsProvider } from './smart-img'
 
 const RATIO = {
   width: 3,

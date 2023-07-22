@@ -8,10 +8,11 @@ import { ChevronLeft, ChevronRight } from 'react-feather'
 import { useKeenSlider } from 'keen-slider/react.es'
 
 import 'keen-slider/keen-slider.css'
-import styles from './index.module.scss'
 
-import LightboxEntry, { LightboxWrapper } from '@/components/molecule/Lightbox'
-import Figure from '@/components/atom/Figure'
+import LightboxEntry, { LightboxWrapper } from '../../molecule/Lightbox'
+import Figure from '../../atom/Figure'
+
+import styles from './index.module.scss'
 
 let ID_COUNTER = 0
 let COUNTER = 0

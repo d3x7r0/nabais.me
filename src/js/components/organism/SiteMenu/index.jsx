@@ -2,12 +2,12 @@
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
 
-import { useRoute } from '@/js/router/match'
+import { useRoute } from '../../../router/match'
 import {
   HorizontalMenuLink,
   HorizontalNavMenu,
   HorizontalNavMenuEntry,
-} from '@/components/atom/HorizontalMenu'
+} from '../../atom/HorizontalMenu'
 
 function SiteMenu(props) {
   const { entries = [], ...rest } = props

@@ -6,8 +6,8 @@ import { URL } from 'iso-url'
 import isString from 'lodash-es/isString'
 import omit from 'lodash-es/omit'
 
-import { ENABLE_TRANSFORMED_IMAGES } from '@/js/config'
-import SmartImg, { SMART_IMG_PROPS, withFormats } from '@/components/atom/SmartImg'
+import { ENABLE_TRANSFORMED_IMAGES } from '../../../config'
+import SmartImg, { SMART_IMG_PROPS, withFormats } from '../../atom/SmartImg'
 
 const ENABLED_FORMATS = [
   'jpeg',

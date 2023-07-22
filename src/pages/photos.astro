@@ -1,11 +1,10 @@
 ---
 import { join } from 'node:path'
 
-import { TITLES } from '@/js/config'
-import { loadImages } from '@/js/photos'
-import PhotosPage from '@/components/page/Photos'
-
-import PageLayout from '@/layouts/default.astro'
+import { TITLES } from '../js/config'
+import { loadImages } from '../js/photos'
+import PhotosPage from '../js/components/page/Photos'
+import PageLayout from '../layouts/default.astro'
 
 const images = await loadImages(join(process.cwd(), 'public/static/photos'))
 

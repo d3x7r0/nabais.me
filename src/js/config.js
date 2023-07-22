@@ -1,9 +1,9 @@
 import {
-  Github,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Mastodon,
+  SiGithub,
+  SiInstagram,
+  SiLinkedin,
+  SiTwitter,
+  SiMastodon,
 } from '@icons-pack/react-simple-icons'
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
@@ -69,35 +69,35 @@ export const SOCIAL_LINKS = [
   {
     id: 'twitter',
     href: 'https://twitter.com/d3x7r0',
-    IconComponent: Twitter,
+    IconComponent: SiTwitter,
     label: 'Twitter',
     rel: 'me'
   },
   {
     id: 'mastodon',
     href: 'https://mastodon.social/@d3x7r0',
-    IconComponent: Mastodon,
+    IconComponent: SiMastodon,
     label: 'Mastodon',
     rel: 'me'
   },
   {
     id: 'instagram',
     href: 'https://www.instagram.com/d3x7r0/',
-    IconComponent: Instagram,
+    IconComponent: SiInstagram,
     label: 'Instagram',
     rel: 'me'
   },
   {
     id: 'linkedin',
     href: 'https://www.linkedin.com/in/luismiguelnabais',
-    IconComponent: Linkedin,
+    IconComponent: SiLinkedin,
     label: 'LinkedIn',
     rel: 'me'
   },
   {
     id: 'github',
     href: 'https://github.com/d3x7r0/',
-    IconComponent: Github,
+    IconComponent: SiGithub,
     label: 'Github',
   },
 ]
