@@ -5,11 +5,8 @@ import classNames from 'clsx'
 
 import styles from './index.module.scss'
 
-const VerticalThirds = (props) => {
+export const VerticalThirdsWrapper = (props) => {
   const {
-    header,
-    nav,
-    footer,
     children,
     className,
     open,
@@ -26,32 +23,46 @@ const VerticalThirds = (props) => {
         limited,
       })}
     >
-      <header className={styles['t-vertical-thirds__header']}>
-        <div className={styles['t-vertical-thirds__header-inner']}>
-          {header}
-        </div>
-      </header>
-
-      {nav ? (
-        <div className={styles['t-vertical-thirds__nav']}>
-          <div className={styles['t-vertical-thirds__nav-inner']}>
-            {nav}
-          </div>
-        </div>
-      ) : null}
-
-      <main className={styles['t-vertical-thirds__content']}>
-        {children}
-      </main>
-
-      {footer ? (
-        <footer className={styles['t-vertical-thirs__footer']}>
-          <div className={styles['t-vertical-thirds__footer-inner']}>
-            {footer}
-          </div>
-        </footer>
-      ) : null}
+      {children}
     </div>
+  )
+}
+
+export const VerticalThirdsMain = (props) => {
+  return (
+    <main className={styles['t-vertical-thirds__content']}>
+      {props.children}
+    </main>
+  )
+}
+
+export const VerticalThirdsHeader = (props) => {
+  return (
+    <header className={styles['t-vertical-thirds__header']}>
+      <div className={styles['t-vertical-thirds__header-inner']}>
+        {props.children}
+      </div>
+    </header>
+  )
+}
+
+export const VerticalThirdsNav = (props) => {
+  return (
+    <div className={styles['t-vertical-thirds__nav']}>
+      <div className={styles['t-vertical-thirds__nav-inner']}>
+        {props.children}
+      </div>
+    </div>
+  )
+}
+
+export const VerticalThirdsFooter = (props) => {
+  return (
+    <footer className={styles['t-vertical-thirds__footer']}>
+      <div className={styles['t-vertical-thirds__footer-inner']}>
+        {props.children}
+      </div>
+    </footer>
   )
 }
 
@@ -69,5 +80,3 @@ function buildClassNames({
     },
   )
 }
-
-export default VerticalThirds

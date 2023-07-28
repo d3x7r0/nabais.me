@@ -17,6 +17,9 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ['@rooks/use-key', 'keen-slider']
-    }
-  }
+    },
+  },
+  //experimental: {
+  //  viewTransitions: true,
+  //},
 })

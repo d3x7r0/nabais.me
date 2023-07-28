@@ -4,13 +4,35 @@ import "@fontsource/play/latin-400.css"
 import "@fontsource/play/latin-700.css"
 import "../css/00_base/index.scss"
 
-import BaseLayout from '../js/components/template/Base'
+// import { ViewTransitions } from 'astro:transitions'
+
 import CFBeacon from '../js/components/atom/CFBeacon'
 import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
-import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS } from '../js/config'
+import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS, MENU_ENTRIES } from '../js/config'
 import { buildTitle } from '../js/meta'
+import { matchesRoute } from '../js/router/match'
+import {
+  VerticalThirdsFooter,
+  VerticalThirdsHeader,
+  VerticalThirdsMain,
+  VerticalThirdsNav, VerticalThirdsWrapper,
+} from '../js/components/template/VerticalThirds'
+import SiteMenu from '../js/components/organism/SiteMenu'
+import SiteNavigation from '../js/components/molecule/SiteNavigation'
+import SiteFooter from '../js/components/organism/SiteFooter'
+import SiteTitle from '../js/components/molecule/SiteTitle'
 
 const title = buildTitle(...[].concat(Astro.props.title ?? []))
+
+const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname)
+const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
+
+const menuEntries = MENU_ENTRIES.map(entry => {
+  return {
+    ...entry,
+    active: matchesRoute(entry.path, Astro.url.pathname)
+  }
+})
 ---
 <html lang="en-GB">
   <head>
@@ -49,11 +71,32 @@ const title = buildTitle(...[].concat(Astro.props.title ?? []))
       import initSentry from '../js/sentry'
       initSentry()
     </script>
+
+    <!--<ViewTransitions fallback="none" />-->
   </head>
   <body>
-    <BaseLayout path={Astro.url.pathname}>
-      <slot />
-    </BaseLayout>
+    <VerticalThirdsWrapper
+      open={!isHome}
+      limited={!isPhotos}
+    >
+      <VerticalThirdsHeader>
+        <SiteTitle />
+      </VerticalThirdsHeader>
+
+      <VerticalThirdsNav>
+        <SiteNavigation>
+          <SiteMenu entries={menuEntries} />
+        </SiteNavigation>
+      </VerticalThirdsNav>
+
+      <VerticalThirdsMain>
+        <slot />
+      </VerticalThirdsMain>
+
+      <VerticalThirdsFooter>
+        <SiteFooter />
+      </VerticalThirdsFooter>
+    </VerticalThirdsWrapper>
 
     <CookieDisclaimer
       client:idle

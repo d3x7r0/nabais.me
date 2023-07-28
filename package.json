@@ -45,7 +45,7 @@
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@rooks/use-key": "^4.11.2",
     "@sentry/browser": "^7.60.0",
-    "astro": "^2.9.1",
+    "astro": "^2.9.4",
     "clsx": "^2.0.0",
     "feather-icons": "^4.29.0",
     "iso-url": "^1.2.1",

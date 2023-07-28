@@ -2,7 +2,6 @@
 // eslint-disable-next-line no-unused-vars
 import { h } from 'preact'
 
-import { useRoute } from '../../../router/match'
 import {
   HorizontalMenuLink,
   HorizontalNavMenu,
@@ -31,14 +30,12 @@ function SiteMenu(props) {
 }
 
 function SiteMenuEntry(props) {
-  const { label, path, ...rest } = props
-
-  const { matches } = useRoute(path)
+  const { label, path, active, ...rest } = props
 
   return (
     <HorizontalNavMenuEntry>
       <HorizontalMenuLink
-        active={matches}
+        active={active}
         href={path}
         {...rest}
       >
