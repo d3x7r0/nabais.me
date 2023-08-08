@@ -38,14 +38,11 @@
     "not dead"
   ],
   "dependencies": {
-    "@astrojs/preact": "^2.2.1",
-    "@astrojs/prefetch": "^0.3.0",
     "@fontsource/play": "^5.0.5",
     "@fontsource/roboto-condensed": "^5.0.5",
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@rooks/use-key": "^4.11.2",
     "@sentry/browser": "^7.60.0",
-    "astro": "^2.9.4",
     "clsx": "^2.0.0",
     "feather-icons": "^4.29.0",
     "iso-url": "^1.2.1",
@@ -61,9 +58,12 @@
     "react-dom": "npm:@preact/compat@latest"
   },
   "devDependencies": {
+    "@astrojs/preact": "^2.2.1",
+    "@astrojs/prefetch": "^0.3.0",
     "@sentry/cli": "^2.19.4",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
+    "astro": "^2.9.4",
     "astro-eslint-parser": "^0.14.0",
     "dotenv-flow": "^3.2.0",
     "enzyme": "^3.11.0",
