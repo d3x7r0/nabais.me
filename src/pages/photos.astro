@@ -1,20 +1,30 @@
 ---
-import { join } from 'node:path'
+import { getCollection } from 'astro:content'
 
 import { TITLES } from '../js/config'
-import { loadImages } from '../js/photos'
 import PhotosPage from '../js/components/page/Photos'
 import PageLayout from '../layouts/default.astro'
 
-const images = await loadImages(join(process.cwd(), 'public/static/photos'))
+const photos = await getCollection('photos')
 
-const baseURL = import.meta.env.PUBLIC_BASE_PHOTOS_URL
+const BASE_PHOTOS_URL = import.meta.env.PUBLIC_BASE_PHOTOS_URL
+const BASE_PHOTOS_PATH = '/static/photos'
+
+const images = photos.map(entry => {
+  const href = `${BASE_PHOTOS_PATH}/${entry.id}`
+
+  return {
+    href,
+    src: href,
+    ...entry.data,
+  }
+})
 ---
 
 <PageLayout title={TITLES.PHOTOS}>
-  {baseURL && (
-    <link rel="preconnect" href={baseURL} slot="head" />
+  {BASE_PHOTOS_URL && (
+    <link rel="preconnect" href={BASE_PHOTOS_URL} slot="head" />
   )}
 
-  <PhotosPage images={images} client:load="preact" />
+  <PhotosPage images={images} client:load />
 </PageLayout>

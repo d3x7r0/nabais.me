@@ -1,30 +1,10 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "ignoreDeprecations": "5.0",
-    "allowJs": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
-  "include": [
-    "./src/**/*",
-    "./src/**/*.json",
-    "./tests/**/*",
-    "astro.config.ts",
-    "jest.config.js",
-    ".eslintrc.js"
-  ],
-  "exclude": [
-    "build",
-    "node_modules"
-  ]
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+    ],
+  }
 }

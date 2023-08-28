@@ -8,7 +8,6 @@ import { PATHS, TITLES } from '../../../config'
 
 import styles from './index.module.scss'
 
-
 const SiteTitle = ({ className, ...rest }) => (
   <h1
     {...rest}

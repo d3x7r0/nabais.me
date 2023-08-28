@@ -1,3 +1,5 @@
+// noinspection ES6UnusedImports
+import { h } from 'preact'
 import classNames from 'clsx'
 import capitalize from 'lodash-es/capitalize'
 import { Aperture, Camera, MapPin, Clock, FileText } from 'react-feather'

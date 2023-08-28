@@ -15,7 +15,8 @@ import {
   VerticalThirdsFooter,
   VerticalThirdsHeader,
   VerticalThirdsMain,
-  VerticalThirdsNav, VerticalThirdsWrapper,
+  VerticalThirdsNav,
+  VerticalThirdsWrapper,
 } from '../js/components/template/VerticalThirds'
 import SiteMenu from '../js/components/organism/SiteMenu'
 import SiteNavigation from '../js/components/molecule/SiteNavigation'
@@ -80,11 +81,11 @@ const menuEntries = MENU_ENTRIES.map(entry => {
       limited={!isPhotos}
     >
       <VerticalThirdsHeader>
-        <SiteTitle />
+        <SiteTitle className="" />
       </VerticalThirdsHeader>
 
       <VerticalThirdsNav>
-        <SiteNavigation>
+        <SiteNavigation className="">
           <SiteMenu entries={menuEntries} />
         </SiteNavigation>
       </VerticalThirdsNav>
