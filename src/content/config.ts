@@ -5,6 +5,8 @@ const photos = defineCollection({
   schema: z.object({
     alt: z.string(),
     caption: z.string(),
+    path: z.string().url().optional(),
+    href: z.string().url().optional(),
     meta: z.object({
       description: z.string(),
       time: z.string(),
