@@ -4,8 +4,6 @@ import "@fontsource/play/latin-400.css"
 import "@fontsource/play/latin-700.css"
 import "../css/00_base/index.scss"
 
-import type { MarkdownLayoutProps } from 'astro'
-
 import CFBeacon from '../js/components/atom/CFBeacon'
 import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
 import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS, MENU_ENTRIES } from '../js/config'
@@ -23,12 +21,12 @@ import SiteNavigation from '../js/components/molecule/SiteNavigation'
 import SiteFooter from '../js/components/organism/SiteFooter'
 import SiteTitle from '../js/components/molecule/SiteTitle'
 
-type Props = MarkdownLayoutProps<{
+type Props = {
   title?: string
   fullWidth?: boolean
-}>
+}
 
-const title = buildTitle(...[].concat(Astro.props.title ?? []))
+const title = buildTitle(Astro.props.title)
 const fullWidth = Astro.props.fullWidth ?? false
 
 const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname)
