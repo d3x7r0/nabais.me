@@ -23,10 +23,7 @@ export function buildSources(src, settings) {
 function buildSourceSet(settings, src, processingOpts) {
   const contentType = guessContentType(src)
 
-  const sizes = calculateSizes({
-    min: settings.min,
-    max: settings.max,
-  })
+  const sizes = calculateSizes(settings)
 
   return FORMATS
     .filter(f => f.type === contentType || f.enabled(settings, contentType))

@@ -379,16 +379,5 @@ module.exports = {
       files: ['**/*.astro/*.js', '*.astro/*.js'],
       parser: '@typescript-eslint/parser',
     },
-    // Tests
-    {
-      'files': [
-        '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test).[tj]s?(x)',
-        'tests/**/*.[jt]s?(x)',
-      ],
-      'env': {
-        'jest': true,
-      },
-    },
   ],
 }

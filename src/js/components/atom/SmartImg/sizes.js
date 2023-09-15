@@ -13,8 +13,15 @@ const IMAGE_SIZES = [
   3840,
 ]
 
-export function calculateSizes({ min, max } = {}) {
-  let result = Array.from(IMAGE_SIZES)
+/**
+ * @param {{ min?: number, max?: number}} options
+ * @param {number[]} candidates
+ * @returns {number[]}
+ */
+export function calculateSizes(options = {}, candidates = IMAGE_SIZES) {
+  const { min, max } = options
+
+  let result = Array.from(candidates)
 
   if (min) {
     result = result.filter(entry => min < entry)

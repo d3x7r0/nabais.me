@@ -19,7 +19,4 @@ export default defineConfig({
       noExternal: ['@rooks/use-key', 'keen-slider']
     },
   },
-  //experimental: {
-  //  viewTransitions: true,
-  //},
 })

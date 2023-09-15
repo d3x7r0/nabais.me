@@ -32,7 +32,7 @@ const Photos = ({ images = [] }) => {
         meta,
       } = entry
 
-      const src = `${import.meta.env.PUBLIC_BASE_PHOTOS_URL || ""}${href}`
+      const src = href
 
       let pictureCaption = picture.caption || undefined
 

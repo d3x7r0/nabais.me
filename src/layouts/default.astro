@@ -4,8 +4,6 @@ import "@fontsource/play/latin-400.css"
 import "@fontsource/play/latin-700.css"
 import "../css/00_base/index.scss"
 
-// import { ViewTransitions } from 'astro:transitions'
-
 import CFBeacon from '../js/components/atom/CFBeacon'
 import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
 import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS, MENU_ENTRIES } from '../js/config'
@@ -73,7 +71,7 @@ const menuEntries = MENU_ENTRIES.map(entry => {
       initSentry()
     </script>
 
-    <!--<ViewTransitions fallback="none" />-->
+    <meta name="generator" content={Astro.generator} />
   </head>
   <body>
     <VerticalThirdsWrapper

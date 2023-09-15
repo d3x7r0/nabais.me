@@ -7,11 +7,11 @@ import PageLayout from '../layouts/default.astro'
 
 const photos = await getCollection('photos')
 
-const BASE_PHOTOS_URL = import.meta.env.PUBLIC_BASE_PHOTOS_URL
+const BASE_PHOTOS_URL = import.meta.env.PUBLIC_BASE_PHOTOS_URL ?? Astro.site
 const BASE_PHOTOS_PATH = '/static/photos'
 
 const images = photos.map(entry => {
-  const href = `${BASE_PHOTOS_PATH}/${entry.id}`
+  const href = new URL(`${BASE_PHOTOS_PATH}/${entry.id}`, BASE_PHOTOS_URL).toString()
 
   return {
     href,
