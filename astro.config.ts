@@ -10,11 +10,6 @@ export default defineConfig({
   ],
   site: 'https://www.nabais.me/',
   vite: {
-    resolve: {
-      alias: {
-        'lodash': 'lodash-es'
-      }
-    },
     ssr: {
       noExternal: ['@rooks/use-key', 'keen-slider']
     },
