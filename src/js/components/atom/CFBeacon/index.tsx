@@ -1,12 +1,17 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
+import type { FunctionalComponent} from 'preact'
 import { useMemo } from 'preact/hooks'
 
-const SRC = 'https://static.cloudflareinsights.com/beacon.min.js'
+const DEFAULT_SRC = 'https://static.cloudflareinsights.com/beacon.min.js'
 
-const CFBeacon = (props) => {
+export type CFBeaconProps = {
+  src?: string
+  token?: string
+  spa?: boolean
+}
+
+const CFBeacon: FunctionalComponent<CFBeaconProps> = function CFBeacon(props) {
   const {
+    src = DEFAULT_SRC,
     token,
     spa = false,
     ...rest
@@ -31,7 +36,7 @@ const CFBeacon = (props) => {
     <script
       {...rest}
       defer
-      src={SRC}
+      src={src}
       data-cf-beacon={data}
     ></script>
   )

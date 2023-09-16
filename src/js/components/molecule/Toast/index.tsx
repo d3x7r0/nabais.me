@@ -1,8 +1,5 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
-import classNames from 'clsx'
-import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import type { JSX, ComponentChild, FunctionalComponent } from 'preact'
 
 import { useAltDominantColor, useBgColor, useBorderColor } from '../../../hooks'
 
@@ -10,7 +7,18 @@ import styles from './index.module.scss'
 
 const DEFAULT_CLOSE_LABEL = 'Close'
 
-function Toast(props) {
+export type ToastProps = {
+  closed?: boolean,
+  onClose: () => void,
+  closeLabel?: ComponentChild,
+  colorMain?: string,
+  colorBackground?: string,
+  colorBorder?: string,
+  style?: JSX.HTMLAttributes['style']
+  className?: JSX.HTMLAttributes['className']
+}
+
+const Toast: FunctionalComponent<ToastProps> = function Toast(props) {
   const {
     className,
     children,
@@ -47,9 +55,7 @@ function Toast(props) {
     <div
       {...rest}
       style={computedStyle}
-      className={buildClassName({
-        className,
-      })}
+      className={clsx(className, styles['m-toast'])}
     >
       <div className={styles['m-toast__inner']}>
         <div className={styles['m-toast__content']}>
@@ -66,27 +72,6 @@ function Toast(props) {
       </div>
     </div>
   )
-}
-
-function buildClassName({ className }) {
-  return classNames(
-    className,
-    styles['m-toast'],
-  )
-}
-
-Toast.propTypes = {
-  closed: PropTypes.bool,
-  onClose: PropTypes.func.isRequired,
-  closeLabel: PropTypes.node,
-  colorMain: PropTypes.string,
-  colorBackground: PropTypes.string,
-  colorBorder: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
 }
 
 export default Toast

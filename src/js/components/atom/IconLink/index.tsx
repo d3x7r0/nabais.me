@@ -1,15 +1,20 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
-import classNames from 'clsx'
-import PropTypes from 'prop-types'
+import type { FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
 import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
 import { useAltDominantColor } from '../../../hooks'
 
 import styles from './index.module.scss'
 
-function IconLink(props) {
+export type IconLinkProps = {
+  iconColor: string
+  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  IconComponent?: JSX.ElementType
+  className?: JSX.HTMLAttributes['className']
+  style?: JSX.HTMLAttributes['style']
+}
+
+const IconLink: FunctionalComponent<IconLinkProps> = function IconLink(props) {
   const {
     className,
     style,
@@ -32,28 +37,11 @@ function IconLink(props) {
     <a
       {...rest}
       style={computedStyle}
-      className={buildClassNames({
-        className,
-      })}
+      className={clsx(className, styles['a-icon-link'])}
     >
       {hasLeftIcon ? icon : null} {children} {hasLeftIcon ? null : icon}
     </a>
   )
-}
-
-IconLink.propTypes = {
-  iconColor: PropTypes.string,
-  side: PropTypes.oneOf([SIDE_LEFT, SIDE_RIGHT]),
-  IconComponent: PropTypes.elementType,
-  className: PropTypes.string,
-  style: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-}
-
-function buildClassNames({ className }) {
-  return classNames(className, styles['a-icon-link'])
 }
 
 export default IconLink

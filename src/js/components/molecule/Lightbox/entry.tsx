@@ -1,13 +1,18 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
+import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
 import { useContext, useEffect, useMemo } from 'preact/hooks'
-import PropTypes from 'prop-types'
 
-import { ensureID } from './utils'
-import { LightboxContext } from './context'
+import { ensureID } from './utils.ts'
+import { LightboxContext } from './context.ts'
+import type { LightboxContextValue } from './types.ts'
 
-function LightboxEntry(props) {
+export type LightboxEntryProps = {
+  src: string,
+  id?: string
+  caption?: ComponentChild
+  group?: string,
+}
+
+const LightboxEntry: FunctionalComponent<LightboxEntryProps> = function LightboxEntry(props) {
   const {
     src,
     caption,
@@ -21,7 +26,7 @@ function LightboxEntry(props) {
     [rest.id],
   )
 
-  const { register, unregister, open } = useContext(LightboxContext) || {}
+  const { register, unregister, open } = useContext<LightboxContextValue>(LightboxContext)
 
   useEffect(() => {
     if (!register) {
@@ -40,7 +45,7 @@ function LightboxEntry(props) {
     return () => unregister(id, group)
   }, [id, src, caption, group, register, unregister])
 
-  const onClick = open ? (
+  const onClick: JSX.MouseEventHandler<HTMLElement> | undefined = open ? (
     (e) => {
       e.preventDefault()
       return open(id, group)
@@ -57,12 +62,6 @@ function LightboxEntry(props) {
       {children}
     </a>
   )
-}
-
-LightboxEntry.propTypes = {
-  src: PropTypes.string.isRequired,
-  caption: PropTypes.node,
-  group: PropTypes.string,
 }
 
 export default LightboxEntry

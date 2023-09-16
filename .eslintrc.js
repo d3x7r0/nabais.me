@@ -106,6 +106,8 @@ const baseRules = {
     },
   ],
   'import/no-deprecated': 'warn',
+  'no-duplicate-imports': 'off',
+  'import/no-duplicates': 'error',
 }
 
 const typescriptRules = {
@@ -174,6 +176,7 @@ const typescriptRules = {
       'ignoreTypeReferences': true,
     },
   ],
+  "@typescript-eslint/consistent-type-imports": "error",
 }
 
 const reactRules = {
@@ -378,6 +381,13 @@ module.exports = {
       // Script in `<script>` is assigned a virtual file name with the `.js` extension.
       files: ['**/*.astro/*.js', '*.astro/*.js'],
       parser: '@typescript-eslint/parser',
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+      ],
+      rules: {
+        ...baseRules,
+        ...typescriptRules,
+      },
     },
   ],
 }

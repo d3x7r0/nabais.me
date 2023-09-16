@@ -1,15 +1,20 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
-import classNames from 'clsx'
-import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import type { FunctionalComponent, JSX } from 'preact'
 
 import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
 import { useAltDominantColor } from '../../../hooks'
 
 import styles from './index.module.scss'
 
-function IconText(props) {
+export type IconTextProps = {
+  iconColor: string,
+  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  IconComponent?: JSX.ElementType
+  className?: JSX.HTMLAttributes['className']
+  style?: JSX.HTMLAttributes['style']
+}
+
+const IconText: FunctionalComponent<IconTextProps> = function IconText(props) {
   const {
     className,
     style,
@@ -32,28 +37,11 @@ function IconText(props) {
     <span
       {...rest}
       style={computedStyle}
-      className={buildClassNames({
-        className,
-      })}
+      className={clsx(className, styles['a-icon-text'])}
     >
       {hasLeftIcon ? icon : null} {children} {hasLeftIcon ? null : icon}
     </span>
   )
-}
-
-IconText.propTypes = {
-  iconColor: PropTypes.string,
-  side: PropTypes.oneOf([SIDE_LEFT, SIDE_RIGHT]),
-  IconComponent: PropTypes.elementType,
-  className: PropTypes.string,
-  style: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-}
-
-function buildClassNames({ className }) {
-  return classNames(className, styles['a-icon-text'])
 }
 
 export default IconText
