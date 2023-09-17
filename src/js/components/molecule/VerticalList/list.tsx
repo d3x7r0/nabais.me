@@ -1,15 +1,22 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import {h} from 'preact'
-import classNames from 'clsx'
-import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import type { FunctionalComponent, JSX } from 'preact'
 
-import {SIDE_LEFT, SIDE_RIGHT} from '../../../constants'
-import {useCSSVariable} from '../../../hooks'
+import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
+import { useCSSVariable } from '../../../hooks'
 
 import styles from './index.module.scss'
 
-function VerticalList(props) {
+export type VerticalListProps = {
+  className?: JSX.HTMLAttributes['className']
+  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  noMargin?: boolean,
+  grid?: boolean,
+  gridMobile?: boolean,
+  gridWidthSmall?: number,
+  gridWidthLarge?: number,
+}
+
+const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalList(props) {
   const {
     children,
     className,
@@ -27,24 +34,26 @@ function VerticalList(props) {
   computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle)
   computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle)
 
+  const resolvedClassName = buildClassNames({
+    className,
+    side,
+    noMargin,
+    grid,
+    gridMobile,
+  })
+
   return (
     <ul
       {...rest}
       style={computedStyle}
-      className={buildClassNames({
-        className,
-        side,
-        noMargin,
-        grid,
-        gridMobile,
-      })}
+      className={resolvedClassName}
     >
       {children}
     </ul>
   )
 }
 
-function buildClassNames(props) {
+function buildClassNames(props: VerticalListProps) {
   const {
     className,
     side = SIDE_LEFT,
@@ -53,7 +62,7 @@ function buildClassNames(props) {
     gridMobile,
   } = props
 
-  return classNames(
+  return clsx(
     className,
     styles['m-vertical-list'],
     {
@@ -63,16 +72,6 @@ function buildClassNames(props) {
       [styles['m-vertical-list--grid-mobile']]: gridMobile,
     },
   )
-}
-
-VerticalList.propTypes = {
-  className: PropTypes.string,
-  side: PropTypes.oneOf([SIDE_LEFT, SIDE_RIGHT]),
-  noMargin: PropTypes.bool,
-  grid: PropTypes.bool,
-  gridMobile: PropTypes.bool,
-  gridWidthSmall: PropTypes.number,
-  gridWidthLarge: PropTypes.number,
 }
 
 export default VerticalList
