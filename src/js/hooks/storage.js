@@ -36,7 +36,7 @@ function safelyParseJson(parseString) {
   try {
     return JSON.parse(parseString)
   } catch (e) {
-    return null
+    return undefined
   }
 }
 
@@ -68,10 +68,10 @@ function useStorage(type = 'localStorage', key, defaultValue) {
   return [value, setValue]
 }
 
-export function useLocalStorage(key, defaultValue = null) {
+export function useLocalStorage(key, defaultValue) {
   return useStorage('localStorage', key, defaultValue)
 }
 
-export function useSessionStorage(key, defaultValue = null) {
+export function useSessionStorage(key, defaultValue) {
   return useStorage('sessionStorage', key, defaultValue)
 }

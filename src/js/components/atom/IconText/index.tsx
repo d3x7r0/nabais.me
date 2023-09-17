@@ -7,7 +7,7 @@ import { useAltDominantColor } from '../../../hooks'
 import styles from './index.module.scss'
 
 export type IconTextProps = {
-  iconColor: string,
+  iconColor?: string,
   side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
   IconComponent?: JSX.ElementType
   className?: JSX.HTMLAttributes['className']
