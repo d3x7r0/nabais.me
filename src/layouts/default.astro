@@ -23,11 +23,18 @@ import SiteTitle from '../js/components/molecule/SiteTitle'
 
 export type Props = {
   title?: string
+  description?: string
+  keywords?: string[]
   fullWidth?: boolean
 }
 
 const title = buildTitle(Astro.props.title)
 const fullWidth = Astro.props.fullWidth ?? false
+
+const {
+  description = SITE_DESCRIPTION,
+  keywords    = SITE_KEYWORDS
+} = Astro.props
 
 const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname).exact
 const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname).matches
@@ -51,17 +58,18 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname).matches
     <title>{title}</title>
 
     <meta name="author" content="Luis Nabais" />
+    <meta property="article:author" content="https://www.facebook.com/d3x7r0/">
 
     <meta property="og:site_name" content={TITLES.SITE} />
 
     <meta
       name="description"
-      content={SITE_DESCRIPTION}
+      content={description}
     />
 
     <meta
       name="keywords"
-      content={SITE_KEYWORDS.join(', ')}
+      content={keywords.join(', ')}
     />
 
     <slot name="head" />

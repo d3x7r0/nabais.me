@@ -52,18 +52,6 @@ export const PATHS = {
 }
 
 export const MENU_ENTRIES: MenuEntries = {
-  ABOUT: {
-    path: PATHS.ABOUT,
-    label: 'About me',
-  },
-  CV: {
-    path: PATHS.CV,
-    label: 'CV',
-  },
-  PHOTOS: {
-    path: PATHS.PHOTOS,
-    label: 'Photography',
-  },
   BLOG: {
     path: PATHS.BLOG,
     label: 'Blog',
@@ -86,6 +74,21 @@ export const MENU_ENTRIES: MenuEntries = {
         label: 'NonsenseBB'
       }
     },
+  },
+
+  ABOUT: {
+    path: PATHS.ABOUT,
+    label: 'About me',
+  },
+
+  CV: {
+    path: PATHS.CV,
+    label: 'CV',
+  },
+
+  PHOTOS: {
+    path: PATHS.PHOTOS,
+    label: 'Photography',
   },
 }
 

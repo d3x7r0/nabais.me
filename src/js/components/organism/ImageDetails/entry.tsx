@@ -6,7 +6,7 @@ import IconText from '../../atom/IconText'
 import { SIDE_LEFT } from '../../../constants.js'
 
 import styles from './index.module.scss'
-import { ICONS } from './constants.ts'
+import { ICONS } from './constants'
 
 type ICON_LABEL = keyof typeof ICONS
 
