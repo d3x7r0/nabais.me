@@ -5,7 +5,7 @@ import { useCSSVariable } from '../../../hooks'
 
 import styles from './index.module.scss'
 
-type BlogPageEntryProps = {
+type BoxLinkProps = {
   className?: JSX.HTMLAttributes['className'],
 
   title: string
@@ -15,7 +15,7 @@ type BlogPageEntryProps = {
 }
 
 // TODO: support image background instead of text
-const BlogPageEntry: FunctionalComponent<BlogPageEntryProps> = function (props) {
+const BoxLink: FunctionalComponent<BoxLinkProps> = function (props) {
   const {
     title,
     href,
@@ -26,21 +26,19 @@ const BlogPageEntry: FunctionalComponent<BlogPageEntryProps> = function (props) 
 
   const style = useCSSVariable(
     'bg-content',
-    (description ?? title).replaceAll(/\n/g, ' ').slice(0, 120)
+    (description ?? title).replaceAll(/\n/g, ' ').slice(0, 120),
   )
 
   return (
     <article
+      style={style}
+      className={clsx(styles['a-box-link'], {
+        [styles['p-page__entry--big']]: big,
+      })}
       {...rest}
     >
-      <a
-        href={href}
-        style={style}
-        className={clsx(styles['p-page__entry'], {
-          [styles['p-page__entry--big']]: big,
-        })}
-      >
-        <h1 className={styles['p-page__entry_title']}>
+      <a className={styles['a-box-link__link']} href={href}>
+        <h1 className={styles['a-box-link__title']}>
           <span>{title}</span>
         </h1>
       </a>
@@ -48,4 +46,4 @@ const BlogPageEntry: FunctionalComponent<BlogPageEntryProps> = function (props) 
   )
 }
 
-export default BlogPageEntry
+export default BoxLink

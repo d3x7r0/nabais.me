@@ -2,8 +2,9 @@ import type { FunctionalComponent, JSX } from 'preact'
 import type { CollectionEntry } from 'astro:content'
 import clsx from 'clsx'
 
+import BoxLink from '../../atom/BoxLink'
+
 import styles from './index.module.scss'
-import BlogPageEntry from './entry'
 
 export type BlogPageProps = {
   className?: JSX.HTMLAttributes['className'],
@@ -27,8 +28,7 @@ const BlogPage: FunctionalComponent<BlogPageProps> = function (props) {
       className={clsx(className, styles['p-page'])}
       {...rest}
     >
-      <BlogPageEntry
-        key={mainEntry.id}
+      <BoxLink
         title={mainEntry.data.title}
         description={mainEntry.data.description}
         href={[basepath, mainEntry.slug].filter(e => !!e).join('/')}
@@ -37,7 +37,7 @@ const BlogPage: FunctionalComponent<BlogPageProps> = function (props) {
 
       <div className={styles['p-page__wrapper']}>
         {restEntries.map(entry => (
-          <BlogPageEntry
+          <BoxLink
             key={entry.id}
             title={entry.data.title}
             description={entry.data.description}

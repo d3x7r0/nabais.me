@@ -1,0 +1,73 @@
+@use "sass:color";
+
+@import "../../../../css/00_base/variables";
+@import "../../../../css/00_base/mixins";
+
+.a-box-link {
+  border: 2px solid $colorArticleBorder;
+  height: 0;
+  margin: 0.5em;
+  padding-bottom: 55%;
+  overflow: hidden;
+  position: relative;
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    padding-bottom: 55%;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: color.scale($colorArticleHover, $alpha: -80%);
+      border-color: $dominantColorLight;
+    }
+  }
+
+  &::before {
+    color: $colorArticleBorder;
+    content: var(--bg-content, 'Lorem ipsum dolor sit amet.');
+    font-size: 560%;
+    left: 0;
+    line-height: 1;
+    margin: 0 0.08em;
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 200%;
+  }
+
+  &::after {
+    background: linear-gradient(to top, $colorBackground 25%, transparent);
+    bottom: 0;
+    content: ' ';
+    height: 3.8em;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+
+  &--big {
+    padding-bottom: 40%;
+
+    &::before {
+      font-size: 600%;
+    }
+  }
+
+  &__title {
+    @include line-clamp(3);
+
+    bottom: 0;
+    left: 0;
+    margin: 0.3em;
+    max-width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+}

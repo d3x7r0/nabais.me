@@ -58,7 +58,7 @@ $colorFormButtonDisabled: color.mix($colorFormButton, $colorFormButtonDisabledBg
 
 /* Articles */
 $colorArticleBorder: $color2;
-$colorArticleHover: color.mix($colorBackground, $dominantColor, 80%);
+$colorArticleHover: $dominantColor;
 
 /*  Fonts */
 $fontRobotoCondensed: 'Roboto Condensed', sans-serif;

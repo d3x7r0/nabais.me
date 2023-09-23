@@ -1,5 +1,4 @@
 @import "../../../../css/00_base/variables";
-@import "../../../../css/00_base/mixins";
 
 .p-page {
   margin: 1.8em 0 1em;
@@ -8,67 +7,5 @@
     display: grid;
     gap: 0.5em;
     grid-template-columns: auto auto;
-  }
-
-  &__entry {
-    border: 2px solid $colorArticleBorder;
-    display: block;
-    height: 0;
-    margin: 0.5em;
-    overflow: hidden;
-    padding-bottom: 55%;
-    position: relative;
-    width: 100%;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background: $colorArticleHover;
-      border-color: $dominantColorLight;
-    }
-
-    &::before {
-      color: $colorArticleBorder;
-      content: var(--bg-content, 'Lorem ipsum dolor sit amet.');
-      font-size: 560%;
-      left: 0;
-      line-height: 1;
-      margin: 0 0.08em;
-      opacity: 0.5;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      width: 200%;
-    }
-
-    &::after {
-      background: linear-gradient(to top, $colorBackground 25%, transparent);
-      bottom: 0;
-      content: ' ';
-      height: 3.8em;
-      left: 0;
-      pointer-events: none;
-      position: absolute;
-      width: 100%;
-    }
-
-    &--big {
-      padding-bottom: 40%;
-
-      &::before {
-        font-size: 600%;
-      }
-    }
-  }
-
-  &__entry_title {
-    @include line-clamp(3);
-
-    bottom: 0;
-    left: 0;
-    margin: 0.3em;
-    max-width: 100%;
-    position: absolute;
-    z-index: 1;
   }
 }
