@@ -39,6 +39,7 @@ $colorLinkHover: var(--dominantColorLight, #{$dominantColorLight});
 $colorLinkActive: var(--dominantColor, #{$dominantColor});
 $colorTextDarkBg: $color1;
 $colorHeaderNavigationBg: $color2;
+$colorSubNavBg: color.mix($color2, $color3, 50%);
 $colorBorderText: $color3;
 $colorSiteTitle: $color1;
 

@@ -4,9 +4,13 @@ import BaseLayout from "./default.astro"
 const { frontmatter } = Astro.props
 ---
 <BaseLayout title={frontmatter.title}>
+  <style is:global>
+    @import "../css/06_utils/markdown.scss";
+  </style>
+
   <h2>{frontmatter.title}</h2>
 
-  <div>
+  <div class="markdown-content">
     <slot />
   </div>
 </BaseLayout>

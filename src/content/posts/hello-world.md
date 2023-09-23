@@ -34,7 +34,10 @@ const TypeConfigMapping: FieldConfigMap = {
   },
 }
 
-export function fetchField<T extends FIELD>(id: string, fields: T[]): Pick<FieldTypeMapping, T>;
+export function fetchField<T extends FIELD>(
+  id: string,
+  fields: T[]
+): Pick<FieldTypeMapping, T>;
 ```
 
 And more!
