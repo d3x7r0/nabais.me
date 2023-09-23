@@ -2,6 +2,11 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 
 import Layout from '../../layouts/default.astro'
+import ContentWrapper from '../../js/components/molecule/ContentWrapper'
+
+export type Props = {
+  entry: CollectionEntry<'posts'>
+}
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts')
@@ -11,13 +16,8 @@ export async function getStaticPaths() {
   }))
 }
 
-export type Props = {
-  entry: CollectionEntry<'posts'>
-}
-
 const entry: CollectionEntry<'posts'> = Astro.props.entry
 const { Content } = await entry.render()
-
 ---
 <Layout
   title={entry.data.title}
@@ -27,11 +27,7 @@ const { Content } = await entry.render()
   <meta slot="head" property="og:type" content="article" />
   <meta slot="head" property="article:published_time" content={entry.data.publishedAt} />
 
-  <style is:global>
-    @import "../../css/06_utils/markdown.scss";
-  </style>
-
-  <div class="markdown-content">
+  <ContentWrapper>
     <Content />
-  </div>
+  </ContentWrapper>
 </Layout>

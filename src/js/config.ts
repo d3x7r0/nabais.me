@@ -29,12 +29,13 @@ export const SITE_KEYWORDS = [
 ]
 
 export const TITLES = {
-  SITE: 'Nabais.me',
   HOME: 'Home',
-  CV: 'CV',
-  COOKIE_POLICY: 'Cookie Policy',
   ABOUT: 'About Me',
+  BLOG: 'Blog',
+  COOKIE_POLICY: 'Cookie Policy',
+  CV: 'CV',
   PHOTOS: 'Photos',
+  SITE: 'Nabais.me',
   NOT_FOUND: 'Page not Found',
 }
 
@@ -43,12 +44,12 @@ export const TITLE_SEPARATOR = ' // '
 export const PATHS = {
   HOME: '/',
   ABOUT: '/about-me',
-  PHOTOS: '/photos',
-  CV: '/cv',
-  COOKIE_POLICY: '/cookie-policy',
   BLOG: '/posts',
   BLOG_ARCHIVE: '/posts/archive',
   BLOG_TAGS: '/posts/tags',
+  COOKIE_POLICY: '/cookie-policy',
+  CV: '/cv',
+  PHOTOS: '/photos',
 }
 
 export const MENU_ENTRIES: MenuEntries = {

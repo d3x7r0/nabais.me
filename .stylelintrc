@@ -126,6 +126,15 @@
     "selector-pseudo-class-parentheses-space-inside": "never",
     "selector-pseudo-element-case": "lower",
     "selector-pseudo-element-colon-notation": "double",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global",
+          "local"
+        ]
+      }
+    ],
     "selector-type-case": "lower",
     "unit-case": "lower",
     "value-list-comma-newline-after": "always-multi-line",

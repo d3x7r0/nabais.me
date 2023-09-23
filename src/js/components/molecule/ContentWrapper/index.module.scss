@@ -1,0 +1,19 @@
+@import "../../../../css/00_base/variables";
+
+.m-content-wrapper {
+  :global {
+    .astro-code {
+      border: 1px solid $borderColor;
+      border-left-width: 0.5em;
+      padding: 0.8em 1em;
+    }
+
+    blockquote {
+      border: 1px solid $borderColor;
+      border-left-width: 0.5em;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0.3em 1em;
+    }
+  }
+}
