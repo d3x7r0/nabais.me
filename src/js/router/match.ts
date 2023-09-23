@@ -6,7 +6,7 @@ function cleanPath(path?: string) {
   return path.replace(/\?.+$/, '').replace(/\/?$/, '')
 }
 
-export function matchesRoute(path?: string, current?: string) {
+export function matchesRoute(path?: string, current?: string): { matches: boolean, exact: boolean } {
   const currentRoute = cleanPath(current)
   const currentPath = cleanPath(path)
 
@@ -18,7 +18,7 @@ export function matchesRoute(path?: string, current?: string) {
   }
 
   return {
-    matches: currentPath && currentRoute?.startsWith(currentPath),
+    matches: !!(currentPath && currentRoute?.startsWith(currentPath)),
     exact: currentRoute === currentPath,
   }
 }

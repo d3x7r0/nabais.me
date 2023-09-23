@@ -5,11 +5,8 @@ import { useAltColor, useAltDominantColor } from '../../../hooks'
 
 import styles from './index.module.scss'
 
-export type HorizontalMenuLinkProps = {
-  className?: JSX.HTMLAttributes['className'],
-  style?: JSX.HTMLAttributes['style'],
+export type HorizontalMenuLinkProps = JSX.IntrinsicElements['a'] & {
   active?: boolean,
-  href: JSX.HTMLAttributes['href'],
   accentColor?: string,
   hoverColor?: string,
 }
