@@ -60,7 +60,7 @@ export const MENU_ENTRIES: MenuEntries = {
     entries: {
       HOME: {
         path: PATHS.BLOG,
-        label: 'Posts',
+        label: 'Blog',
       },
       BLOG_ARCHIVE: {
         path: PATHS.BLOG_ARCHIVE,

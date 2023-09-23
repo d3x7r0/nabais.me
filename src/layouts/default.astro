@@ -36,8 +36,8 @@ const {
   keywords    = SITE_KEYWORDS
 } = Astro.props
 
-const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname).exact
-const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname).matches
+const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname)
+const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
 
 ---
 <html lang="en-GB">

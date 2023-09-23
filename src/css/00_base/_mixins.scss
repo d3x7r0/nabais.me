@@ -17,3 +17,10 @@
     }
   }
 }
+
+/* https://css-tricks.com/line-clampin/#the-standardized-way */
+@mixin line-clamp($lines: 1) {
+  -webkit-box-orient: vertical;
+  display: box;
+  -webkit-line-clamp: $lines;
+}

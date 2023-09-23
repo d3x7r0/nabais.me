@@ -1,5 +1,6 @@
 import { useMemo } from 'preact/hooks'
 import isObject from 'lodash-es/isObject'
+import isString from 'lodash-es/isString'
 
 export function useDominantColor(color, style) {
   return useCSSVariable('dominant-color', color, style)
@@ -28,14 +29,17 @@ export function useCSSVariable(name, value, style) {
     }
 
     const varName = `--${name}`
+    const varValue = isString(value)
+      ? `"${value}"`
+      : value
 
     if (isObject(style)) {
       return {
         ...style,
-        [varName]: value,
+        [varName]: varValue,
       }
     }
 
-    return `${varName}: ${value};${style || ''}`
+    return `${varName}: ${varValue};${style || ''}`
   }, [name, value, style])
 }

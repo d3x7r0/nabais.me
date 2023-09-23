@@ -1,8 +1,15 @@
 ---
-import Layout from '../../layouts/default.astro'
-import { TITLES } from '../../js/config'
+import { getCollection } from 'astro:content'
 
+import BlogPage from '../../js/components/page/Blog'
+import Layout from '../../layouts/default.astro'
+import { PATHS, TITLES } from '../../js/config'
+
+const blogEntries = await getCollection('posts')
 ---
 <Layout title={TITLES.BLOG}>
-  Foo
+  <BlogPage
+    basepath={PATHS.BLOG}
+    entries={blogEntries.slice(0, 3)}
+  />
 </Layout>

@@ -23,7 +23,7 @@ export function transformEntries(
     const mapped: InternalMenuEntry = {
       label: entry.label,
       path: entry.path,
-      active: matchesRoute(entry.path, pathname).matches ?? false,
+      active: matchesRoute(entry.path, pathname),
     }
 
     if (entry.entries) {
