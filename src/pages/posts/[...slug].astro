@@ -1,7 +1,8 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
 
-import BlogHeader from '../../js/components/organism/BlogHeader'
+import SiteMenu from '../../js/components/organism/SiteMenu'
+import SiteNavigation from '../../js/components/molecule/SiteNavigation'
 import Layout from '../../layouts/default.astro'
 
 export async function getStaticPaths() {
@@ -13,18 +14,16 @@ export async function getStaticPaths() {
 }
 
 export type Props = {
-  entry: CollectionEntry<"posts">
+  entry: CollectionEntry<'posts'>
 }
 
-const entry: CollectionEntry<"posts"> = Astro.props.entry
+const entry: CollectionEntry<'posts'> = Astro.props.entry
 const { Content } = await entry.render()
 ---
 <Layout title={entry.data.title}>
   <style is:global>
     @import "../../css/06_utils/markdown.scss";
   </style>
-
-  <BlogHeader />
 
   <div class="markdown-content">
     <Content />

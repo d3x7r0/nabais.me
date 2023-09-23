@@ -29,15 +29,9 @@ export type Props = {
 const title = buildTitle(Astro.props.title)
 const fullWidth = Astro.props.fullWidth ?? false
 
-const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname)
-const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
+const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname).exact
+const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname).matches
 
-const menuEntries = MENU_ENTRIES.map(entry => {
-  return {
-    ...entry,
-    active: matchesRoute(entry.path, Astro.url.pathname)
-  }
-})
 ---
 <html lang="en-GB">
   <head>
@@ -89,8 +83,8 @@ const menuEntries = MENU_ENTRIES.map(entry => {
       </VerticalThirdsHeader>
 
       <VerticalThirdsNav>
-        <SiteNavigation className="">
-          <SiteMenu entries={menuEntries} />
+        <SiteNavigation>
+          <SiteMenu entries={MENU_ENTRIES} pathname={Astro.url.pathname} />
         </SiteNavigation>
       </VerticalThirdsNav>
 
