@@ -5,6 +5,8 @@ import { useCSSVariable } from '../../../hooks'
 
 import styles from './index.module.scss'
 
+const BACKGROUND_CHARACTER_LIMIT = 160
+
 type BoxLinkProps = {
   className?: JSX.HTMLAttributes['className'],
 
@@ -26,7 +28,7 @@ const BoxLink: FunctionalComponent<BoxLinkProps> = function (props) {
 
   const style = useCSSVariable(
     'bg-content',
-    (description ?? title).replaceAll(/\n/g, ' ').slice(0, 120),
+    (description ?? title).replaceAll(/\n/g, ' ').slice(0, BACKGROUND_CHARACTER_LIMIT),
   )
 
   return (
