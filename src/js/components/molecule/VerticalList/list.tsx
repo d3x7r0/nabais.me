@@ -29,7 +29,7 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
     ...rest
   } = props
 
-  let computedStyle = {}
+  let computedStyle: JSX.HTMLAttributes['style'] = {}
 
   computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle)
   computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle)

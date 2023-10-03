@@ -15,7 +15,7 @@ export type Ratio = string | {
 
 export function getRatio(ratio?: Ratio) {
   if (!ratio) {
-    return null
+    return undefined
   }
 
   if (typeof ratio !== 'string' && (ratio.width || ratio.height)) {

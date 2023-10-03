@@ -29,7 +29,7 @@ const Figure: FunctionalComponent<FigureProps> = function Figure(props) {
   } = props
 
   let computedStyle = useDominantColor(
-    border && border !== true ? border : null,
+    border && border !== true ? border : undefined,
     style,
   )
 
