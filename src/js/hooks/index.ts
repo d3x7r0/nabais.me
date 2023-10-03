@@ -8,10 +8,6 @@ export {
 } from './color'
 
 export {
-  useMedia,
-} from './media'
-
-export {
   useMounted,
 } from './preact'
 
