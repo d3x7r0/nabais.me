@@ -1,16 +1,18 @@
 import type { FunctionalComponent } from 'preact'
 import { useMemo } from 'preact/hooks'
 
+import type { HorizontalNavMenuProps } from '../../atom/HorizontalMenu'
 import { HorizontalNavMenu } from '../../atom/HorizontalMenu'
 import type { MenuEntries } from '../../../types'
 
 import { transformEntries } from './utils'
 import SiteMenuEntry from './entry'
 
-export type SiteMenuProps = {
+export type SiteMenuProps = Omit<HorizontalNavMenuProps, 'scroll'> & {
   pathname?: string
-  entries?: MenuEntries
+  entries: MenuEntries
 }
+
 const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
   const {
     pathname,
@@ -43,4 +45,5 @@ const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
     </HorizontalNavMenu>
   )
 }
+
 export default SiteMenu

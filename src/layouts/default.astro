@@ -6,7 +6,14 @@ import "../css/00_base/index.scss"
 
 import CFBeacon from '../js/components/atom/CFBeacon'
 import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
-import { TITLES, PATHS, SITE_DESCRIPTION, SITE_KEYWORDS, MENU_ENTRIES } from '../js/config'
+import {
+  MENU_ENTRIES,
+  PATHS,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SOCIAL_LINKS,
+  TITLES,
+} from '../js/config'
 import { buildTitle } from '../js/meta'
 import { matchesRoute } from '../js/router/match'
 import {
@@ -16,10 +23,10 @@ import {
   VerticalThirdsNav,
   VerticalThirdsWrapper,
 } from '../js/components/template/VerticalThirds'
-import SiteMenu from '../js/components/organism/SiteMenu'
 import SiteNavigation from '../js/components/molecule/SiteNavigation'
 import SiteFooter from '../js/components/organism/SiteFooter'
 import SiteTitle from '../js/components/molecule/SiteTitle'
+import SiteMenu from '../js/components/organism/SiteMenu'
 
 export type Props = {
   title?: string
@@ -101,7 +108,9 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
       </VerticalThirdsMain>
 
       <VerticalThirdsFooter>
-        <SiteFooter />
+        <SiteFooter
+          entries={SOCIAL_LINKS}
+        />
       </VerticalThirdsFooter>
     </VerticalThirdsWrapper>
 

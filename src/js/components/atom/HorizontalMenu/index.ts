@@ -2,7 +2,9 @@ import HorizontalMenu from './menu'
 
 // Menu
 export type {
-  AsHorizontalMenuProps
+  AsHorizontalMenuProps,
+  HorizontalMenuProps,
+  HorizontalNavMenuProps,
 } from './menu'
 
 export {
@@ -13,7 +15,9 @@ export {
 
 // Menu Entry
 export type {
-  AsHorizontalMenuEntryProps
+  AsHorizontalMenuEntryProps,
+  HorizontalMenuEntryProps,
+  HorizontalNavMEntryenuProps,
 } from './entry'
 
 export {
@@ -25,7 +29,7 @@ export {
 // Menu Link
 export type {
   HorizontalMenuLinkProps
-} from './link.tsx'
+} from './link'
 
 export {
   default as HorizontalMenuLink,

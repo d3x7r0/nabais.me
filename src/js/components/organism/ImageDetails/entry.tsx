@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import capitalize from 'lodash-es/capitalize'
 
 import IconText from '../../atom/IconText'
-import { SIDE_LEFT } from '../../../constants.js'
+import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 import { ICONS } from './constants'
@@ -25,7 +25,7 @@ const ImageDetailsEntry: FunctionalComponent<ImageDetailsEntryProps> = function 
   return (
     <>
       <dt className={buildLabelClassNames(label)}>
-        <IconText IconComponent={Icon} side={SIDE_LEFT}>
+        <IconText IconComponent={Icon} side={SIDE.LEFT}>
           {capitalize(label)}
         </IconText>
       </dt>

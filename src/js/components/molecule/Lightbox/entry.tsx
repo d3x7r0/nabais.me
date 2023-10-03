@@ -1,9 +1,9 @@
 import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
 import { useContext, useEffect, useMemo } from 'preact/hooks'
 
-import { ensureID } from './utils.ts'
-import { LightboxContext } from './context.ts'
-import type { LightboxContextValue } from './types.ts'
+import { ensureID } from './utils'
+import { LightboxContext } from './context'
+import type { LightboxContextValue } from './types'
 
 export type LightboxEntryProps = {
   src: string,

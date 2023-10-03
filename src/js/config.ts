@@ -2,11 +2,12 @@ import {
   SiGithub,
   SiInstagram,
   SiLinkedin,
-  SiTwitter,
   SiMastodon,
+  SiTwitter,
 } from '@icons-pack/react-simple-icons'
 
-import type { MenuEntries } from './types.ts'
+import type { SiteFooterProps } from './components/organism/SiteFooter'
+import type { MenuEntries } from './types'
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
 
@@ -71,9 +72,9 @@ export const MENU_ENTRIES: MenuEntries = {
         label: 'Tags',
       },
       NONSENSEBB: {
-        path: "https://blog.nonsensebb.com",
-        label: 'NonsenseBB'
-      }
+        path: 'https://blog.nonsensebb.com',
+        label: 'NonsenseBB',
+      },
     },
   },
 
@@ -93,7 +94,7 @@ export const MENU_ENTRIES: MenuEntries = {
   },
 }
 
-export const SOCIAL_LINKS = [
+export const SOCIAL_LINKS: SiteFooterProps['entries'] = [
   {
     id: 'twitter',
     href: 'https://twitter.com/d3x7r0',

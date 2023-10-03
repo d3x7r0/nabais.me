@@ -9,7 +9,7 @@ const DEFAULT_CLOSE_LABEL = 'Close'
 
 export type ToastProps = {
   closed?: boolean,
-  onClose: () => void,
+  onClose?: () => void,
   closeLabel?: ComponentChild,
   colorMain?: string,
   colorBackground?: string,

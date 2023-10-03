@@ -1,4 +1,4 @@
-function cleanPath(path?: string) {
+function cleanPath(path?: string): string | void {
   if (!path) {
     return
   }

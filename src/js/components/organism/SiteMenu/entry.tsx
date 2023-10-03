@@ -1,4 +1,4 @@
-import type { FunctionalComponent } from 'preact'
+import type { ComponentChild, FunctionalComponent } from 'preact'
 
 import type { HorizontalMenuLinkProps } from '../../atom/HorizontalMenu'
 import {
@@ -7,7 +7,7 @@ import {
 } from '../../atom/HorizontalMenu'
 
 export type SiteMenuEntryProps = Omit<HorizontalMenuLinkProps, 'href'> & {
-  label: string
+  label: ComponentChild,
   path: string
 }
 

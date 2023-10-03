@@ -14,9 +14,9 @@ import type {
   LightboxGroupEntry,
   LightboxGroupState,
   LightboxState,
-} from './types.ts'
-import { ensureGroup } from './utils.ts'
-import { LightboxProvider } from './context.ts'
+} from './types'
+import { ensureGroup } from './utils'
+import { LightboxProvider } from './context'
 
 import 'react-image-lightbox/style.css'
 

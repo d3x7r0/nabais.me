@@ -1,17 +1,15 @@
 import type { FunctionalComponent, JSX } from 'preact'
 import clsx from 'clsx'
 
-import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
 import { useAltDominantColor } from '../../../hooks'
+import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 
-export type IconLinkProps = {
-  iconColor: string
-  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+export type IconLinkProps = JSX.IntrinsicElements['a'] & {
+  iconColor?: string
+  side?: SIDE
   IconComponent?: JSX.ElementType
-  className?: JSX.HTMLAttributes['className']
-  style?: JSX.HTMLAttributes['style']
 }
 
 const IconLink: FunctionalComponent<IconLinkProps> = function IconLink(props) {
@@ -20,7 +18,7 @@ const IconLink: FunctionalComponent<IconLinkProps> = function IconLink(props) {
     style,
     iconColor,
     IconComponent,
-    side = SIDE_RIGHT,
+    side = SIDE.RIGHT,
     children,
     ...rest
   } = props
@@ -31,7 +29,7 @@ const IconLink: FunctionalComponent<IconLinkProps> = function IconLink(props) {
     <IconComponent role="img" className={styles['a-icon-link__icon']} />
   ) : null
 
-  const hasLeftIcon = side === SIDE_LEFT
+  const hasLeftIcon = side === SIDE.LEFT
 
   return (
     <a

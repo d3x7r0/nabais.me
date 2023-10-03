@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { ComponentConstructor, FunctionalComponent, JSX } from 'preact'
 
-import { getDisplayName } from '../../utils.ts'
+import { getDisplayName } from '../../utils'
 
 import styles from './index.module.scss'
 
@@ -60,7 +60,10 @@ export function AsHorizontalMenu(
   return WrappedComponent
 }
 
+export type HorizontalMenuProps = AsHorizontalMenuProps & JSX.IntrinsicElements['ul']
 export const HorizontalMenu = AsHorizontalMenu('ul', 'HorizontalMenu')
+
+export type HorizontalNavMenuProps = AsHorizontalMenuProps & JSX.IntrinsicElements['nav']
 export const HorizontalNavMenu = AsHorizontalMenu('nav', 'HorizontalNavMenu')
 
 export default HorizontalMenu

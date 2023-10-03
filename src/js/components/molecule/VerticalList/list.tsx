@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
 
-import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
 import { useCSSVariable } from '../../../hooks'
+import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 
 export type VerticalListProps = {
   className?: JSX.HTMLAttributes['className']
-  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  side?: SIDE
   noMargin?: boolean,
   grid?: boolean,
   gridMobile?: boolean,
@@ -56,7 +56,7 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
 function buildClassNames(props: VerticalListProps) {
   const {
     className,
-    side = SIDE_LEFT,
+    side = SIDE.LEFT,
     noMargin,
     grid,
     gridMobile,
@@ -66,7 +66,7 @@ function buildClassNames(props: VerticalListProps) {
     className,
     styles['m-vertical-list'],
     {
-      [styles['m-vertical-list--right']]: side === SIDE_RIGHT,
+      [styles['m-vertical-list--right']]: side === SIDE.RIGHT,
       [styles['m-vertical-list--no-margin']]: noMargin,
       [styles['m-vertical-list--grid']]: grid,
       [styles['m-vertical-list--grid-mobile']]: gridMobile,

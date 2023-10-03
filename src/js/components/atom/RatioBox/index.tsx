@@ -2,8 +2,8 @@ import type { FunctionalComponent, JSX } from 'preact'
 import clsx from 'clsx'
 
 import { useCSSVariable } from '../../../hooks'
-import type { Ratio } from '../../utils.ts'
-import { getRatio } from '../../utils.ts'
+import type { Ratio } from '../../utils'
+import { getRatio } from '../../utils'
 
 import styles from './index.module.scss'
 

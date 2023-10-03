@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
 
-import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
 import { useAltDominantColor } from '../../../hooks'
+import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 
 export type IconTextProps = {
   iconColor?: string,
-  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  side?: SIDE
   IconComponent?: JSX.ElementType
   className?: JSX.HTMLAttributes['className']
   style?: JSX.HTMLAttributes['style']
@@ -20,7 +20,7 @@ const IconText: FunctionalComponent<IconTextProps> = function IconText(props) {
     style,
     iconColor,
     IconComponent,
-    side = SIDE_RIGHT,
+    side = SIDE.RIGHT,
     children,
     ...rest
   } = props
@@ -31,7 +31,7 @@ const IconText: FunctionalComponent<IconTextProps> = function IconText(props) {
     <IconComponent role="img" className={styles['a-icon-text__icon']} />
   ) : null
 
-  const hasLeftIcon = side === SIDE_LEFT
+  const hasLeftIcon = side === SIDE.LEFT
 
   return (
     <span

@@ -2,7 +2,7 @@
 import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
 
-import { PATHS, TITLES } from '../../../config.ts'
+import { PATHS, TITLES } from '../../../config'
 
 import styles from './index.module.scss'
 

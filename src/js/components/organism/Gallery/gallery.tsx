@@ -4,10 +4,10 @@ import { useMemo } from 'preact/hooks'
 import { GalleryListEntry } from '../../molecule/GalleryList'
 import { LightboxWrapper } from '../../molecule/Lightbox'
 
-import type { GalleryInnerProps } from './inner.tsx'
-import GalleryInner from './inner.tsx'
-import type { GalleryEntryProps } from './entry.tsx'
-import GalleryEntry from './entry.tsx'
+import type { GalleryInnerProps } from './inner'
+import GalleryInner from './inner'
+import type { GalleryEntryProps } from './entry'
+import GalleryEntry from './entry'
 
 let COUNTER = 0
 

@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import type { ComponentConstructor, FunctionalComponent, JSX } from 'preact'
 
-import { getDisplayName } from '../../utils.ts'
-import { SIDE_LEFT, SIDE_RIGHT } from '../../../constants'
+import { getDisplayName } from '../../utils'
+import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 
 export type AsHorizontalMenuEntryProps = {
   className?: JSX.HTMLAttributes['className']
-  side?: typeof SIDE_LEFT | typeof SIDE_RIGHT
+  side?: SIDE
 }
 
 // Regular HTML elements like <li /> or <p />
@@ -37,8 +37,8 @@ export function AsHorizontalMenuEntry(
       className,
       styles['a-horizontal-menu__entry'],
       {
-        [styles['a-horizontal-menu__entry--left']]: side === SIDE_LEFT,
-        [styles['a-horizontal-menu__entry--right']]: side === SIDE_RIGHT,
+        [styles['a-horizontal-menu__entry--left']]: side === SIDE.LEFT,
+        [styles['a-horizontal-menu__entry--right']]: side === SIDE.RIGHT,
       },
     )
 
@@ -55,7 +55,10 @@ export function AsHorizontalMenuEntry(
   return WrappedComponent
 }
 
+export type HorizontalMenuEntryProps = AsHorizontalMenuEntryProps & JSX.IntrinsicElements['ul']
 export const HorizontalMenuEntry = AsHorizontalMenuEntry('li', 'HorizontalMenuEntry')
+
+export type HorizontalNavMEntryenuProps = AsHorizontalMenuEntryProps & JSX.IntrinsicElements['nav']
 export const HorizontalNavMenuEntry = AsHorizontalMenuEntry('p', 'HorizontalNavMenuEntry')
 
 export default HorizontalMenuEntry
