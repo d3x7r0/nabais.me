@@ -1,7 +1,7 @@
-import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
-import { useAltColor, useAltDominantColor } from '../../../hooks'
+import { useAltColor, useAltDominantColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 

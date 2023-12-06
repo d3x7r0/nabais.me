@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
 import styles from './index.module.scss'
 import ImageDetailsEntry from './entry'

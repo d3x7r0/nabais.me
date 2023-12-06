@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import type { ComponentConstructor, FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
 import { getDisplayName } from '../../utils'
 import { SIDE } from '../../../constants'

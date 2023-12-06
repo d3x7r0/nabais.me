@@ -1,6 +1,6 @@
 import type { FunctionalComponent } from 'preact'
-import clsx from 'clsx'
 import capitalize from 'lodash-es/capitalize'
+import clsx from 'clsx'
 
 import IconText from '../../atom/IconText'
 import { SIDE } from '../../../constants'
@@ -22,31 +22,27 @@ const ImageDetailsEntry: FunctionalComponent<ImageDetailsEntryProps> = function 
 
   const Icon = label ? ICONS[label] : undefined
 
+  const dtClassNames = clsx(
+    styles['o-image-details__label'],
+    { [styles[`o-image-details__label--${label}`]]: !!label },
+  )
+
+  const ddClassNames = clsx(
+    styles['o-image-details__value'],
+    { [styles[`o-image-details__value--${label}`]]: !!label },
+  )
+
   return (
     <>
-      <dt className={buildLabelClassNames(label)}>
+      <dt className={dtClassNames}>
         <IconText IconComponent={Icon} side={SIDE.LEFT}>
           {capitalize(label)}
         </IconText>
       </dt>
-      <dd className={buildValueClassNames(label)}>
+      <dd className={ddClassNames}>
         {children}
       </dd>
     </>
-  )
-}
-
-function buildLabelClassNames(label?: ICON_LABEL) {
-  return clsx(
-    styles['o-image-details__label'],
-    { [styles[`o-image-details__label--${label}`]]: !!label },
-  )
-}
-
-function buildValueClassNames(label?: ICON_LABEL) {
-  return clsx(
-    styles['o-image-details__value'],
-    { [styles[`o-image-details__value--${label}`]]: !!label },
   )
 }
 

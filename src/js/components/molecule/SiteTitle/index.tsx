@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-literals */
-import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
 import { PATHS, TITLES } from '../../../config'
 

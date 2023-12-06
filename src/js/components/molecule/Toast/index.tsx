@@ -1,7 +1,7 @@
-import clsx from 'clsx'
 import type { JSX, ComponentChild, FunctionalComponent } from 'preact'
+import clsx from 'clsx'
 
-import { useAltDominantColor, useBgColor, useBorderColor } from '../../../hooks'
+import { useAltDominantColor, useBgColor, useBorderColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
@@ -47,6 +47,8 @@ const Toast: FunctionalComponent<ToastProps> = function Toast(props) {
     computedStyle,
   )
 
+  const computedClassName = clsx(className, styles['m-toast'])
+
   if (closed) {
     return null
   }
@@ -55,7 +57,7 @@ const Toast: FunctionalComponent<ToastProps> = function Toast(props) {
     <div
       {...rest}
       style={computedStyle}
-      className={clsx(className, styles['m-toast'])}
+      className={computedClassName}
     >
       <div className={styles['m-toast__inner']}>
         <div className={styles['m-toast__content']}>

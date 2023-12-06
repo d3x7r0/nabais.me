@@ -1,9 +1,9 @@
 /* eslint-disable */
 // Fix for react-image-lightbox
 if (typeof window !== 'undefined') {
+  // @ts-ignore
   window.global = window
 }
-/* eslint-enable */
 
 import type { FunctionalComponent } from 'preact'
 import { useCallback, useLayoutEffect, useMemo, useState } from 'preact/hooks'
@@ -68,6 +68,7 @@ const LightboxWrapper: FunctionalComponent<LightboxWrapperProps> = function Ligh
   const unregister = useCallback((id: string, group?: string) => {
     const g = ensureGroup(group)
 
+    // noinspection TypeScriptValidateTypes
     setEntries(entries => {
       if (!entries[g]) {
         return entries

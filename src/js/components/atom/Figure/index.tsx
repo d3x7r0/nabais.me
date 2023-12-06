@@ -1,9 +1,10 @@
-import clsx from 'clsx'
 import type { ComponentChild, FunctionalComponent , JSX } from 'preact'
+import clsx from 'clsx'
 
-import { useCSSVariable, useDominantColor } from '../../../hooks'
 import type { Ratio } from '../../utils'
 import { getRatio } from '../../utils'
+import { useDominantColor } from '../../../hooks/color'
+import { useCSSVariable } from '../../../hooks/css'
 
 import styles from './index.module.scss'
 

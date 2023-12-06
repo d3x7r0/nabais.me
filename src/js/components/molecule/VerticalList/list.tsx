@@ -1,8 +1,8 @@
-import clsx from 'clsx'
 import type { FunctionalComponent, JSX } from 'preact'
+import clsx from 'clsx'
 
-import { useCSSVariable } from '../../../hooks'
 import { SIDE } from '../../../constants'
+import { useCSSVariable } from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
@@ -20,7 +20,7 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
   const {
     children,
     className,
-    side,
+    side = SIDE.LEFT,
     grid,
     gridMobile,
     noMargin,
@@ -34,13 +34,16 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
   computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle)
   computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle)
 
-  const resolvedClassName = buildClassNames({
+  const resolvedClassName = clsx(
     className,
-    side,
-    noMargin,
-    grid,
-    gridMobile,
-  })
+    styles['m-vertical-list'],
+    {
+      [styles['m-vertical-list--right']]: side === SIDE.RIGHT,
+      [styles['m-vertical-list--no-margin']]: noMargin,
+      [styles['m-vertical-list--grid']]: grid,
+      [styles['m-vertical-list--grid-mobile']]: gridMobile,
+    },
+  )
 
   return (
     <ul
@@ -50,27 +53,6 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
     >
       {children}
     </ul>
-  )
-}
-
-function buildClassNames(props: VerticalListProps) {
-  const {
-    className,
-    side = SIDE.LEFT,
-    noMargin,
-    grid,
-    gridMobile,
-  } = props
-
-  return clsx(
-    className,
-    styles['m-vertical-list'],
-    {
-      [styles['m-vertical-list--right']]: side === SIDE.RIGHT,
-      [styles['m-vertical-list--no-margin']]: noMargin,
-      [styles['m-vertical-list--grid']]: grid,
-      [styles['m-vertical-list--grid-mobile']]: gridMobile,
-    },
   )
 }
 

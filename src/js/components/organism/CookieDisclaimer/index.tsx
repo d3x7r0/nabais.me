@@ -2,7 +2,8 @@ import type { FunctionalComponent, JSX } from 'preact'
 
 import type { ToastProps } from '../../molecule/Toast'
 import Toast from '../../molecule/Toast'
-import { useLocalStorage, useMounted } from '../../../hooks'
+import { useLocalStorage } from '../../../hooks/storage'
+import { useMounted } from '../../../hooks/preact'
 
 const COOKIE_SEEN_STORAGE_KEY = 'cookie-popup-seen'
 
