@@ -54,29 +54,29 @@ export const PATHS = {
 }
 
 export const MENU_ENTRIES: MenuEntries = {
-  // BLOG: {
-  //   path: PATHS.BLOG,
-  //   label: 'Blog',
-  //
-  //   entries: {
-  //     HOME: {
-  //       path: PATHS.BLOG,
-  //       label: 'Blog',
-  //     },
-  //     BLOG_ARCHIVE: {
-  //       path: PATHS.BLOG_ARCHIVE,
-  //       label: 'Archive',
-  //     },
-  //     BLOG_TAGS: {
-  //       path: PATHS.BLOG_TAGS,
-  //       label: 'Tags',
-  //     },
-  //     NONSENSEBB: {
-  //       path: 'https://blog.nonsensebb.com',
-  //       label: 'NonsenseBB',
-  //     },
-  //   },
-  // },
+  BLOG: {
+    path: PATHS.BLOG,
+    label: 'Blog',
+
+    entries: {
+      HOME: {
+        path: PATHS.BLOG,
+        label: 'Blog',
+      },
+      BLOG_ARCHIVE: {
+        path: PATHS.BLOG_ARCHIVE,
+        label: 'Archive',
+      },
+      BLOG_TAGS: {
+        path: PATHS.BLOG_TAGS,
+        label: 'Tags',
+      },
+      NONSENSEBB: {
+        path: 'https://blog.nonsensebb.com',
+        label: 'NonsenseBB',
+      },
+    },
+  },
 
   ABOUT: {
     path: PATHS.ABOUT,
@@ -91,11 +91,6 @@ export const MENU_ENTRIES: MenuEntries = {
   PHOTOS: {
     path: PATHS.PHOTOS,
     label: 'Photography',
-  },
-
-  BLOG: {
-    path: 'https://blog.nonsensebb.com',
-    label: 'Blog',
   },
 }
 
