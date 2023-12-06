@@ -9,7 +9,8 @@ import { useKeenSlider } from 'keen-slider/react.es'
 
 import 'keen-slider/keen-slider.css'
 
-import LightboxEntry, { LightboxWrapper } from '../../molecule/Lightbox'
+import LightboxWrapper from '../../molecule/Lightbox/wrapper'
+import LightboxEntry from '../../molecule/Lightbox/entry'
 import Figure from '../../atom/Figure'
 
 import styles from './index.module.scss'

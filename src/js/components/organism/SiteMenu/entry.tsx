@@ -1,10 +1,8 @@
 import type { ComponentChild, FunctionalComponent } from 'preact'
 
 import type { HorizontalMenuLinkProps } from '../../atom/HorizontalMenu'
-import {
-  HorizontalMenuLink,
-  HorizontalNavMenuEntry,
-} from '../../atom/HorizontalMenu'
+import HorizontalMenuLink from '../../atom/HorizontalMenu/link'
+import { HorizontalNavMenuEntry } from '../../atom/HorizontalMenu/entry'
 
 export type SiteMenuEntryProps = Omit<HorizontalMenuLinkProps, 'href'> & {
   label: ComponentChild,

@@ -1,0 +1,11 @@
+@use "../../../../css/00_base/variables";
+
+.m-simple-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__entry {
+    padding: 0;
+  }
+}

@@ -1,6 +1,7 @@
 import type { ComponentChild, FunctionalComponent } from 'preact'
 
-import VerticalList, { VerticalListEntry } from '../../molecule/VerticalList'
+import VerticalList from '../../molecule/VerticalList'
+import VerticalListEntry from '../../molecule/VerticalList/entry'
 import type { IconLinkProps } from '../../atom/IconLink'
 import IconLink from '../../atom/IconLink'
 import { SIDE } from '../../../constants'

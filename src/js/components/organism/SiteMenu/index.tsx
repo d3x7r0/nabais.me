@@ -2,7 +2,7 @@ import type { FunctionalComponent } from 'preact'
 import { useMemo } from 'preact/hooks'
 
 import type { HorizontalNavMenuProps } from '../../atom/HorizontalMenu'
-import { HorizontalNavMenu } from '../../atom/HorizontalMenu'
+import HorizontalNavMenu from '../../atom/HorizontalMenu'
 import type { MenuEntries } from '../../../types'
 
 import { transformEntries } from './utils'

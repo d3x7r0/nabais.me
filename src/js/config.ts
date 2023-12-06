@@ -33,6 +33,7 @@ export const TITLES = {
   HOME: 'Home',
   ABOUT: 'About Me',
   BLOG: 'Blog',
+  BLOG_ARCHIVE: 'Archives',
   COOKIE_POLICY: 'Cookie Policy',
   CV: 'CV',
   PHOTOS: 'Photos',

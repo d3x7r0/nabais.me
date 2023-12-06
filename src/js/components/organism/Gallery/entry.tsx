@@ -1,6 +1,6 @@
 import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
 
-import LightboxEntry from '../../molecule/Lightbox'
+import LightboxEntry from '../../molecule/Lightbox/entry'
 import Figure from '../../atom/Figure'
 
 export type GalleryEntryProps = {

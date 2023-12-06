@@ -1,8 +1,8 @@
 import type { FunctionalComponent, JSX } from 'preact'
 import { useMemo } from 'preact/hooks'
 
-import { GalleryListEntry } from '../../molecule/GalleryList'
-import { LightboxWrapper } from '../../molecule/Lightbox'
+import GalleryListEntry from '../../molecule/GalleryList'
+import LightboxWrapper from '../../molecule/Lightbox/wrapper'
 
 import type { GalleryInnerProps } from './inner'
 import GalleryInner from './inner'
