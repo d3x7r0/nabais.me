@@ -3,7 +3,7 @@ import {
   SiInstagram,
   SiLinkedin,
   SiMastodon,
-  SiTwitter,
+  // SiTwitter,
 } from '@icons-pack/react-simple-icons'
 
 import type { SiteFooterProps } from './components/organism/SiteFooter'
