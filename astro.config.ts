@@ -11,7 +11,7 @@ export default defineConfig({
   site: 'https://www.nabais.me/',
   vite: {
     ssr: {
-      noExternal: ['@rooks/use-key', 'keen-slider']
+      noExternal: ['rooks', 'keen-slider']
     },
   },
 })
