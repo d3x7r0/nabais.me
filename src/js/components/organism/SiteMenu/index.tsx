@@ -23,7 +23,7 @@ const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
   const effectiveEntries = useMemo(() => {
     const menuEntries = transformEntries(entries, pathname)
 
-    const active = menuEntries?.find(e => e.active)
+    const active = menuEntries?.find(e => e.matches)
 
     return active?.entries ?? menuEntries ?? []
   }, [entries, pathname])
@@ -38,7 +38,9 @@ const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
           <SiteMenuEntry
             key={entry.path}
             rel="prefetch"
-            {...entry}
+            path={entry.path}
+            label={entry.label}
+            active={entry.matchesExact}
           />
         ),
       )}

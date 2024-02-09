@@ -1,8 +1,9 @@
 import type { MenuEntries, MenuEntry } from '../../../types'
-import { matchesRoute } from '../../../router/match'
+import { matchesRoute, matchesTree } from '../../../router/match'
 
 type InternalMenuEntry = Omit<MenuEntry, 'entries'> & {
-  active: boolean
+  matches: boolean
+  matchesExact: boolean
   entries?: InternalMenuEntry[]
 }
 
@@ -23,14 +24,15 @@ export function transformEntries(
     const mapped: InternalMenuEntry = {
       label: entry.label,
       path: entry.path,
-      active: matchesRoute(entry.path, pathname),
+      matches: matchesTree(entry.path, pathname),
+      matchesExact: matchesRoute(entry.path, pathname),
     }
 
     if (entry.entries) {
       mapped.entries = transformEntries(entry.entries, pathname, d + 1)
 
-      mapped.active = mapped.active ||
-        (mapped.entries?.some(entry => entry.active) ?? false)
+      mapped.matches = mapped.matches ||
+        (mapped.entries?.some(entry => entry.matches) ?? false)
     }
 
     return mapped
