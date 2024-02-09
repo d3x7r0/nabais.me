@@ -4,10 +4,11 @@ import { getCollection } from 'astro:content'
 import BlogArchivesPage from '../../js/components/page/BlogArchives'
 import Layout from '../../layouts/default.astro'
 import { PATHS, TITLES } from '../../js/config'
+import { buildTitle } from '../../js/meta'
 
 const blogEntries = await getCollection('posts')
 ---
-<Layout title={TITLES.BLOG}>
+<Layout title={buildTitle(TITLES.BLOG_ARCHIVE, TITLES.BLOG)}>
   <BlogArchivesPage
     basepath={PATHS.BLOG}
     entries={blogEntries}
