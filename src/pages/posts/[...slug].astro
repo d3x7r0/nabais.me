@@ -3,6 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content'
 
 import Layout from '../../layouts/default.astro'
 import ContentWrapper from '../../js/components/molecule/ContentWrapper'
+import { buildTitle } from '../../js/meta'
+import { TITLES } from '../../js/config'
 
 export type Props = {
   entry: CollectionEntry<'posts'>
@@ -20,7 +22,7 @@ const entry: CollectionEntry<'posts'> = Astro.props.entry
 const { Content } = await entry.render()
 ---
 <Layout
-  title={entry.data.title}
+  title={buildTitle(entry.data.title, TITLES.BLOG)}
   description={entry.data.description}
   keywords={entry.data.tags}
 >
