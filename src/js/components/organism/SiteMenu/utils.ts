@@ -28,6 +28,9 @@ export function transformEntries(
 
     if (entry.entries) {
       mapped.entries = transformEntries(entry.entries, pathname, d + 1)
+
+      mapped.active = mapped.active ||
+        (mapped.entries?.some(entry => entry.active) ?? false)
     }
 
     return mapped
