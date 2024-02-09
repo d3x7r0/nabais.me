@@ -28,14 +28,14 @@ const BoxLink: FunctionalComponent<BoxLinkProps> = function (props) {
 
   const style = useCSSVariable(
     'bg-content',
-    (description ?? title).replaceAll(/\n/g, ' ').slice(0, BACKGROUND_CHARACTER_LIMIT),
+    `"${(description ?? title).replaceAll(/\n/g, ' ').slice(0, BACKGROUND_CHARACTER_LIMIT)}"`,
   )
 
   return (
     <article
       style={style}
       className={clsx(styles['a-box-link'], {
-        [styles['p-page__entry--big']]: big,
+        [styles['a-box-link--big']]: big,
       })}
       {...rest}
     >
