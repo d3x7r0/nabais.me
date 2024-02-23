@@ -37,7 +37,7 @@ const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
         (entry) => (
           <SiteMenuEntry
             key={entry.path}
-            rel="prefetch"
+            data-astro-prefetch="hover"
             {...entry}
           />
         ),
