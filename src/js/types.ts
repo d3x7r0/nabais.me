@@ -1,7 +1,7 @@
-export type MenuEntries = Record<string, MenuEntry>
+export type MenuEntries = MenuEntry[]
 
 export type MenuEntry = {
-  entries?: MenuEntries
+  entries?: MenuEntry[]
   label: string
 
   path: string

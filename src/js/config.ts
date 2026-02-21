@@ -53,53 +53,51 @@ export const PATHS = {
   PHOTOS: '/photos',
 }
 
-/* eslint-disable perfectionist/sort-objects */
-export const MENU_ENTRIES: MenuEntries = {
-  // BLOG: {
-  //   path: PATHS.BLOG,
-  //   label: 'Blog',
-  //
-  //   entries: {
-  //     HOME: {
-  //       path: PATHS.BLOG,
+export const MENU_ENTRIES: MenuEntries = [
+  // {
+  //   entries: [
+  //     {
   //       label: 'Blog',
+  //       path: PATHS.BLOG,
   //     },
-  //     BLOG_ARCHIVE: {
-  //       path: PATHS.BLOG_ARCHIVE,
+  //     {
   //       label: 'Archive',
+  //       path: PATHS.BLOG_ARCHIVE,
   //     },
-  //     BLOG_TAGS: {
-  //       path: PATHS.BLOG_TAGS,
+  //     {
   //       label: 'Tags',
+  //       path: PATHS.BLOG_TAGS,
   //     },
-  //     NONSENSEBB: {
-  //       path: 'https://blog.nonsensebb.com',
+  //     {
   //       label: 'NonsenseBB',
+  //       path: 'https://blog.nonsensebb.com',
   //     },
-  //   },
+  //   ],
+  //
+  //   label: 'Blog',
+  //   path: PATHS.BLOG,
   // },
 
-  ABOUT: {
-    path: PATHS.ABOUT,
+  {
     label: 'About me',
+    path: PATHS.ABOUT,
   },
 
-  CV: {
-    path: PATHS.CV,
+  {
     label: 'CV',
+    path: PATHS.CV,
   },
 
-  PHOTOS: {
-    path: PATHS.PHOTOS,
+  {
     label: 'Photography',
+    path: PATHS.PHOTOS,
   },
 
-  BLOG: {
-    path: 'https://blog.nonsensebb.com',
+  {
     label: 'Blog',
+    path: 'https://blog.nonsensebb.com',
   },
-}
-/* eslint-enable perfectionist/sort-objects */
+]
 
 export const SOCIAL_LINKS: SiteFooterProps['entries'] = [
   {

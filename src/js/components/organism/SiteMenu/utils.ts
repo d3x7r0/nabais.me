@@ -20,7 +20,7 @@ export function transformEntries(
     return
   }
 
-  return Object.values(entries).map((entry) => {
+  return entries.map((entry) => {
     const mapped: InternalMenuEntry = {
       active: matchesRoute(entry.path, pathname),
       label: entry.label,
