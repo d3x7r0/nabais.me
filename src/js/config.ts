@@ -53,6 +53,7 @@ export const PATHS = {
   PHOTOS: '/photos',
 }
 
+/* eslint-disable perfectionist/sort-objects */
 export const MENU_ENTRIES: MenuEntries = {
   // BLOG: {
   //   path: PATHS.BLOG,
@@ -79,25 +80,26 @@ export const MENU_ENTRIES: MenuEntries = {
   // },
 
   ABOUT: {
-    label: 'About me',
     path: PATHS.ABOUT,
-  },
-
-  BLOG: {
-    label: 'Blog',
-    path: 'https://blog.nonsensebb.com',
+    label: 'About me',
   },
 
   CV: {
-    label: 'CV',
     path: PATHS.CV,
+    label: 'CV',
   },
 
   PHOTOS: {
-    label: 'Photography',
     path: PATHS.PHOTOS,
+    label: 'Photography',
+  },
+
+  BLOG: {
+    path: 'https://blog.nonsensebb.com',
+    label: 'Blog',
   },
 }
+/* eslint-enable perfectionist/sort-objects */
 
 export const SOCIAL_LINKS: SiteFooterProps['entries'] = [
   {
