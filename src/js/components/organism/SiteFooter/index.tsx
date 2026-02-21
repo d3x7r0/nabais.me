@@ -1,5 +1,4 @@
-import type { ComponentChild, FunctionalComponent } from 'preact'
-
+import type {ReactNode} from "react";
 import VerticalList, { VerticalListEntry } from '../../molecule/VerticalList'
 import type { IconLinkProps } from '../../atom/IconLink'
 import IconLink from '../../atom/IconLink'
@@ -10,11 +9,11 @@ import styles from './index.module.scss'
 export type SiteFooterProps = {
   entries: Array<IconLinkProps & {
     id: string
-    label: ComponentChild
+    label: ReactNode
   }>
 }
 
-const SiteFooter: FunctionalComponent<SiteFooterProps> = function SiteFooter(props) {
+function SiteFooter(props: SiteFooterProps) {
   const  { entries = [] } = props
 
   return (

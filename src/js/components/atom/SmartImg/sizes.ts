@@ -13,12 +13,10 @@ const IMAGE_SIZES = [
   3840,
 ]
 
-/**
- * @param {{ min?: number, max?: number}} options
- * @param {number[]} candidates
- * @returns {number[]}
- */
-export function calculateSizes(options = {}, candidates = IMAGE_SIZES) {
+export function calculateSizes(
+  options: { min?: number, max?: number } = {},
+  candidates: number[] = IMAGE_SIZES,
+): number[] {
   const { min, max } = options
 
   let result = Array.from(candidates)

@@ -1,4 +1,4 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps, ReactNode} from "react";
 import clsx from 'clsx'
 
 import { useCSSVariable } from '../../../hooks/css'
@@ -7,9 +7,7 @@ import styles from './index.module.scss'
 
 const BACKGROUND_CHARACTER_LIMIT = 160
 
-type BoxLinkProps = {
-  className?: JSX.HTMLAttributes['className'],
-
+type BoxLinkProps = ComponentProps<'article'> & {
   title: string
   href: string
   description?: string
@@ -17,7 +15,7 @@ type BoxLinkProps = {
 }
 
 // TODO: support image background instead of text
-const BoxLink: FunctionalComponent<BoxLinkProps> = function (props) {
+function BoxLink(props: BoxLinkProps) {
   const {
     title,
     href,

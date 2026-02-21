@@ -1,20 +1,19 @@
-import { type FunctionalComponent } from 'preact'
+import type {ComponentProps, ReactNode} from "react";
 import classNames from 'clsx'
 
 import styles from './index.module.scss'
 
-export type VerticalThirdsWrapperProps = {
-  className?: string
+export type VerticalThirdsWrapperProps = ComponentProps<'div'> & {
   open?: boolean
   limited?: boolean
 }
 
-export const VerticalThirdsWrapper: FunctionalComponent<VerticalThirdsWrapperProps> = (props) => {
+export function VerticalThirdsWrapper(props: VerticalThirdsWrapperProps) {
   const {
     children,
     className,
     open,
-    limited= true,
+    limited = true,
     ...rest
   } = props
 
@@ -37,13 +36,12 @@ export const VerticalThirdsWrapper: FunctionalComponent<VerticalThirdsWrapperPro
   )
 }
 
-export type VerticalThirdsMainProps = {
-  className?: string
+export type VerticalThirdsMainProps = ComponentProps<'main'> & {
   fullWidth?: boolean
 }
 
-export const VerticalThirdsMain: FunctionalComponent<VerticalThirdsMainProps> = (props) => {
-  const { fullWidth, className, children, ...rest } = props
+export function VerticalThirdsMain(props: VerticalThirdsMainProps) {
+  const {fullWidth, className, children, ...rest} = props
 
   const cls = classNames(
     className,
@@ -63,7 +61,7 @@ export const VerticalThirdsMain: FunctionalComponent<VerticalThirdsMainProps> = 
   )
 }
 
-export const VerticalThirdsHeader: FunctionalComponent = (props) => {
+export const VerticalThirdsHeader = (props: { children?: ReactNode }) => {
   return (
     <header className={styles['t-vertical-thirds__header']}>
       <div className={styles['t-vertical-thirds__header-inner']}>
@@ -73,7 +71,7 @@ export const VerticalThirdsHeader: FunctionalComponent = (props) => {
   )
 }
 
-export const VerticalThirdsNav: FunctionalComponent = (props) => {
+export const VerticalThirdsNav = (props: { children?: ReactNode }) => {
   return (
     <div className={styles['t-vertical-thirds__nav']}>
       <div className={styles['t-vertical-thirds__nav-inner']}>
@@ -83,7 +81,7 @@ export const VerticalThirdsNav: FunctionalComponent = (props) => {
   )
 }
 
-export const VerticalThirdsFooter: FunctionalComponent = (props) => {
+export const VerticalThirdsFooter = (props: { children?: ReactNode }) => {
   return (
     <footer className={styles['t-vertical-thirds__footer']}>
       <div className={styles['t-vertical-thirds__footer-inner']}>

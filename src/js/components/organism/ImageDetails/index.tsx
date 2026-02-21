@@ -1,21 +1,20 @@
-import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps, ReactNode} from "react";
 import clsx from 'clsx'
 
 import styles from './index.module.scss'
 import ImageDetailsEntry from './entry'
 import ImageDetailsLocation from './location'
 
-export type ImageDetailsProps = {
-  description?: ComponentChild
-  time?: ComponentChild
-  camera?: ComponentChild
-  lens?: ComponentChild
-  location?: ComponentChild
-  map?: JSX.HTMLAttributes['href']
-  className?: JSX.HTMLAttributes['className']
+export type ImageDetailsProps = ComponentProps<'dl'> & {
+  description?: ReactNode
+  time?: ReactNode
+  camera?: ReactNode
+  lens?: ReactNode
+  location?: ReactNode
+  map?: string
 }
 
-const ImageDetails: FunctionalComponent<ImageDetailsProps> = function ImageDetails(props) {
+function ImageDetails(props: ImageDetailsProps) {
   const {
     description,
     time,

@@ -1,13 +1,14 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ReactNode} from "react";
 import clsx from 'clsx'
 
 import styles from './index.module.scss'
 
 export type SiteNavigationProps = {
-  className?: JSX.HTMLAttributes['className']
+  className?: string
+  children?: ReactNode
 }
 
-const SiteNavigation: FunctionalComponent<SiteNavigationProps> = function SiteNavigation(props) {
+function SiteNavigation(props: SiteNavigationProps) {
   const {
     className,
     children,

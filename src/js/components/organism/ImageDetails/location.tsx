@@ -1,20 +1,20 @@
-import type { FunctionalComponent, JSX, ComponentChild, VNode } from 'preact'
+import type {ReactNode} from "react";
 
 const MAP_LABEL = 'Map'
 
 export type ImageDetailsLocationProps = {
-  href?: JSX.HTMLAttributes['href']
-  value?: ComponentChild
+  href?: string
+  value?: ReactNode
 }
 
-const ImageDetailsLocation: FunctionalComponent<ImageDetailsLocationProps> = function ImageDetailsLocation(props) {
+function ImageDetailsLocation(props: ImageDetailsLocationProps): ReactNode {
   const {
     value,
     href,
   } = props
 
   if (!href) {
-    return value as VNode
+    return value
   }
 
   const map = <a href={href}>{MAP_LABEL}</a>

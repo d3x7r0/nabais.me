@@ -1,10 +1,10 @@
-@import "../../../../css/00_base/variables";
+@use "../../../../css/00_base/variables";
 
 .a-icon-link.a-icon-link {
   color: currentColor;
   opacity: 1;
   text-decoration: none;
-  transition: ($transitionDuration * 0.5) opacity;
+  transition: (variables.$transitionDuration * 0.5) opacity;
 
   &:hover,
   &:active,
@@ -29,6 +29,6 @@
   &:hover,
   &:active,
   &:focus {
-    color: $altDominantColor;
+    color: variables.$altDominantColor;
   }
 }

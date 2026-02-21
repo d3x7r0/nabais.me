@@ -1,10 +1,10 @@
-@import 'variables';
+@use 'variables';
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.4;
 
-  @media (min-width: $tabletBreakpoint) {
+  @media (min-width: variables.$tabletBreakpoint) {
     overflow-x: hidden;
     width: 100vw;
   }
@@ -12,8 +12,8 @@ body {
 
 html,
 body {
-  background: $colorBackground;
-  color: $colorText;
+  background: variables.$colorBackground;
+  color: variables.$colorText;
 }
 
 html,
@@ -23,18 +23,18 @@ body,
 }
 
 a {
-  color: $colorLink;
+  color: variables.$colorLink;
   text-decoration: underline;
-  transition-duration: ($transitionDuration * 0.5);
+  transition-duration: (variables.$transitionDuration * 0.5);
   transition-property: opacity, color;
 
   &:hover,
   &:focus {
-    color: $colorLinkHover;
+    color: variables.$colorLinkHover;
   }
 
   &:active {
-    color: $colorLinkActive;
+    color: variables.$colorLinkActive;
   }
 }
 
@@ -43,8 +43,8 @@ p {
 }
 
 hr {
-  border-color: var(--dominantColorLight, #{$dominantColorLight});
-  color: var(--dominantColorLight, #{$dominantColorLight});
+  border-color: var(--dominantColorLight, #{variables.$dominantColorLight});
+  color: var(--dominantColorLight, #{variables.$dominantColorLight});
 }
 
 /*  Legacy styles */

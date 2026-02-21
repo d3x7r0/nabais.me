@@ -1,5 +1,5 @@
-@import "../../../../css/00_base/variables";
-@import "../../../../css/00_base/mixins";
+@use "../../../../css/00_base/variables";
+@use "../../../../css/00_base/mixins";
 
 .m-gallery-list {
   list-style: none;
@@ -7,7 +7,7 @@
   padding: 0;
   text-align: center;
 
-  @include clearfix();
+  @include mixins.clearfix();
 
   &__entry {
     display: inline-block;
@@ -18,8 +18,8 @@
     width: 50%;
 
     a img {
-      outline: 0 solid $altDominantColor;
-      transition: ($transitionDuration * 0.25) outline;
+      outline: 0 solid variables.$altDominantColor;
+      transition: (variables.$transitionDuration * 0.25) outline;
 
       &:hover,
       &:active,
@@ -28,7 +28,7 @@
       }
     }
 
-    @media (min-width: $tabletBreakpoint) {
+    @media (min-width: variables.$tabletBreakpoint) {
       width: 33%;
     }
   }
@@ -53,7 +53,7 @@
       flex: 0 0 50%;
       margin-right: 0;
 
-      @media (min-width: $tabletBreakpoint) {
+      @media (min-width: variables.$tabletBreakpoint) {
         flex-basis: 33%;
       }
     }

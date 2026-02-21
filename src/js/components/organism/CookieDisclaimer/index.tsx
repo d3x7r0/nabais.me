@@ -1,21 +1,20 @@
-import type { FunctionalComponent, JSX } from 'preact'
-
 import type { ToastProps } from '../../molecule/Toast'
 import Toast from '../../molecule/Toast'
 import { useLocalStorage } from '../../../hooks/storage'
-import { useMounted } from '../../../hooks/preact'
+import { useMounted } from '../../../hooks/react'
+import type {ComponentProps} from "react";
 
 const COOKIE_SEEN_STORAGE_KEY = 'cookie-popup-seen'
 
-export type CookieDisclaimerProps = ToastProps & {
+export type CookieDisclaimerProps = Omit<ToastProps, 'children'> & {
   text?: string
 
-  link: JSX.HTMLAttributes['href']
+  link: string
   linkText?: string
-  linkProps?: JSX.IntrinsicElements['a']
+  linkProps?: ComponentProps<'a'>
 }
 
-const CookieDisclaimer: FunctionalComponent<CookieDisclaimerProps> = function CookieDisclaimer(props) {
+function CookieDisclaimer(props:CookieDisclaimerProps) {
   const {
     text = 'This website uses cookies.',
     link,

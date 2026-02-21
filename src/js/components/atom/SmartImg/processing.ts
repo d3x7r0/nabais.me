@@ -2,16 +2,15 @@ import isString from 'lodash-es/isString'
 
 const PROCESSING_URI_LOCATION_REGEX = /(\w)(?:\/)([^/]+)$/
 
-// opts = {
-//   "width": 800,
-//   "height": 600,
-//   "maxWidth": 300,
-//   "fit": "cover",
-//   "format": "ORIGINAL"
-//   "placeholder": true|false
-//   "crop": "16x9"
-// }
-export function addProcessing(src, opts = {}) {
+export function addProcessing(src?: string, opts: {
+  width?: number,
+  height?: number,
+  maxWidth?: number,
+  fit?: string,
+  format?: string,
+  placeholder?: boolean
+  crop?: string
+} = {}) {
   if (!isString(src)) {
     return src
   }
@@ -31,7 +30,7 @@ export function addProcessing(src, opts = {}) {
   }
 
   if (opts.format) {
-    parts.push('ff-' + opts.format.toLowerCase())
+    parts.push(`ff-${opts.format.toLowerCase()}`)
   }
 
   if (opts.placeholder) {

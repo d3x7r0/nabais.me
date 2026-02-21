@@ -1,9 +1,7 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
 import classNames from 'clsx'
 import { useKey } from 'rooks'
-import { useCallback, useMemo, useRef } from 'preact/hooks'
+import type {ComponentType, ComponentProps} from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'react-feather'
 import { useKeenSlider } from 'keen-slider/react.es'
 
@@ -13,13 +11,29 @@ import LightboxEntry, { LightboxWrapper } from '../../molecule/Lightbox'
 import Figure from '../../atom/Figure'
 
 import styles from './index.module.scss'
+import type {KeenSliderInstance} from "keen-slider";
+import type {LightboxState} from "../../molecule/Lightbox/types.ts";
 
 let ID_COUNTER = 0
 let COUNTER = 0
 
-const ImageSlider = (props) => {
-  // FIXME: due to a bug in preact 10.5.2 we need to make sure to remove className from the props if we want to override it
-  // eslint-disable-next-line no-unused-vars
+export type SliderEntry = {
+  id?: string
+  href?: string
+  caption?: string
+  picture: ComponentProps<'img'> & {
+    caption?: string
+  }
+  [key: string]: any
+}
+
+export type ImageSliderProps = ComponentProps<'div'> & {
+  entries?: SliderEntry[]
+  ImgComponent?: ComponentType<any> | string
+  onSlideChange?: (idx: number) => void
+}
+
+function ImageSlider(props: ImageSliderProps) {
   const {
     entries = [],
     className,
@@ -31,15 +45,15 @@ const ImageSlider = (props) => {
   const id = useMemo(() => `imageSlider${ID_COUNTER++}`, [])
 
   const onSlideChangedCB = useCallback(
-    slider => {
-      onSlideChange(slider.track.details.rel)
+    (slider: KeenSliderInstance) => {
+      onSlideChange?.(slider.track.details.rel)
     },
     [onSlideChange],
   )
 
   const lightboxOpen = useRef(false)
 
-  const [sliderRef, instanceRef] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     slideChanged: onSlideChangedCB,
     initial: 0,
     loop: true,
@@ -58,7 +72,7 @@ const ImageSlider = (props) => {
     },
   })
 
-  const onArrow = useCallback((e) => {
+  const onArrow = useCallback((e: KeyboardEvent) => {
     if (lightboxOpen.current) {
       return
     }
@@ -114,7 +128,7 @@ const ImageSlider = (props) => {
   )
 
   const onLightboxChange = useCallback(
-    state => {
+    (state: LightboxState) => {
       lightboxOpen.current = state.open && state.group === lightboxGroup
 
       if (!instanceRef.current) {
@@ -126,7 +140,7 @@ const ImageSlider = (props) => {
         state.group === lightboxGroup &&
         instanceRef.current.track.details.rel !== state.idx
       ) {
-        instanceRef.current.moveToIdx(state.idx, true)
+        instanceRef.current.moveToIdx(state.idx ?? 0, true)
       }
     },
     [instanceRef, lightboxGroup],
@@ -163,6 +177,7 @@ const ImageSlider = (props) => {
         </div>
 
         <button
+          type="button"
           aria-controls={id}
           aria-label="Previous"
           onClick={onPrevious}
@@ -175,6 +190,7 @@ const ImageSlider = (props) => {
         </button>
 
         <button
+          type="button"
           aria-controls={id}
           aria-label="Next"
           onClick={onNext}
@@ -190,14 +206,21 @@ const ImageSlider = (props) => {
   )
 }
 
-function buildClassName({ className }) {
+function buildClassName({ className }: { className?: string }) {
   return classNames(
     className,
     styles['o-image-slider'],
   )
 }
 
-const GalleryEntry = (props) => {
+type GalleryEntryProps = SliderEntry & {
+  ImgComponent?: ComponentType<any> | string
+  lightbox?: string
+  className?: string
+  [key: string]: any
+}
+
+function GalleryEntry(props: GalleryEntryProps) {
   const {
     picture,
     alt,

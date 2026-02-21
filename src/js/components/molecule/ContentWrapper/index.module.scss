@@ -1,15 +1,15 @@
-@import "../../../../css/00_base/variables";
+@use "../../../../css/00_base/variables";
 
 .m-content-wrapper {
   :global {
     .astro-code {
-      border: 1px solid $borderColor;
+      border: 1px solid variables.$borderColor;
       border-left-width: 0.5em;
       padding: 0.8em 1em;
     }
 
     blockquote {
-      border: 1px solid $borderColor;
+      border: 1px solid variables.$borderColor;
       border-left-width: 0.5em;
       margin-left: 0;
       margin-right: 0;

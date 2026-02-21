@@ -1,10 +1,10 @@
 @use "sass:color";
 
-@import "../../../../css/00_base/variables";
-@import "../../../../css/00_base/mixins";
+@use "../../../../css/00_base/variables";
+@use "../../../../css/00_base/mixins";
 
 .a-box-link {
-  border: 2px solid $colorArticleBorder;
+  border: 2px solid variables.$colorArticleBorder;
   height: 0;
   margin: 0.5em;
   overflow: hidden;
@@ -22,13 +22,13 @@
     &:hover,
     &:active,
     &:focus {
-      background: color.scale($colorArticleHover, $alpha: -80%);
-      border-color: $dominantColorLight;
+      background: color.scale(variables.$colorArticleHover, $alpha: -80%);
+      border-color: variables.$dominantColorLight;
     }
   }
 
   &::before {
-    color: $colorArticleBorder;
+    color: variables.$colorArticleBorder;
     content: var(--bg-content, 'Lorem ipsum dolor sit amet.');
     font-size: 560%;
     left: 0;
@@ -42,7 +42,7 @@
   }
 
   &::after {
-    background: linear-gradient(to top, $colorBackground 25%, transparent);
+    background: linear-gradient(to top, variables.$colorBackground 25%, transparent);
     bottom: 0;
     content: ' ';
     height: 3.8em;
@@ -61,7 +61,7 @@
   }
 
   &__title {
-    @include line-clamp(3);
+    @include mixins.line-clamp(3);
 
     bottom: 0;
     left: 0;

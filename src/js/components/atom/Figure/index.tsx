@@ -1,23 +1,21 @@
-import type { ComponentChild, FunctionalComponent , JSX } from 'preact'
+import type {ComponentProps, ReactNode} from "react";
 import clsx from 'clsx'
 
-import type { Ratio } from '../../utils'
-import { getRatio } from '../../utils'
-import { useDominantColor } from '../../../hooks/color'
-import { useCSSVariable } from '../../../hooks/css'
+import type {Ratio} from '../../utils'
+import {getRatio} from '../../utils'
+import {useDominantColor} from '../../../hooks/color'
+import {useCSSVariable} from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
-export type FigureProps = {
-  style?: JSX.HTMLAttributes['style']
-  className?: JSX.HTMLAttributes['className']
-  contentClassName?: JSX.HTMLAttributes['className']
-  caption?: ComponentChild
+export type FigureProps = ComponentProps<'figure'> & {
+  contentClassName?: string
+  caption?: ReactNode
   border?: boolean | string
   ratio?: Ratio
 }
 
-const Figure: FunctionalComponent<FigureProps> = function Figure(props) {
+function Figure(props: FigureProps) {
   const {
     className,
     children,

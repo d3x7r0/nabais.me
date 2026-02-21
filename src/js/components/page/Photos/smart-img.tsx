@@ -1,24 +1,26 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
-import { useMemo } from 'preact/hooks'
-import { URL } from 'iso-url'
+import type { ComponentProps } from 'react'
+import { useMemo } from 'react'
 import isString from 'lodash-es/isString'
 import omit from 'lodash-es/omit'
 
 import { ENABLE_TRANSFORMED_IMAGES } from '../../../config'
 import SmartImg, { SMART_IMG_PROPS, withFormats } from '../../atom/SmartImg'
+import type {PulitzerImageFormat} from "../../atom/SmartImg/types.ts";
 
-const ENABLED_FORMATS = [
+const ENABLED_FORMATS: PulitzerImageFormat[] = [
   'jpeg',
   'png',
-  ...import.meta.env?.PUBLIC_ENABLE_AVIF === 'true' ? ['avif'] : [],
-  ...import.meta.env?.PUBLIC_ENABLE_WEBP !== 'false' ? ['webp'] : [],
+  ...import.meta.env?.PUBLIC_ENABLE_AVIF === 'true' ? ['avif' as PulitzerImageFormat] : [],
+  ...import.meta.env?.PUBLIC_ENABLE_WEBP !== 'false' ? ['webp' as PulitzerImageFormat] : [],
 ]
 
 export const SmartImgSettingsProvider = withFormats(ENABLED_FORMATS)
 
-function NBBSmartImg(props) {
+export type NBBSmartImgProps = ComponentProps<'img'> & {
+  imgProps?: ComponentProps<'img'>
+}
+
+function NBBSmartImg(props: NBBSmartImgProps) {
   const {
     src,
     imgProps,
@@ -60,21 +62,21 @@ function NBBSmartImg(props) {
   )
 }
 
-export function shouldTransform(src) {
-  if (!ENABLE_TRANSFORMED_IMAGES) {
+export function shouldTransform(src?: string): boolean {
+  if (!ENABLE_TRANSFORMED_IMAGES || !src) {
     return false
   }
 
   // skip for gifs
   // TODO: remove when pulitzer supports gifs
-  if (src && src.toLowerCase().endsWith('.gif')) {
+  if (src.toLowerCase().endsWith('.gif')) {
     return false
   }
 
   return isStaticURL(src)
 }
 
-export function isStaticURL(src) {
+export function isStaticURL(src: string | null): boolean {
   if (src === null) {
     return false
   }

@@ -1,6 +1,3 @@
-import type { FunctionalComponent} from 'preact'
-import { useMemo } from 'preact/hooks'
-
 const DEFAULT_SRC = 'https://static.cloudflareinsights.com/beacon.min.js'
 
 export type CFBeaconProps = {
@@ -9,24 +6,13 @@ export type CFBeaconProps = {
   spa?: boolean
 }
 
-const CFBeacon: FunctionalComponent<CFBeaconProps> = function CFBeacon(props) {
+function CFBeacon(props: CFBeaconProps) {
   const {
     src = DEFAULT_SRC,
     token,
     spa = false,
     ...rest
   } = props
-
-  const data = useMemo(() => {
-    if (!token) {
-      return
-    }
-
-    return JSON.stringify({
-      token,
-      spa,
-    })
-  }, [token, spa])
 
   if (!token) {
     return null
@@ -37,7 +23,10 @@ const CFBeacon: FunctionalComponent<CFBeaconProps> = function CFBeacon(props) {
       {...rest}
       defer
       src={src}
-      data-cf-beacon={data}
+      data-cf-beacon={JSON.stringify({
+        token,
+        spa,
+      })}
     ></script>
   )
 }

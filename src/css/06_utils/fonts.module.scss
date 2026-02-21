@@ -1,5 +1,5 @@
-@import "../00_base/variables";
+@use "../00_base/variables";
 
 .u-font-roboto-condensed {
-  font-family: $fontRobotoCondensed;
+  font-family: variables.$fontRobotoCondensed;
 }

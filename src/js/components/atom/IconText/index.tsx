@@ -1,8 +1,8 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {CSSProperties, JSX, ReactNode} from "react";
 import clsx from 'clsx'
 
-import { SIDE } from '../../../constants'
-import { useAltDominantColor } from '../../../hooks/color'
+import {SIDE} from '../../../constants'
+import {useAltDominantColor} from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
@@ -10,11 +10,12 @@ export type IconTextProps = {
   iconColor?: string,
   side?: SIDE
   IconComponent?: JSX.ElementType
-  className?: JSX.HTMLAttributes['className']
-  style?: JSX.HTMLAttributes['style']
+  className?: string
+  style?: CSSProperties
+  children?: ReactNode
 }
 
-const IconText: FunctionalComponent<IconTextProps> = function IconText(props) {
+function IconText(props: IconTextProps) {
   const {
     className,
     style,

@@ -1,20 +1,21 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {CSSProperties, ReactNode} from "react";
 import clsx from 'clsx'
 
-import type { Ratio } from '../../utils'
-import { getRatio } from '../../utils'
-import { useCSSVariable } from '../../../hooks/css'
+import type {Ratio} from '../../utils'
+import {getRatio} from '../../utils'
+import {useCSSVariable} from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
 export type RatioBoxProps = {
-  className?: JSX.HTMLAttributes['className']
-  style?: JSX.HTMLAttributes['style']
-  contentClassName?: JSX.HTMLAttributes['className']
+  className?: string
+  style?: CSSProperties
+  contentClassName?: string
   ratio?: Ratio
+  children?: ReactNode
 }
 
-const RatioBox: FunctionalComponent<RatioBoxProps> = function RatioBox(props) {
+const RatioBox = function RatioBox(props: RatioBoxProps) {
   const {
     className,
     children,

@@ -1,12 +1,16 @@
 import isString from 'lodash-es/isString'
 
-import { addProcessing } from './processing'
-import { guessContentType } from './utils'
-import { calculateSizes } from './sizes'
-import { FORMATS } from './constants'
+import {addProcessing} from './processing.ts'
+import {guessContentType} from './utils.ts'
+import {calculateSizes} from './sizes.ts'
+import {FORMATS} from './constants'
+import type {PulitzerImageFormat, PulitzerProcessingOpts, PulitzerSettings,} from './types'
 
-export function buildSources(src, settings) {
-  const processingOpts = {}
+export function buildSources(
+  src: string | undefined,
+  settings: PulitzerSettings
+): [string, Array<{ format: PulitzerImageFormat, type: string, sizes: number[], srcSet: string }>] {
+  const processingOpts: PulitzerProcessingOpts = {}
 
   if (settings.crop) {
     processingOpts.crop = isString(settings.crop) ?
@@ -14,13 +18,17 @@ export function buildSources(src, settings) {
       `${settings.crop.width}x${settings.crop.height}`
   }
 
-  const sources = buildSourceSet(settings, src, processingOpts)
-  const imgSrc = buildImageSrc(settings, src, processingOpts)
+  const sources = src ? buildSourceSet(settings, src, processingOpts) : []
+  const imgSrc = buildImageSrc(settings, src, processingOpts) as string
 
   return [imgSrc, sources]
 }
 
-function buildSourceSet(settings, src, processingOpts) {
+function buildSourceSet(
+  settings: PulitzerSettings,
+  src: string,
+  processingOpts: PulitzerProcessingOpts
+): Array<{ format: PulitzerImageFormat, type: string, sizes: number[], srcSet: string }> {
   const contentType = guessContentType(src)
 
   const sizes = calculateSizes(settings)
@@ -31,7 +39,7 @@ function buildSourceSet(settings, src, processingOpts) {
       const srcSet = sizes.map((size) => {
         const sizeSrc = addProcessing(src, {
           ...processingOpts,
-          ...(f.type === contentType ? {} : { format: f.format }),
+          ...(f.type === contentType ? {} : {format: f.format}),
           maxWidth: size,
         })
 
@@ -47,7 +55,11 @@ function buildSourceSet(settings, src, processingOpts) {
     })
 }
 
-function buildImageSrc(settings, src, processingOpts) {
+function buildImageSrc(
+  settings: PulitzerSettings,
+  src: string | undefined,
+  processingOpts: PulitzerProcessingOpts
+): string | undefined {
   if (settings.placeholder === true) {
     return addProcessing(src, {
       ...processingOpts,
@@ -55,7 +67,7 @@ function buildImageSrc(settings, src, processingOpts) {
     })
   }
 
-  if (settings.placeholder) {
+  if (isString(settings.placeholder)) {
     return settings.placeholder
   }
 

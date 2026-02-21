@@ -1,11 +1,15 @@
-import type { JSX } from 'preact'
+import type { JSX } from "react";
 
 export function getDisplayName(WrappedComponent: JSX.ElementType) {
   if (typeof WrappedComponent === 'string') {
     return WrappedComponent || 'element'
   }
 
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  if ('displayName' in WrappedComponent) {
+    return WrappedComponent.displayName
+  }
+
+  return WrappedComponent.name || 'Component'
 }
 
 export type Ratio = string | {

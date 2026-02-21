@@ -1,4 +1,3 @@
-import type { FunctionalComponent } from 'preact'
 import capitalize from 'lodash-es/capitalize'
 import clsx from 'clsx'
 
@@ -7,14 +6,17 @@ import { SIDE } from '../../../constants'
 
 import styles from './index.module.scss'
 import { ICONS } from './constants'
+import type {ReactNode} from "react";
 
 type ICON_LABEL = keyof typeof ICONS
 
 export type ImageDetailsEntryProps = {
   label?: ICON_LABEL
+  className?: string
+  children?: ReactNode
 }
 
-const ImageDetailsEntry: FunctionalComponent<ImageDetailsEntryProps> = function ImageDetailsEntry(props) {
+function ImageDetailsEntry(props: ImageDetailsEntryProps) {
   const {
     label,
     children,

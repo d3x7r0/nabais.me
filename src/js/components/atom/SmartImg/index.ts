@@ -1,24 +1,24 @@
-import SmartImg from './image'
+import SmartImg from './image.tsx'
 
 export {
   default as SmartImgSettingsProvider,
   withFormats,
-} from './context'
+} from './context.tsx'
 
 export {
   calculateSizes,
-} from './sizes'
+} from './sizes.ts'
 
 export {
   addProcessing,
-} from './processing'
+} from './processing.ts'
 
 export {
   default as SmartImg,
-} from './image'
+} from './image.tsx'
 
 export {
   SMART_IMG_PROPS,
-} from './constants'
+} from './constants.ts'
 
 export default SmartImg

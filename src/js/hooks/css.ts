@@ -1,13 +1,11 @@
-import type { JSX } from 'preact'
-import { useMemo } from 'preact/hooks'
+import {type CSSProperties, useMemo} from 'react'
 import isString from 'lodash-es/isString'
-import isObject from 'lodash-es/isObject'
 
 export function useCSSVariable(
   name: string,
   value?: string | number,
-  style?: JSX.HTMLAttributes['style'],
-): JSX.HTMLAttributes['style'] {
+  style?: CSSProperties,
+): CSSProperties | undefined {
   return useMemo(() => {
     if (!value) {
       return style
@@ -18,13 +16,9 @@ export function useCSSVariable(
       ? `${value}`
       : value
 
-    if (isObject(style)) {
-      return {
-        ...style,
-        [varName]: varValue,
-      }
+    return {
+      ...style,
+      [varName]: varValue,
     }
-
-    return `${varName}: ${varValue};${style || ''}`
   }, [name, value, style])
 }

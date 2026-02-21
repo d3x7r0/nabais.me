@@ -1,4 +1,4 @@
-import type { ComponentConstructor, FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps, JSX, JSXElementConstructor} from "react";
 import clsx from 'clsx'
 
 import { getDisplayName } from '../../utils'
@@ -7,24 +7,24 @@ import { SIDE } from '../../../constants'
 import styles from './index.module.scss'
 
 export type AsHorizontalMenuEntryProps = {
-  className?: JSX.HTMLAttributes['className']
+  className?: string
   side?: SIDE
 }
 
 // Regular HTML elements like <li /> or <p />
 export function AsHorizontalMenuEntry<
-  P extends JSX.HTMLAttributes<T>,
-  T extends HTMLElement,
+  P extends ComponentProps<T>,
+  T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
 >(
   Component: keyof JSX.IntrinsicElements,
   displayName?: string,
-): FunctionalComponent<JSX.LibraryManagedAttributes<T, P> & AsHorizontalMenuEntryProps>
+): JSXElementConstructor<JSX.LibraryManagedAttributes<T, P> & AsHorizontalMenuEntryProps>
 
 // JSX <Components />
 export function AsHorizontalMenuEntry<P, C>(
-  Component: ComponentConstructor<P> & C,
+  Component: JSXElementConstructor<P> & C,
   displayName?: string,
-): FunctionalComponent<JSX.LibraryManagedAttributes<C, P> & AsHorizontalMenuEntryProps>
+): JSXElementConstructor<JSX.LibraryManagedAttributes<C, P> & AsHorizontalMenuEntryProps>
 
 export function AsHorizontalMenuEntry(
   Component: JSX.ElementType,

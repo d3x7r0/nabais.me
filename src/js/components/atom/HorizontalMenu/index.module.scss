@@ -1,4 +1,4 @@
-@import "../../../../css/00_base/variables";
+@use "../../../../css/00_base/variables";
 
 .a-horizontal-menu {
   align-items: center;
@@ -34,15 +34,15 @@
     &:hover,
     &:active,
     &:focus {
-      background: $altColor;
+      background: variables.$altColor;
     }
 
     &--active {
       text-decoration: underline;
-      text-decoration-color: $altDominantColor;
+      text-decoration-color: variables.$altDominantColor;
     }
 
-    @media (min-width: $desktopBreakpoint) {
+    @media (min-width: variables.$desktopBreakpoint) {
       padding: 0.8em 1em;
     }
   }

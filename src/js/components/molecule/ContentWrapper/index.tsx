@@ -1,13 +1,14 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ReactNode} from "react";
 import clsx from 'clsx'
 
 import styles from './index.module.scss'
 
 export type ContentWrapperProps = {
-  className?: JSX.HTMLAttributes['className']
+  className?: string
+  children?: ReactNode
 }
 
-const ContentWrapper: FunctionalComponent<ContentWrapperProps> = function ContentWrapper(props) {
+function ContentWrapper(props: ContentWrapperProps) {
   const {
     className,
     children,

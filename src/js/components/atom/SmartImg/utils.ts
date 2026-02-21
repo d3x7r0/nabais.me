@@ -1,4 +1,4 @@
-export function guessContentType(src) {
+export function guessContentType(src?: string) {
   if (!src || !src.toLowerCase) {
     return
   }

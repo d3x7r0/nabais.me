@@ -115,7 +115,7 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
     </VerticalThirdsWrapper>
 
     <CookieDisclaimer
-      client:idle
+      client:only
       link={PATHS.COOKIE_POLICY}
       linkProps={{ title: "View cookie policy" }}
     />

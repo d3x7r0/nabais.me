@@ -1,4 +1,4 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps, JSX} from "react";
 import clsx from 'clsx'
 
 import { SIDE } from '../../../constants'
@@ -6,13 +6,13 @@ import { useAltDominantColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
-export type IconLinkProps = JSX.IntrinsicElements['a'] & {
+export type IconLinkProps = ComponentProps<'a'> & {
   iconColor?: string
   side?: SIDE
   IconComponent?: JSX.ElementType
 }
 
-const IconLink: FunctionalComponent<IconLinkProps> = function IconLink(props) {
+function IconLink(props: IconLinkProps) {
   const {
     className,
     style,

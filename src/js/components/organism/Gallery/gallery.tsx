@@ -1,12 +1,11 @@
-import type { FunctionalComponent, JSX } from 'preact'
-import { useMemo } from 'preact/hooks'
+import type {JSX} from "react";
+import {useMemo} from "react";
+import {GalleryListEntry} from '../../molecule/GalleryList'
+import {LightboxWrapper} from '../../molecule/Lightbox'
 
-import { GalleryListEntry } from '../../molecule/GalleryList'
-import { LightboxWrapper } from '../../molecule/Lightbox'
-
-import type { GalleryInnerProps } from './inner'
+import type {GalleryInnerProps} from './inner'
 import GalleryInner from './inner'
-import type { GalleryEntryProps } from './entry'
+import type {GalleryEntryProps} from './entry'
 import GalleryEntry from './entry'
 
 let COUNTER = 0
@@ -17,7 +16,7 @@ export type GalleryProps = GalleryInnerProps & {
   ImgElement?: JSX.ElementType
 }
 
-const Gallery: FunctionalComponent<GalleryProps> = function Gallery(props) {
+const Gallery = function Gallery(props: GalleryProps) {
   const {
     lightbox = false,
     entries = [],

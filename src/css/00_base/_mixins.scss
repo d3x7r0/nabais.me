@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables";
 
 @mixin clearfix($before: false) {
   @if $before == true {

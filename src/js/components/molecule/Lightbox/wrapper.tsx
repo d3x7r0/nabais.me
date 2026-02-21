@@ -1,137 +1,120 @@
-/* eslint-disable */
-// Fix for react-image-lightbox
-if (typeof window !== 'undefined') {
-  // @ts-ignore
-  window.global = window
-}
+import type { ReactNode } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 
-import type { FunctionalComponent } from 'preact'
-import { useCallback, useLayoutEffect, useMemo, useState } from 'preact/hooks'
-import ReactImageLightbox from 'react-image-lightbox'
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 import type {
   LightboxEntry,
   LightboxGroupEntry,
   LightboxGroupState,
   LightboxState,
-} from './types'
-import { ensureGroup } from './utils'
-import { LightboxProvider } from './context'
-
-import 'react-image-lightbox/style.css'
+} from './types';
+import { ensureGroup } from './utils';
+import { LightboxProvider } from './context';
 
 export type LightboxWrapperProps = {
-  loop?: boolean
+  loop?: boolean;
+  children?: ReactNode;
+  onChange?: (state: LightboxState) => void;
+};
 
-  onChange?: (state: LightboxState) => void
-}
-
-// TODO: control gallery by hash
-const LightboxWrapper: FunctionalComponent<LightboxWrapperProps> = function LightboxWrapper(props) {
+function LightboxWrapper(props: LightboxWrapperProps) {
   const {
     children,
     loop = false,
     onChange,
-  } = props
+  } = props;
 
-  const [entries, setEntries] = useState<LightboxGroupState>({})
-  const [sort, triggerSort] = useState<number>(0)
+  const [entries, setEntries] = useState<LightboxGroupState>({});
+  const [sort, triggerSort] = useState<number>(0);
   const [state, setCurrent] = useState<LightboxState>({
     open: false,
     group: undefined,
     idx: undefined,
-  })
+  });
 
   const register = useCallback((id: string, data: Omit<LightboxEntry, 'id' | 'group'>, group?: string) => {
-    const g = ensureGroup(group)
+    const g = ensureGroup(group);
 
-    setEntries(entries => {
-      const groupEntries: LightboxGroupEntry[] = entries[g] || []
-
+    setEntries(prev => {
+      const groupEntries: LightboxGroupEntry[] = prev[g] || [];
       return {
-        ...entries,
-        [g]: groupEntries.concat({
+        ...prev,
+        [g]: [...groupEntries, {
           id,
           data: {
             ...data,
             id,
             group: g,
           },
-        })
-        ,
-      }
-    })
+        }],
+      };
+    });
 
-    triggerSort(c => c + 1)
-  }, [setEntries, triggerSort])
+    triggerSort(c => c + 1);
+  }, []);
 
   const unregister = useCallback((id: string, group?: string) => {
-    const g = ensureGroup(group)
+    const g = ensureGroup(group);
 
-    // noinspection TypeScriptValidateTypes
-    setEntries(entries => {
-      if (!entries[g]) {
-        return entries
-      }
-
+    setEntries(prev => {
+      if (!prev[g]) return prev;
       return {
-        ...entries,
-        [g]: entries[g].filter(entry => entry.id !== id),
-      }
-    })
-  }, [setEntries])
+        ...prev,
+        [g]: prev[g].filter(entry => entry.id !== id),
+      };
+    });
+  }, []);
 
   const open = useCallback((id: string, group?: string) => {
-    const g = ensureGroup(group)
+    const g = ensureGroup(group);
+    if (!entries[g]) return;
 
-    if (!entries[g]) {
-      return
-    }
-
-    const idx = entries[g].findIndex(entry => entry.id === id)
-
+    const idx = entries[g].findIndex(entry => entry.id === id);
     const newState: LightboxState = {
       open: true,
       group: g,
-      idx,
-    }
+      idx: idx >= 0 ? idx : 0,
+    };
 
-    setCurrent(newState)
-    onChange?.(newState)
-  }, [entries, setCurrent, onChange])
+    setCurrent(newState);
+    onChange?.(newState);
+  }, [entries, onChange]);
+
+  const close = useCallback(() => {
+    const newState = { open: false };
+    setCurrent(newState);
+    onChange?.(newState);
+  }, [onChange]);
 
   useLayoutEffect(() => {
-    const order: string[] = []
-    for (const node of document.querySelectorAll(`[data-lightbox]`)) {
+    const order: string[] = [];
+    document.querySelectorAll(`[data-lightbox]`).forEach((node) => {
       if (node instanceof HTMLElement && node.dataset.lightboxId) {
-        order.push(node.dataset.lightboxId)
+        order.push(node.dataset.lightboxId);
       }
-    }
+    });
 
-    for (const group of Object.values(entries)) {
-      group.sort((a, b) => {
-        return order.indexOf(a.id) - order.indexOf(b.id)
-      })
+    for (const groupKey in entries) {
+      entries[groupKey].sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
     }
-  }, [entries, sort])
+  }, [entries, sort]);
 
-  const currentEntries = useMemo<LightboxGroupEntry[]>(
+  const currentEntries = useMemo(
     () => entries[state.group ?? ''] || [],
-    [entries, state.group],
-  )
+    [entries, state.group]
+  );
 
-  const { data: currentEntry } = findCurrentEntry(currentEntries, state.idx)
-  const { data: nextEntry } = findNextEntry(currentEntries, state.idx, loop)
-  const { data: prevEntry } = findPreviousEntry(currentEntries, state.idx, loop)
-
-  const close = useCallback(
-    () => {
-      const newState = { open: false }
-      setCurrent(newState)
-      onChange?.(newState)
-    },
-    [setCurrent, onChange],
-  )
+  const slides = useMemo(() =>
+      currentEntries.map(entry => ({
+        src: entry.data.src,
+        description: entry.data.caption,
+      })),
+    [currentEntries]
+  );
 
   const ctxValue = useMemo(
     () => ({
@@ -140,100 +123,37 @@ const LightboxWrapper: FunctionalComponent<LightboxWrapperProps> = function Ligh
       open,
       close,
     }),
-    [register, unregister, open, close],
-  )
-
-  const onMoveNextRequest = useCallback(
-    () => setCurrent(state => {
-      const currentIdx = state.idx ?? 0
-
-      const newState: LightboxState = {
-        ...state,
-        idx: currentIdx + 1 === currentEntries.length ? 0 : currentIdx + 1,
-      }
-
-      onChange?.(newState)
-
-      return newState
-    }),
-    [currentEntries, setCurrent, onChange],
-  )
-
-  const onMovePrevRequest = useCallback(
-    () => setCurrent(state => {
-      const currentIdx = state.idx ?? 0
-
-      const newState: LightboxState = {
-        ...state,
-        idx: currentIdx === 0 ? currentEntries.length - 1 : currentIdx - 1,
-      }
-
-      onChange?.(newState)
-
-      return newState
-    }),
-    [currentEntries, setCurrent, onChange],
-  )
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const lightbox = state.open && <ReactImageLightbox
-    mainSrc={currentEntry?.src}
-    nextSrc={nextEntry && nextEntry.src}
-    prevSrc={prevEntry && prevEntry.src}
-    imageCaption={currentEntry?.caption}
-    imagePadding={80}
-    onCloseRequest={close}
-    onMoveNextRequest={nextEntry && onMoveNextRequest}
-    onMovePrevRequest={prevEntry && onMovePrevRequest}
-  />
+    [register, unregister, open, close]
+  );
 
   return (
     <LightboxProvider value={ctxValue}>
       {children}
 
-      {lightbox}
+      <Lightbox
+        plugins={[Captions]}
+        open={state.open}
+        close={close}
+        index={state.idx}
+        slides={slides}
+        carousel={{ finite: !loop }}
+        controller={{ closeOnBackdropClick: true }}
+        on={{
+          view: ({ index }) => {
+            if (index !== state.idx) {
+              const newState = { ...state, idx: index };
+              setCurrent(newState);
+              onChange?.(newState);
+            }
+          }
+        }}
+        styles={{
+          container: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
+          slide: { padding: "80px" }
+        }}
+      />
     </LightboxProvider>
-  )
+  );
 }
 
-function findCurrentEntry(
-  currentEntries: LightboxGroupEntry[] = [],
-  idx?: number,
-): Partial<LightboxGroupEntry> {
-  return idx && currentEntries[idx] || {}
-}
-
-function findNextEntry(
-  currentEntries: LightboxGroupEntry[] = [],
-  idx: number = 0,
-  loop: boolean = false,
-): Partial<LightboxGroupEntry> {
-  if (idx < currentEntries.length - 1) {
-    return currentEntries[idx + 1] || {}
-  }
-
-  if (loop && currentEntries.length > 1) {
-    return currentEntries[0] || {}
-  }
-
-  return {}
-}
-
-function findPreviousEntry(
-  currentEntries: LightboxGroupEntry[] = [],
-  idx: number = 0,
-  loop: boolean = false,
-): Partial<LightboxGroupEntry> {
-  if (idx > 0) {
-    return currentEntries[idx - 1] || {}
-  }
-
-  if (loop && currentEntries.length > 1) {
-    return currentEntries[currentEntries.length - 1] || {}
-  }
-
-  return {}
-}
-
-export default LightboxWrapper
+export default LightboxWrapper;

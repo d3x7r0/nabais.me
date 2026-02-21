@@ -1,15 +1,15 @@
-@import "variables";
-@import "reset";
-@import "base";
+@use "variables";
+@use "reset";
+@use "base";
 
 :root {
-  --dominantColor: #{$dominantColor};
-  --dominantColorLight: #{$dominantColorLight};
+  --dominantColor: #{variables.$dominantColor};
+  --dominantColorLight: #{variables.$dominantColorLight};
 
   // Shared Components
-  --dominant-color: #{$dominantColor};
-  --alt-dominant-color: #{$dominantColorLight};
-  --alt-color: #{$color1Light};
-  --bg-color: #{$color3};
-  --border-color: #{$color2};
+  --dominant-color: #{variables.$dominantColor};
+  --alt-dominant-color: #{variables.$dominantColorLight};
+  --alt-color: #{variables.$color1Light};
+  --bg-color: #{variables.$color3};
+  --border-color: #{variables.$color2};
 }

@@ -1,7 +1,7 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {JSX} from "react";
 import clsx from 'clsx'
 
-import { useAltColor, useAltDominantColor } from '../../../hooks/color'
+import {useAltColor, useAltDominantColor} from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
@@ -11,7 +11,7 @@ export type HorizontalMenuLinkProps = JSX.IntrinsicElements['a'] & {
   hoverColor?: string,
 }
 
-const HorizontalMenuLink: FunctionalComponent<HorizontalMenuLinkProps> = function HorizontalMenuLink(props) {
+function HorizontalMenuLink(props: HorizontalMenuLinkProps) {
   const {
     active,
     className,

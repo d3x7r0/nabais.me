@@ -1,16 +1,16 @@
-import { useContext, useMemo } from 'preact/hooks'
-import PropTypes from 'prop-types'
+import { useMemo } from 'react'
 import isString from 'lodash-es/isString'
 import omit from 'lodash-es/omit'
 import pick from 'lodash-es/pick'
 import isNil from 'lodash-es/isNil'
 
 import { buildSources } from './sources'
-import { Context, SmartImgPropTypes } from './context'
-import { DEFAULT_FORMATS, IMAGE_PROPS, SMART_IMG_PROPS } from './constants'
+import { useSmartImgSettings } from './context'
+import { IMAGE_PROPS, SMART_IMG_PROPS } from './constants'
+import type {PulitzerSettings, SmartImgContext, SmartImgProps} from "./types.ts";
 
-function parseProps(ctx = {}, props = {}) {
-  const settings = {
+function parseProps(ctx: SmartImgContext, props: SmartImgProps) {
+  const settings: PulitzerSettings = {
     min: props.minSize || ctx.minSize,
     max: props.maxSize || ctx.maxSize,
     maxWidth: props.defaultSize || ctx.defaultSize,
@@ -21,24 +21,27 @@ function parseProps(ctx = {}, props = {}) {
     formats: props.formats || ctx.formats,
   }
 
-  if (typeof settings.formats === 'undefined') {
-    settings.formats = [...DEFAULT_FORMATS]
-  }
-
-  const imgProps = {
+  const rawImgProps = {
     ...pick(props, IMAGE_PROPS),
     ...props.imgProps,
   }
 
+  const imgProps = {
+    ...rawImgProps,
+    width: typeof rawImgProps.width === 'string' ? parseInt(rawImgProps.width, 10) : rawImgProps.width,
+    height: typeof rawImgProps.height === 'string' ? parseInt(rawImgProps.height, 10) : rawImgProps.height,
+  }
+
   return {
+    src: props.src,
     ...omit(props, IMAGE_PROPS.concat(SMART_IMG_PROPS)),
     settings,
     imgProps,
   }
 }
 
-const SmartImg = (props) => {
-  const ctx = useContext(Context)
+const SmartImg = (props: SmartImgProps) => {
+  const ctx = useSmartImgSettings()
 
   const {
     src,
@@ -56,23 +59,24 @@ const SmartImg = (props) => {
   )
 
   if (settings.crop) {
-    let w
-    let h
+    let w: number
+    let h: number
 
     if (isString(settings.crop)) {
       const [width, height] = settings.crop.trim().toLowerCase().split('x')
-      w = width || 1
-      h = height || 1
+      w = parseFloat(width) || 1
+      h = parseFloat(height) || 1
     } else {
-      w = settings.crop.width || 1
-      h = settings.crop.height || 1
+      const crop = settings.crop as { width: number; height: number }
+      w = crop.width || 1
+      h = crop.height || 1
     }
 
     // Fix width and height when crop is enabled
     if (imgProps.width) {
-      imgProps.height = Math.round(imgProps.width * h / w)
+      imgProps.height = Math.round((imgProps.width as number) * h / w)
     } else if (imgProps.height) {
-      imgProps.width = Math.round(imgProps.height * w / h)
+      imgProps.width = Math.round((imgProps.height as number) * w / h)
     }
   }
 
@@ -98,14 +102,6 @@ const SmartImg = (props) => {
       />
     </picture>
   )
-}
-
-SmartImg.propTypes = {
-  ...SmartImgPropTypes,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  alt: PropTypes.string,
 }
 
 export default SmartImg

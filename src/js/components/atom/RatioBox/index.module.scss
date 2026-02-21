@@ -1,11 +1,11 @@
-@import "../../../../css/00_base/mixins";
+@use "../../../../css/00_base/mixins";
 
 .a-ratio-box {
   margin: 0 auto;
   max-width: 100%;
   text-align: center;
 
-  @include clearfix(true);
+  @include mixins.clearfix(true);
 
   &__content {
     &,

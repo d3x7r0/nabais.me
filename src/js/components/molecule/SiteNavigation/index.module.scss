@@ -1,11 +1,11 @@
 @use "sass:color";
 
-@import "src/css/00_base/variables";
+@use "../../../../css/00_base/variables" as v;
 
 .m-site-navigation {
-  background: $colorHeaderNavigationBg;
-  color: $colorTextDarkBg;
-  font-family: $fontRobotoCondensed;
+  background: v.$colorHeaderNavigationBg;
+  color: v.$colorTextDarkBg;
+  font-family: v.$fontRobotoCondensed;
 
   & > :first-child {
     padding-left: 1em;
@@ -19,19 +19,19 @@
     &,
     &:visited {
       background: transparent;
-      color: $colorTextDarkBg;
-      transition: ($transitionDuration * 0.5) background-color;
+      color: v.$colorTextDarkBg;
+      transition: (v.$transitionDuration * 0.5) background-color;
     }
 
     &:hover,
     &:focus {
-      background: color.mix($dominantColor, $colorHeaderNavigationBg, 20%);
-      color: color.scale($colorTextDarkBg, $lightness: 10%);
+      background: color.mix(v.$dominantColor, v.$colorHeaderNavigationBg, 20%);
+      color: color.scale(v.$colorTextDarkBg, $lightness: 10%);
     }
 
     &:active {
-      background: $dominantColor;
-      color: color.scale($colorTextDarkBg, $lightness: 10%);
+      background: v.$dominantColor;
+      color: color.scale(v.$colorTextDarkBg, $lightness: 10%);
     }
   }
 
@@ -45,12 +45,12 @@
   }
 
   &::before {
-    background: linear-gradient(to right, $colorHeaderNavigationBg, transparent);
+    background: linear-gradient(to right, v.$colorHeaderNavigationBg, transparent);
     left: 0;
   }
 
   &::after {
-    background: linear-gradient(to right, transparent, $colorHeaderNavigationBg);
+    background: linear-gradient(to right, transparent, v.$colorHeaderNavigationBg);
     right: 0;
   }
 }

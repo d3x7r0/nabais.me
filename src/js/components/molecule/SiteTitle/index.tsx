@@ -1,16 +1,14 @@
 /* eslint-disable react/jsx-no-literals */
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps} from "react";
 import clsx from 'clsx'
 
-import { PATHS, TITLES } from '../../../config'
+import {PATHS, TITLES} from '../../../config'
 
 import styles from './index.module.scss'
 
-export type SiteTitleProps = {
-  className?: JSX.HTMLAttributes['className']
-}
+export type SiteTitleProps = ComponentProps<'h1'>
 
-const SiteTitle: FunctionalComponent<SiteTitleProps> = function SiteTitle(props) {
+function SiteTitle(props: SiteTitleProps) {
   const { className, ...rest } = props
 
   return (

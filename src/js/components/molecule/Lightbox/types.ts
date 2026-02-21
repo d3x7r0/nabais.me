@@ -1,4 +1,4 @@
-import type { ComponentChild } from 'preact'
+import type {ReactNode} from "react";
 
 export type LightboxContextValue = {
   register: (id: string, data: Omit<LightboxEntry, 'id' | 'group'>, group?: string) => void
@@ -16,7 +16,7 @@ export type LightboxState = {
 export type LightboxEntry = {
   src: string,
   id: string
-  caption?: ComponentChild
+  caption?: ReactNode
   group: string,
 }
 

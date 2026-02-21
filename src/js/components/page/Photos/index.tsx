@@ -1,16 +1,26 @@
-// noinspection ES6UnusedImports
-// eslint-disable-next-line no-unused-vars
-import { h } from 'preact'
-import { useMemo, useState } from 'preact/hooks'
+import type {CollectionEntry} from "astro:content";
+import {type ComponentProps, useMemo, useState} from 'react'
 import classNames from 'clsx'
 
-
 import fontStyles from '../../../../css/06_utils/fonts.module.scss'
+import type {SliderEntry} from '../../organism/ImageSlider'
 import ImageSlider from '../../organism/ImageSlider'
 import ImageDetails from '../../organism/ImageDetails'
 
+import NBBSmartImg, {SmartImgSettingsProvider} from './smart-img'
+
 import styles from './index.module.scss'
-import NBBSmartImg, { SmartImgSettingsProvider } from './smart-img'
+
+export type PhotosImageEntry = CollectionEntry<'photos'>['data'] & {
+  href: string
+  picture?: ComponentProps<'img'> & {
+    caption?: string
+  }
+}
+
+export type PhotosProps = {
+  images?: PhotosImageEntry[]
+}
 
 const RATIO = {
   width: 3,
@@ -19,10 +29,11 @@ const RATIO = {
 
 const BREAKPOINT = 720
 
-const Photos = ({ images = [] }) => {
+function Photos(props: PhotosProps) {
+  const {images = []} = props
   const [activeSlide, setActiveSlide] = useState(0)
 
-  const entries = useMemo(
+  const entries: SliderEntry[] = useMemo(
     () => images.map((entry) => {
       const {
         href,
@@ -46,7 +57,7 @@ const Photos = ({ images = [] }) => {
         }
 
         if (meta.camera || meta.lens) {
-          const out = []
+          const out: string[] = []
 
           if (meta.camera) {
             out.push(`Camera: ${meta.camera}`)
@@ -59,7 +70,7 @@ const Photos = ({ images = [] }) => {
           parts.push(`[${out.join(', ')}]`)
         }
 
-        pictureCaption = parts.filter(entry => !!entry).join(' ')
+        pictureCaption = parts.filter(p => !!p).join(' ')
       }
 
       return {
@@ -67,9 +78,9 @@ const Photos = ({ images = [] }) => {
         href: src,
         picture: {
           ...picture,
-          ...(pictureCaption ? { caption: pictureCaption } : {}),
+          ...(pictureCaption ? {caption: pictureCaption} : {}),
           src,
-          alt,
+          alt: alt || '',
           className: classNames(picture.className, styles['p-photos__image']),
           loading: 'lazy',
         },
@@ -95,7 +106,7 @@ const Photos = ({ images = [] }) => {
         ImgComponent={NBBSmartImg}
         className={fontStyles['u-font-roboto-condensed']}
         entries={entries}
-        onSlideChange={(idx) => setActiveSlide(idx)}
+        onSlideChange={(idx: number) => setActiveSlide(idx)}
       />
 
       {meta[activeSlide] ? (

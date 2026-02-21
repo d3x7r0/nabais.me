@@ -1,13 +1,11 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type { ComponentProps } from "react";
 import clsx from 'clsx'
 
 import styles from './index.module.scss'
 
-export type VerticalListEntryProps = {
-  className?: JSX.HTMLAttributes['className']
-}
+export type VerticalListEntryProps = ComponentProps<'li'>
 
-const VerticalListEntry:FunctionalComponent<VerticalListEntryProps> = function VerticalListEntry(props) {
+function VerticalListEntry(props: VerticalListEntryProps) {
   const {
     className,
     children,

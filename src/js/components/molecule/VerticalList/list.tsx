@@ -1,13 +1,12 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ComponentProps, CSSProperties} from "react";
 import clsx from 'clsx'
 
-import { SIDE } from '../../../constants'
-import { useCSSVariable } from '../../../hooks/css'
+import {SIDE} from '../../../constants'
+import {useCSSVariable} from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
-export type VerticalListProps = {
-  className?: JSX.HTMLAttributes['className']
+export type VerticalListProps = ComponentProps<'ul'> & {
   side?: SIDE
   noMargin?: boolean,
   grid?: boolean,
@@ -16,7 +15,7 @@ export type VerticalListProps = {
   gridWidthLarge?: number,
 }
 
-const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalList(props) {
+function VerticalList(props: VerticalListProps) {
   const {
     children,
     className,
@@ -29,10 +28,10 @@ const VerticalList: FunctionalComponent<VerticalListProps> = function VerticalLi
     ...rest
   } = props
 
-  let computedStyle: JSX.HTMLAttributes['style'] = {}
+  let computedStyle: CSSProperties = {}
 
-  computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle)
-  computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle)
+  computedStyle = useCSSVariable('vertical-list-size-sm', gridWidthSmall, computedStyle) as CSSProperties
+  computedStyle = useCSSVariable('vertical-list-size-lg', gridWidthLarge, computedStyle) as CSSProperties
 
   const resolvedClassName = clsx(
     className,

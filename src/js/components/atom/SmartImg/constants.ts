@@ -1,3 +1,5 @@
+import type { PulitzerImageFormat, PulitzerFormatDef } from './types'
+
 export const SMART_IMG_PROPS = [
   'minSize',
   'maxSize',
@@ -18,7 +20,7 @@ export const IMAGE_PROPS = [
   'onLoad',
 ]
 
-export const DEFAULT_FORMATS = [
+export const DEFAULT_FORMATS: PulitzerImageFormat[] = [
   'png',
   'jpg',
   'webp',
@@ -26,28 +28,30 @@ export const DEFAULT_FORMATS = [
   // 'avif',
 ]
 
-export const FORMATS = [
+export const FORMATS: PulitzerFormatDef[] = [
   {
     format: 'avif',
     type: 'image/avif',
-    enabled: (ctx) => ctx.formats.includes('avif'),
+    enabled: (settings) => settings.formats.includes('avif'),
   },
   {
     format: 'webp',
     type: 'image/webp',
-    enabled: (ctx) => ctx.formats.includes('webp'),
+    enabled: (settings) => settings.formats.includes('webp'),
   },
   {
     format: 'png',
     type: 'image/png',
-    enabled: (ctx, contentType) => ctx.formats.includes('png') && contentType === 'image/png',
+    enabled: (settings, contentType) =>
+      settings.formats.includes('png') && contentType === 'image/png',
   },
   {
     format: 'jpeg',
     type: 'image/jpeg',
-    enabled: (ctx, contentType) => {
+    enabled: (settings, contentType) => {
+      const { formats } = settings
       // Enable JPEG if original image is JPEG or one of WebP/AVIF which have low browser support
-      return (ctx.formats.includes('jpeg') || ctx.formats.includes('jpg')) && (
+      return (formats.includes('jpeg') || formats.includes('jpg')) && (
         contentType === 'image/jpeg' ||
         contentType === 'image/webp' ||
         contentType === 'image/avif'

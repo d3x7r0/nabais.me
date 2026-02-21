@@ -1,4 +1,4 @@
-@import "../../../../css/00_base/variables";
+@use "../../../../css/00_base/variables";
 
 $cornerSize: 1em;
 
@@ -11,8 +11,8 @@ $cornerSize: 1em;
   z-index: 999;
 
   &__inner {
-    background: $bgColor;
-    border-top: 1px solid $borderColor;
+    background: variables.$bgColor;
+    border-top: 1px solid variables.$borderColor;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,7 @@ $cornerSize: 1em;
   a {
     cursor: pointer;
     text-decoration: none;
-    transition: ($transitionDuration * 0.5) opacity;
+    transition: (variables.$transitionDuration * 0.5) opacity;
 
     &,
     &:hover,
@@ -57,13 +57,13 @@ $cornerSize: 1em;
     }
   }
 
-  @media (min-width: $tabletBreakpoint) {
+  @media (min-width: variables.$tabletBreakpoint) {
     &__inner {
       padding: 0.8em 1.2em;
     }
   }
 
-  @media (min-width: $desktopBreakpoint) {
+  @media (min-width: variables.$desktopBreakpoint) {
     bottom: 2em;
     box-shadow: none;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
@@ -72,13 +72,13 @@ $cornerSize: 1em;
     right: 2em;
 
     &__inner {
-      border: 1px solid $borderColor;
+      border: 1px solid variables.$borderColor;
       clip-path: polygon(calc(100% - #{$cornerSize}) 0%, 100% #{$cornerSize}, 100% 100%, 0 100%, 0 0);
       padding: 1em;
       position: relative;
 
       &::after {
-        background: $borderColor;
+        background: variables.$borderColor;
         content: '';
         height: $cornerSize;
         pointer-events: none;

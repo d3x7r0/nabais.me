@@ -1,7 +1,7 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {CSSProperties, ReactNode} from "react";
 import clsx from 'clsx'
 
-import { useAltDominantColor } from '../../../hooks/color'
+import {useAltDominantColor} from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
@@ -9,11 +9,12 @@ export type GalleryListProps = {
   noMargin?: boolean,
   alignBottom?: boolean,
   colorMain?: string,
-  className?: JSX.HTMLAttributes['className'],
-  style?: JSX.HTMLAttributes['style'],
+  className?: string,
+  style?: CSSProperties,
+  children?: ReactNode
 }
 
-const GalleryList: FunctionalComponent<GalleryListProps> = function GalleryList(props) {
+function GalleryList(props: GalleryListProps) {
   const {
     children,
     className,

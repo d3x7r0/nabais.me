@@ -1,24 +1,22 @@
-import type { JSX, ComponentChild, FunctionalComponent } from 'preact'
+import type {ComponentProps, ReactNode} from "react";
 import clsx from 'clsx'
 
-import { useAltDominantColor, useBgColor, useBorderColor } from '../../../hooks/color'
+import {useAltDominantColor, useBgColor, useBorderColor} from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
 const DEFAULT_CLOSE_LABEL = 'Close'
 
-export type ToastProps = {
+export type ToastProps = ComponentProps<'div'> & {
   closed?: boolean,
   onClose?: () => void,
-  closeLabel?: ComponentChild,
+  closeLabel?: ReactNode,
   colorMain?: string,
   colorBackground?: string,
   colorBorder?: string,
-  style?: JSX.HTMLAttributes['style']
-  className?: JSX.HTMLAttributes['className']
 }
 
-const Toast: FunctionalComponent<ToastProps> = function Toast(props) {
+function Toast(props: ToastProps) {
   const {
     className,
     children,

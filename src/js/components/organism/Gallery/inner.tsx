@@ -1,4 +1,4 @@
-import type { ComponentChild, FunctionalComponent } from 'preact'
+import type {ReactNode} from "react";
 
 import Figure from '../../atom/Figure'
 import GalleryList from '../../molecule/GalleryList'
@@ -6,10 +6,11 @@ import GalleryList from '../../molecule/GalleryList'
 export type GalleryInnerProps = {
   alignBottom?: boolean
   colorMain?: string
-  caption?: ComponentChild
+  caption?: ReactNode
+  children?: ReactNode
 }
 
-const GalleryInner: FunctionalComponent<GalleryInnerProps> = function GalleryInner(props) {
+function GalleryInner(props: GalleryInnerProps) {
   const {
     caption,
     children,

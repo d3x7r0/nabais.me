@@ -1,18 +1,18 @@
-import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
-import { useContext, useEffect, useMemo } from 'preact/hooks'
+import type {ComponentProps, MouseEventHandler, ReactNode} from "react";
+import {useContext, useEffect, useMemo} from 'react'
 
-import { ensureID } from './utils'
-import { LightboxContext } from './context'
-import type { LightboxContextValue } from './types'
+import {ensureID} from './utils'
+import {LightboxContext} from './context'
+import type {LightboxContextValue} from './types'
 
-export type LightboxEntryProps = {
-  src: string,
+export type LightboxEntryProps = ComponentProps<'a'> & {
+  src?: string,
   id?: string
-  caption?: ComponentChild
+  caption?: ReactNode
   group?: string,
 }
 
-const LightboxEntry: FunctionalComponent<LightboxEntryProps> = function LightboxEntry(props) {
+function LightboxEntry(props: LightboxEntryProps) {
   const {
     src,
     caption,
@@ -29,7 +29,7 @@ const LightboxEntry: FunctionalComponent<LightboxEntryProps> = function Lightbox
   const { register, unregister, open } = useContext<LightboxContextValue>(LightboxContext)
 
   useEffect(() => {
-    if (!register) {
+    if (!register || !src) {
       return
     }
 
@@ -45,7 +45,7 @@ const LightboxEntry: FunctionalComponent<LightboxEntryProps> = function Lightbox
     return () => unregister(id, group)
   }, [id, src, caption, group, register, unregister])
 
-  const onClick: JSX.MouseEventHandler<HTMLElement> | undefined = open ? (
+  const onClick: MouseEventHandler<HTMLElement> | undefined = open ? (
     (e) => {
       e.preventDefault()
       return open(id, group)

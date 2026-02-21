@@ -1,23 +1,21 @@
-import type { ComponentChild, FunctionalComponent, JSX } from 'preact'
+import type { JSX, ReactNode} from "react";
 
 import LightboxEntry from '../../molecule/Lightbox'
-import Figure from '../../atom/Figure'
+import Figure, {type FigureProps} from '../../atom/Figure'
 
-export type GalleryEntryProps = {
-  id?: string
+export type GalleryEntryProps = Omit<FigureProps, 'children'> & {
   href?: string
   alt?: string
   lightbox?: string
-  caption?: ComponentChild
   ImgElement?: JSX.ElementType
   picture: {
     src: string
     alt?: string
-    caption?: ComponentChild
+    caption?: ReactNode
   }
 }
 
-const GalleryEntry: FunctionalComponent<GalleryEntryProps> = function GalleryEntry(props) {
+function GalleryEntry(props: GalleryEntryProps) {
   const {
     picture,
     alt,

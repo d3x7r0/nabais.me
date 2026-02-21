@@ -1,7 +1,7 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {CSSProperties} from "react";
 import clsx from 'clsx'
 
-import { useCSSVariable } from '../../../hooks/css'
+import {useCSSVariable} from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
@@ -9,11 +9,11 @@ export type SpinnerProps = {
   active?: boolean,
   colorMain?: string,
   colorAlt?: string,
-  className?: JSX.HTMLAttributes['className'],
-  style?: JSX.HTMLAttributes['style'],
+  className?: string,
+  style?: CSSProperties,
 }
 
-const Spinner: FunctionalComponent<SpinnerProps> = function Spinner(props) {
+function Spinner(props: SpinnerProps) {
   const {
     className,
     active,

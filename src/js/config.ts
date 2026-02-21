@@ -1,13 +1,12 @@
 import {
   SiGithub,
   SiInstagram,
-  SiLinkedin,
   SiMastodon,
-  // SiTwitter,
 } from '@icons-pack/react-simple-icons'
 
 import type { SiteFooterProps } from './components/organism/SiteFooter'
 import type { MenuEntries } from './types'
+import SiLinkedin from "./components/atom/SiLinkedin"
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
 
@@ -100,13 +99,6 @@ export const MENU_ENTRIES: MenuEntries = {
 }
 
 export const SOCIAL_LINKS: SiteFooterProps['entries'] = [
-  // {
-  //   id: 'twitter',
-  //   href: 'https://twitter.com/d3x7r0',
-  //   IconComponent: SiTwitter,
-  //   label: 'Twitter',
-  //   rel: 'me',
-  // },
   {
     id: 'mastodon',
     href: 'https://mastodon.social/@d3x7r0',

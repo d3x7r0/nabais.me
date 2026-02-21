@@ -1,13 +1,14 @@
-import type { FunctionalComponent, JSX } from 'preact'
+import type {ReactNode} from "react";
 import clsx from 'clsx'
 
 import styles from './index.module.scss'
 
 export type GalleryListEntryProps = {
-  className?: JSX.HTMLAttributes['className']
+  className?: string
+  children?: ReactNode
 }
 
-const GalleryListEntry: FunctionalComponent<GalleryListEntryProps> = function GalleryListEntry(props) {
+function GalleryListEntry(props: GalleryListEntryProps) {
   const {
     className,
     children,

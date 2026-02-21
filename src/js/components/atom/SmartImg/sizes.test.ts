@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { calculateSizes } from './sizes'
+import { calculateSizes } from './sizes.ts'
 
 describe('components/atom/SmartImg', () => {
   describe('calculateSizes', () => {

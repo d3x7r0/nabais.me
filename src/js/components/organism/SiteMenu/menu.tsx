@@ -1,5 +1,4 @@
-import type { FunctionalComponent } from 'preact'
-import { useMemo } from 'preact/hooks'
+import { useMemo } from 'react'
 
 import type { HorizontalNavMenuProps } from '../../atom/HorizontalMenu'
 import { HorizontalNavMenu } from '../../atom/HorizontalMenu'
@@ -13,7 +12,7 @@ export type SiteMenuProps = Omit<HorizontalNavMenuProps, 'scroll'> & {
   entries: MenuEntries
 }
 
-const SiteMenu: FunctionalComponent<SiteMenuProps> = function SiteMenu(props) {
+function SiteMenu(props: SiteMenuProps) {
   const {
     pathname,
     entries,
