@@ -1,23 +1,24 @@
-import type {ComponentProps, MouseEventHandler, ReactNode} from "react";
-import {useContext, useEffect, useMemo} from 'react'
+import type { LightboxContextValue } from './types'
+import type { ComponentProps, MouseEventHandler, ReactNode } from 'react'
 
-import {ensureID} from './utils'
-import {LightboxContext} from './context'
-import type {LightboxContextValue} from './types'
+import { useContext, useEffect, useMemo } from 'react'
 
-export type LightboxEntryProps = ComponentProps<'a'> & {
-  src?: string,
-  id?: string
+import { LightboxContext } from './context'
+import { ensureID } from './utils'
+
+export type LightboxEntryProps = {
   caption?: ReactNode
-  group?: string,
-}
+  group?: string
+  id?: string
+  src?: string
+} & ComponentProps<'a'>
 
 function LightboxEntry(props: LightboxEntryProps) {
   const {
-    src,
     caption,
-    group,
     children,
+    group,
+    src,
     ...rest
   } = props
 
@@ -26,7 +27,7 @@ function LightboxEntry(props: LightboxEntryProps) {
     [rest.id],
   )
 
-  const { register, unregister, open } = useContext<LightboxContextValue>(LightboxContext)
+  const { open, register, unregister } = useContext<LightboxContextValue>(LightboxContext)
 
   useEffect(() => {
     if (!register || !src) {
@@ -36,8 +37,8 @@ function LightboxEntry(props: LightboxEntryProps) {
     register(
       id,
       {
-        src,
         caption,
+        src,
       },
       group,
     )
@@ -45,12 +46,12 @@ function LightboxEntry(props: LightboxEntryProps) {
     return () => unregister(id, group)
   }, [id, src, caption, group, register, unregister])
 
-  const onClick: MouseEventHandler<HTMLElement> | undefined = open ? (
-    (e) => {
-      e.preventDefault()
-      return open(id, group)
-    }
-  ) : undefined
+  const onClick: MouseEventHandler<HTMLElement> | undefined = open
+    ? (e) => {
+        e.preventDefault()
+        return open(id, group)
+      }
+    : undefined
 
   return (
     <a

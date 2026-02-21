@@ -1,9 +1,11 @@
-import {type CSSProperties, useMemo} from 'react'
+import type { CSSProperties } from 'react'
+
 import isString from 'lodash-es/isString'
+import { useMemo } from 'react'
 
 export function useCSSVariable(
   name: string,
-  value?: string | number,
+  value?: number | string,
   style?: CSSProperties,
 ): CSSProperties | undefined {
   return useMemo(() => {

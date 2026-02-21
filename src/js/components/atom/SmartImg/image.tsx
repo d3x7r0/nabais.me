@@ -1,24 +1,25 @@
-import { useMemo } from 'react'
+import type { PulitzerSettings, SmartImgContextDetails, SmartImgProps } from './types.ts'
+
+import isNil from 'lodash-es/isNil'
 import isString from 'lodash-es/isString'
 import omit from 'lodash-es/omit'
 import pick from 'lodash-es/pick'
-import isNil from 'lodash-es/isNil'
+import { useMemo } from 'react'
 
-import { buildSources } from './sources'
-import { useSmartImgSettings } from './context'
 import { IMAGE_PROPS, SMART_IMG_PROPS } from './constants'
-import type {PulitzerSettings, SmartImgContext, SmartImgProps} from "./types.ts";
+import { useSmartImgSettings } from './hooks.ts'
+import { buildSources } from './sources'
 
-function parseProps(ctx: SmartImgContext, props: SmartImgProps) {
+function parseProps(ctx: SmartImgContextDetails, props: SmartImgProps) {
   const settings: PulitzerSettings = {
-    min: props.minSize || ctx.minSize,
-    max: props.maxSize || ctx.maxSize,
-    maxWidth: props.defaultSize || ctx.defaultSize,
-    sizes: props.sizes || ctx.sizes,
-    lazy: isNil(props.lazy) ? ctx.lazy : props.lazy,
-    placeholder: props.placeholder || ctx.placeholder,
     crop: props.crop || ctx.crop,
     formats: props.formats || ctx.formats,
+    lazy: isNil(props.lazy) ? ctx.lazy : props.lazy,
+    max: props.maxSize || ctx.maxSize,
+    maxWidth: props.defaultSize || ctx.defaultSize,
+    min: props.minSize || ctx.minSize,
+    placeholder: props.placeholder || ctx.placeholder,
+    sizes: props.sizes || ctx.sizes,
   }
 
   const rawImgProps = {
@@ -28,15 +29,15 @@ function parseProps(ctx: SmartImgContext, props: SmartImgProps) {
 
   const imgProps = {
     ...rawImgProps,
-    width: typeof rawImgProps.width === 'string' ? parseInt(rawImgProps.width, 10) : rawImgProps.width,
     height: typeof rawImgProps.height === 'string' ? parseInt(rawImgProps.height, 10) : rawImgProps.height,
+    width: typeof rawImgProps.width === 'string' ? parseInt(rawImgProps.width, 10) : rawImgProps.width,
   }
 
   return {
     src: props.src,
     ...omit(props, IMAGE_PROPS.concat(SMART_IMG_PROPS)),
-    settings,
     imgProps,
+    settings,
   }
 }
 
@@ -44,14 +45,18 @@ const SmartImg = (props: SmartImgProps) => {
   const ctx = useSmartImgSettings()
 
   const {
-    src,
-    settings,
     imgProps,
+    settings,
+    src,
     ...rest
   } = useMemo(
     () => parseProps(ctx, props),
     [ctx, props],
   )
+
+  const effectiveProps = {
+    ...imgProps,
+  }
 
   const [imgSrc, sources] = useMemo(
     () => buildSources(src, settings),
@@ -67,21 +72,21 @@ const SmartImg = (props: SmartImgProps) => {
       w = parseFloat(width) || 1
       h = parseFloat(height) || 1
     } else {
-      const crop = settings.crop as { width: number; height: number }
+      const crop = settings.crop as { height: number, width: number }
       w = crop.width || 1
       h = crop.height || 1
     }
 
     // Fix width and height when crop is enabled
-    if (imgProps.width) {
-      imgProps.height = Math.round((imgProps.width as number) * h / w)
-    } else if (imgProps.height) {
-      imgProps.width = Math.round((imgProps.height as number) * w / h)
+    if (effectiveProps.width) {
+      effectiveProps.height = Math.round((effectiveProps.width as number) * h / w)
+    } else if (effectiveProps.height) {
+      effectiveProps.width = Math.round((effectiveProps.height as number) * w / h)
     }
   }
 
   if (settings.lazy) {
-    imgProps.loading = 'lazy'
+    effectiveProps.loading = 'lazy'
   }
 
   return (
@@ -89,15 +94,15 @@ const SmartImg = (props: SmartImgProps) => {
       {sources.map(entry => (
         <source
           key={entry.format}
-          srcSet={entry.srcSet}
           sizes={settings.sizes}
+          srcSet={entry.srcSet}
           type={entry.type}
         />
       ))}
 
       <img
         alt=""
-        {...omit(imgProps, ['sizes'])}
+        {...omit(effectiveProps, ['sizes'])}
         src={imgSrc}
       />
     </picture>

@@ -1,8 +1,8 @@
 export type MenuEntries = Record<string, MenuEntry>
 
 export type MenuEntry = {
-  path: string
+  entries?: MenuEntries
   label: string
 
-  entries?: MenuEntries
+  path: string
 }

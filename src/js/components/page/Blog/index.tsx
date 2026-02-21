@@ -1,22 +1,23 @@
 import type { CollectionEntry } from 'astro:content'
-import clsx from 'clsx'
+import type { ComponentProps } from 'react'
+
+import { clsx } from 'clsx'
 
 import BoxLink from '../../atom/BoxLink'
 
 import styles from './index.module.scss'
-import type {ComponentProps} from "react";
 
-export type BlogPageProps = ComponentProps<'div'> & {
-  entries?: Array<CollectionEntry<'posts'>>
+export type BlogPageProps = {
   basepath?: string
-}
+  entries?: Array<CollectionEntry<'posts'>>
+} & ComponentProps<'div'>
 
 // TODO: move to organism instead
 function BlogPage(props: BlogPageProps) {
   const {
+    basepath,
     className,
     entries = [] as Array<CollectionEntry<'posts'>>,
-    basepath,
     ...rest
   } = props
 
@@ -28,19 +29,19 @@ function BlogPage(props: BlogPageProps) {
       {...rest}
     >
       <BoxLink
-        title={mainEntry.data.title}
+        big
         description={mainEntry.data.description}
         href={[basepath, mainEntry.slug].filter(e => !!e).join('/')}
-        big
+        title={mainEntry.data.title}
       />
 
       <div className={styles['p-page__wrapper']}>
         {restEntries.map(entry => (
           <BoxLink
-            key={entry.id}
-            title={entry.data.title}
             description={entry.data.description}
             href={[basepath, entry.slug].filter(e => !!e).join('/')}
+            key={entry.id}
+            title={entry.data.title}
           />
         ))}
       </div>

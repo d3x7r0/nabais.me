@@ -1,8 +1,8 @@
-/* eslint-disable react/jsx-no-literals */
-import type {ComponentProps} from "react";
-import clsx from 'clsx'
+import type { ComponentProps } from 'react'
 
-import {PATHS, TITLES} from '../../../config'
+import { clsx } from 'clsx'
+
+import { PATHS, TITLES } from '../../../config'
 
 import styles from './index.module.scss'
 
@@ -21,7 +21,8 @@ function SiteTitle(props: SiteTitleProps) {
         href={PATHS.HOME}
         title={TITLES.SITE}
       >
-        Nabais<span>.me</span>
+        Nabais
+        <span>.me</span>
       </a>
     </h1>
   )

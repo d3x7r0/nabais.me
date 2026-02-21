@@ -1,9 +1,9 @@
 import { Aperture, Camera, Clock, FileText, MapPin } from 'react-feather'
 
 export const ICONS = {
-  description: FileText,
-  time: Clock,
   camera: Camera,
+  description: FileText,
   lens: Aperture,
   location: MapPin,
+  time: Clock,
 }

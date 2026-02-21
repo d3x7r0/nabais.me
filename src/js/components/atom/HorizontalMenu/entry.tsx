@@ -1,8 +1,9 @@
-import type {ComponentProps, JSX, JSXElementConstructor} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, JSX, JSXElementConstructor } from 'react'
 
-import { getDisplayName } from '../../utils'
+import { clsx } from 'clsx'
+
 import { SIDE } from '../../../constants'
+import { getDisplayName } from '../../utils'
 
 import styles from './index.module.scss'
 
@@ -11,24 +12,25 @@ export type AsHorizontalMenuEntryProps = {
   side?: SIDE
 }
 
+export type HorizontalMenuEntryProps = AsHorizontalMenuEntryProps & JSX.IntrinsicElements['ul']
+
 // Regular HTML elements like <li /> or <p />
 export function AsHorizontalMenuEntry<
   P extends ComponentProps<T>,
-  T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  T extends JSXElementConstructor<any> | keyof JSX.IntrinsicElements,
 >(
   Component: keyof JSX.IntrinsicElements,
   displayName?: string,
-): JSXElementConstructor<JSX.LibraryManagedAttributes<T, P> & AsHorizontalMenuEntryProps>
-
+): JSXElementConstructor<AsHorizontalMenuEntryProps & JSX.LibraryManagedAttributes<T, P>>
 // JSX <Components />
 export function AsHorizontalMenuEntry<P, C>(
-  Component: JSXElementConstructor<P> & C,
+  Component: C & JSXElementConstructor<P>,
   displayName?: string,
-): JSXElementConstructor<JSX.LibraryManagedAttributes<C, P> & AsHorizontalMenuEntryProps>
-
+): JSXElementConstructor<AsHorizontalMenuEntryProps & JSX.LibraryManagedAttributes<C, P>>
 export function AsHorizontalMenuEntry(
   Component: JSX.ElementType,
-  displayName?: string
+  displayName?: string,
 ) {
   const WrappedComponent = (props: AsHorizontalMenuEntryProps) => {
     const { className, side, ...rest } = props
@@ -54,8 +56,6 @@ export function AsHorizontalMenuEntry(
 
   return WrappedComponent
 }
-
-export type HorizontalMenuEntryProps = AsHorizontalMenuEntryProps & JSX.IntrinsicElements['ul']
 export const HorizontalMenuEntry = AsHorizontalMenuEntry('li', 'HorizontalMenuEntry')
 
 export type HorizontalNavMEntryenuProps = AsHorizontalMenuEntryProps & JSX.IntrinsicElements['nav']

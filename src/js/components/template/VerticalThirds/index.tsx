@@ -1,47 +1,20 @@
-import type {ComponentProps, ReactNode} from "react";
+import type { ComponentProps, ReactNode } from 'react'
+
 import classNames from 'clsx'
 
 import styles from './index.module.scss'
 
-export type VerticalThirdsWrapperProps = ComponentProps<'div'> & {
-  open?: boolean
-  limited?: boolean
-}
-
-export function VerticalThirdsWrapper(props: VerticalThirdsWrapperProps) {
-  const {
-    children,
-    className,
-    open,
-    limited = true,
-    ...rest
-  } = props
-
-  const cls = classNames(
-    className,
-    styles['t-vertical-thirds'],
-    {
-      [styles['t-vertical-thirds--open']]: open,
-      [styles['t-vertical-thirds--limited']]: limited,
-    },
-  )
-
-  return (
-    <div
-      {...rest}
-      className={cls}
-    >
-      {children}
-    </div>
-  )
-}
-
-export type VerticalThirdsMainProps = ComponentProps<'main'> & {
+export type VerticalThirdsMainProps = {
   fullWidth?: boolean
-}
+} & ComponentProps<'main'>
+
+export type VerticalThirdsWrapperProps = {
+  limited?: boolean
+  open?: boolean
+} & ComponentProps<'div'>
 
 export function VerticalThirdsMain(props: VerticalThirdsMainProps) {
-  const {fullWidth, className, children, ...rest} = props
+  const { children, className, fullWidth, ...rest } = props
 
   const cls = classNames(
     className,
@@ -58,6 +31,34 @@ export function VerticalThirdsMain(props: VerticalThirdsMainProps) {
     >
       {children}
     </main>
+  )
+}
+
+export function VerticalThirdsWrapper(props: VerticalThirdsWrapperProps) {
+  const {
+    children,
+    className,
+    limited = true,
+    open,
+    ...rest
+  } = props
+
+  const cls = classNames(
+    className,
+    styles['t-vertical-thirds'],
+    {
+      [styles['t-vertical-thirds--limited']]: limited,
+      [styles['t-vertical-thirds--open']]: open,
+    },
+  )
+
+  return (
+    <div
+      {...rest}
+      className={cls}
+    >
+      {children}
+    </div>
   )
 }
 

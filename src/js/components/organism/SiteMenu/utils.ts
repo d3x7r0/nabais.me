@@ -1,10 +1,11 @@
 import type { MenuEntries, MenuEntry } from '../../../types'
+
 import { matchesRoute } from '../../../router/match'
 
-type InternalMenuEntry = Omit<MenuEntry, 'entries'> & {
+type InternalMenuEntry = {
   active: boolean
   entries?: InternalMenuEntry[]
-}
+} & Omit<MenuEntry, 'entries'>
 
 export function transformEntries(
   entries?: MenuEntries,
@@ -19,11 +20,11 @@ export function transformEntries(
     return
   }
 
-  return Object.values(entries).map(entry => {
+  return Object.values(entries).map((entry) => {
     const mapped: InternalMenuEntry = {
+      active: matchesRoute(entry.path, pathname),
       label: entry.label,
       path: entry.path,
-      active: matchesRoute(entry.path, pathname),
     }
 
     if (entry.entries) {

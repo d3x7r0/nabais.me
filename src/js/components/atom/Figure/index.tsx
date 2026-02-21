@@ -1,29 +1,30 @@
-import type {ComponentProps, ReactNode} from "react";
-import clsx from 'clsx'
+import type { Ratio } from '../../utils'
+import type { ComponentProps, ReactNode } from 'react'
 
-import type {Ratio} from '../../utils'
-import {getRatio} from '../../utils'
-import {useDominantColor} from '../../../hooks/color'
-import {useCSSVariable} from '../../../hooks/css'
+import { clsx } from 'clsx'
+
+import { useDominantColor } from '../../../hooks/color'
+import { useCSSVariable } from '../../../hooks/css'
+import { getRatio } from '../../utils'
 
 import styles from './index.module.scss'
 
-export type FigureProps = ComponentProps<'figure'> & {
-  contentClassName?: string
-  caption?: ReactNode
+export type FigureProps = {
   border?: boolean | string
+  caption?: ReactNode
+  contentClassName?: string
   ratio?: Ratio
-}
+} & ComponentProps<'figure'>
 
 function Figure(props: FigureProps) {
   const {
-    className,
-    children,
+    border,
     caption,
+    children,
+    className,
+    contentClassName,
     ratio,
     style,
-    border,
-    contentClassName,
     ...rest
   } = props
 

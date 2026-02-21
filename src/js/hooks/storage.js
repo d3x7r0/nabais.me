@@ -1,5 +1,22 @@
 import { useEffect, useMemo, useState } from 'react'
 
+export function useLocalStorage(key, defaultValue) {
+  return useStorage('localStorage', key, defaultValue)
+}
+
+export function useSessionStorage(key, defaultValue) {
+  return useStorage('sessionStorage', key, defaultValue)
+}
+
+function safelyParseJson(parseString) {
+  try {
+    return JSON.parse(parseString)
+    // eslint-disable-next-line no-unused-vars
+  } catch (e) {
+    return undefined
+  }
+}
+
 function storageAvailable(type) {
   if (typeof window === 'undefined') {
     return false
@@ -17,6 +34,7 @@ function storageAvailable(type) {
     storage.removeItem(x)
     return true
   } catch (e) {
+    /* eslint-disable */
     return e instanceof DOMException && (
     // everything except Firefox
       e.code === 22 ||
@@ -29,14 +47,7 @@ function storageAvailable(type) {
       e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
       // acknowledge QuotaExceededError only if there's something already stored
       storage.length !== 0
-  }
-}
-
-function safelyParseJson(parseString) {
-  try {
-    return JSON.parse(parseString)
-  } catch (e) {
-    return undefined
+    /* eslint-enable */
   }
 }
 
@@ -66,12 +77,4 @@ function useStorage(type = 'localStorage', key, defaultValue) {
   }, [type, key, value, isStorageAvailable])
 
   return [value, setValue]
-}
-
-export function useLocalStorage(key, defaultValue) {
-  return useStorage('localStorage', key, defaultValue)
-}
-
-export function useSessionStorage(key, defaultValue) {
-  return useStorage('sessionStorage', key, defaultValue)
 }

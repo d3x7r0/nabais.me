@@ -1,39 +1,41 @@
-import type {ComponentProps, JSX, JSXElementConstructor} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, JSX, JSXElementConstructor } from 'react'
+
+import { clsx } from 'clsx'
 
 import { getDisplayName } from '../../utils'
 
 import styles from './index.module.scss'
 
 export type AsHorizontalMenuProps = {
+  balanced?: boolean
   className?: string
   scroll?: boolean
-  balanced?: boolean
 }
+
+export type HorizontalMenuProps = AsHorizontalMenuProps & JSX.IntrinsicElements['ul']
 
 // Regular HTML elements like <li /> or <p />
 export function AsHorizontalMenu<
   P extends ComponentProps<T>,
-  T extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  T extends JSXElementConstructor<any> | keyof JSX.IntrinsicElements,
 >(
   Component: keyof JSX.IntrinsicElements,
   displayName?: string,
-): JSXElementConstructor<JSX.LibraryManagedAttributes<T, P> & AsHorizontalMenuProps>
-
+): JSXElementConstructor<AsHorizontalMenuProps & JSX.LibraryManagedAttributes<T, P>>
 // JSX <Components />
 export function AsHorizontalMenu<P, C>(
-  Component: JSXElementConstructor<P> & C,
+  Component: C & JSXElementConstructor<P>,
   displayName?: string,
-): JSXElementConstructor<JSX.LibraryManagedAttributes<C, P> & AsHorizontalMenuProps>
-
+): JSXElementConstructor<AsHorizontalMenuProps & JSX.LibraryManagedAttributes<C, P>>
 export function AsHorizontalMenu(
   Component: JSX.ElementType,
-  displayName?: string
+  displayName?: string,
 ) {
   const WrappedComponent = (props: AsHorizontalMenuProps) => {
     const {
-      className,
       balanced,
+      className,
       scroll,
       ...rest
     } = props
@@ -42,8 +44,8 @@ export function AsHorizontalMenu(
       className,
       styles['a-horizontal-menu'],
       {
-        [styles['a-horizontal-menu--scroll']]: scroll,
         [styles['a-horizontal-menu--balanced']]: balanced,
+        [styles['a-horizontal-menu--scroll']]: scroll,
       },
     )
 
@@ -59,8 +61,6 @@ export function AsHorizontalMenu(
 
   return WrappedComponent
 }
-
-export type HorizontalMenuProps = AsHorizontalMenuProps & JSX.IntrinsicElements['ul']
 export const HorizontalMenu = AsHorizontalMenu('ul', 'HorizontalMenu')
 
 export type HorizontalNavMenuProps = AsHorizontalMenuProps & JSX.IntrinsicElements['nav']

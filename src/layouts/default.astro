@@ -1,11 +1,22 @@
 ---
-import "@fontsource/roboto-condensed"
-import "@fontsource/play/latin-400.css"
-import "@fontsource/play/latin-700.css"
-import "../css/00_base/index.scss"
+import '@fontsource/roboto-condensed'
+import '@fontsource/play/latin-400.css'
+import '@fontsource/play/latin-700.css'
+import '../css/00_base/index.scss'
 
 import CFBeacon from '../js/components/atom/CFBeacon'
+import SiteNavigation from '../js/components/molecule/SiteNavigation'
+import SiteTitle from '../js/components/molecule/SiteTitle'
 import CookieDisclaimer from '../js/components/organism/CookieDisclaimer'
+import SiteFooter from '../js/components/organism/SiteFooter'
+import { SiteMenu } from '../js/components/organism/SiteMenu'
+import {
+  VerticalThirdsFooter,
+  VerticalThirdsHeader,
+  VerticalThirdsMain,
+  VerticalThirdsNav,
+  VerticalThirdsWrapper,
+} from '../js/components/template/VerticalThirds'
 import {
   MENU_ENTRIES,
   PATHS,
@@ -16,23 +27,12 @@ import {
 } from '../js/config'
 import { buildTitle } from '../js/meta'
 import { matchesRoute } from '../js/router/match'
-import {
-  VerticalThirdsFooter,
-  VerticalThirdsHeader,
-  VerticalThirdsMain,
-  VerticalThirdsNav,
-  VerticalThirdsWrapper,
-} from '../js/components/template/VerticalThirds'
-import SiteNavigation from '../js/components/molecule/SiteNavigation'
-import SiteFooter from '../js/components/organism/SiteFooter'
-import SiteTitle from '../js/components/molecule/SiteTitle'
-import SiteMenu from '../js/components/organism/SiteMenu'
 
 export type Props = {
-  title?: string
   description?: string
-  keywords?: string[]
   fullWidth?: boolean
+  keywords?: string[]
+  title?: string
 }
 
 const title = buildTitle(Astro.props.title)
@@ -40,7 +40,7 @@ const fullWidth = Astro.props.fullWidth ?? false
 
 const {
   description = SITE_DESCRIPTION,
-  keywords    = SITE_KEYWORDS
+  keywords = SITE_KEYWORDS,
 } = Astro.props
 
 const isHome = matchesRoute(PATHS.HOME, Astro.url.pathname)
@@ -51,32 +51,48 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
   <head>
     <meta charset="utf-8" />
 
-    <meta name="viewport" content="width=device-width" />
+    <meta content="width=device-width" name="viewport" />
 
-    <link rel="icon" sizes="196x196" href="/icon.png" />
+    <link
+      href="/icon.png"
+      rel="icon"
+      sizes="196x196"
+    />
 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-6-plus.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-ipad-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-ipad-pro.png" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link
+      href="/apple-touch-icon-iphone-6-plus.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/apple-touch-icon-ipad-retina.png"
+      rel="apple-touch-icon"
+      sizes="152x152"
+    />
+    <link
+      href="/apple-touch-icon-ipad-pro.png"
+      rel="apple-touch-icon"
+      sizes="167x167"
+    />
 
-    <meta name="theme-color" content="#224B85" />
+    <meta content="#224B85" name="theme-color" />
 
     <title>{title}</title>
 
-    <meta name="author" content="Luis Nabais" />
-    <meta property="article:author" content="https://www.facebook.com/d3x7r0/">
+    <meta content="Luis Nabais" name="author" />
+    <meta content="https://www.facebook.com/d3x7r0/" property="article:author">
 
-    <meta property="og:site_name" content={TITLES.SITE} />
+    <meta content={TITLES.SITE} property="og:site_name" />
 
     <meta
-      name="description"
       content={description}
+      name="description"
     />
 
     <meta
-      name="keywords"
       content={keywords.join(', ')}
+      name="keywords"
     />
 
     <slot name="head" />
@@ -86,12 +102,12 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
       initSentry()
     </script>
 
-    <meta name="generator" content={Astro.generator} />
+    <meta content={Astro.generator} name="generator" />
   </head>
   <body>
     <VerticalThirdsWrapper
-      open={!isHome}
       limited={!isPhotos}
+      open={!isHome}
     >
       <VerticalThirdsHeader>
         <SiteTitle className="" />
@@ -115,9 +131,9 @@ const isPhotos = matchesRoute(PATHS.PHOTOS, Astro.url.pathname)
     </VerticalThirdsWrapper>
 
     <CookieDisclaimer
-      client:only
+      client:only="react"
       link={PATHS.COOKIE_POLICY}
-      linkProps={{ title: "View cookie policy" }}
+      linkProps={{ title: 'View cookie policy' }}
     />
 
     <CFBeacon token={import.meta.env.PUBLIC_CF_TOKEN} />

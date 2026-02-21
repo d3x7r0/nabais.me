@@ -1,4 +1,9 @@
-import type { JSX } from "react";
+import type { JSX } from 'react'
+
+export type Ratio = {
+  height: number
+  width: number
+} | string
 
 export function getDisplayName(WrappedComponent: JSX.ElementType) {
   if (typeof WrappedComponent === 'string') {
@@ -10,11 +15,6 @@ export function getDisplayName(WrappedComponent: JSX.ElementType) {
   }
 
   return WrappedComponent.name || 'Component'
-}
-
-export type Ratio = string | {
-  width: number
-  height: number
 }
 
 export function getRatio(ratio?: Ratio) {

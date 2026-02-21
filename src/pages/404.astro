@@ -1,12 +1,16 @@
 ---
+import { PATHS, TITLES } from '../js/config'
 import Layout from '../layouts/default.astro'
-import { TITLES, PATHS } from '../js/config'
 
 const SEARCH_URL = new URL('https://www.google.com/search')
 SEARCH_URL.searchParams.set('q', `site:${Astro.site?.hostname}`)
 ---
 <Layout title={TITLES.NOT_FOUND}>
-  <meta name="robots" content="noindex" slot="head" />
+  <meta
+    content="noindex"
+    name="robots"
+    slot="head"
+  />
 
   <h1>{TITLES.NOT_FOUND}</h1>
 
@@ -16,7 +20,15 @@ SEARCH_URL.searchParams.set('q', `site:${Astro.site?.hostname}`)
 
   <ul>
     <li>Double check that there are no typos in the address.</li>
-    <li>Go back to the <a href={PATHS.HOME}>home page</a> and start from there,</li>
-    <li>Try a <a href={SEARCH_URL}>Google search of the website.</a></li>
+    <li>
+      Go back to the
+      <a href={PATHS.HOME}>home page</a>
+      {' '}
+      and start from there,
+    </li>
+    <li>
+      Try a
+      <a href={SEARCH_URL}>Google search of the website.</a>
+    </li>
   </ul>
 </Layout>

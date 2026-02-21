@@ -1,16 +1,16 @@
 const DEFAULT_SRC = 'https://static.cloudflareinsights.com/beacon.min.js'
 
 export type CFBeaconProps = {
+  spa?: boolean
   src?: string
   token?: string
-  spa?: boolean
 }
 
 function CFBeacon(props: CFBeaconProps) {
   const {
+    spa = false,
     src = DEFAULT_SRC,
     token,
-    spa = false,
     ...rest
   } = props
 
@@ -21,13 +21,14 @@ function CFBeacon(props: CFBeaconProps) {
   return (
     <script
       {...rest}
+      data-cf-beacon={JSON.stringify({
+        spa,
+        token,
+      })}
       defer
       src={src}
-      data-cf-beacon={JSON.stringify({
-        token,
-        spa,
-      })}
-    ></script>
+    >
+    </script>
   )
 }
 

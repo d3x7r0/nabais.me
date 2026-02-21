@@ -1,17 +1,18 @@
-import type {ReactNode} from "react";
-import clsx from 'clsx'
+import type { ReactNode } from 'react'
+
+import { clsx } from 'clsx'
 
 import styles from './index.module.scss'
 
 export type GalleryListEntryProps = {
-  className?: string
   children?: ReactNode
+  className?: string
 }
 
 function GalleryListEntry(props: GalleryListEntryProps) {
   const {
-    className,
     children,
+    className,
     ...rest
   } = props
 

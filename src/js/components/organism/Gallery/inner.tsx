@@ -1,20 +1,20 @@
-import type {ReactNode} from "react";
+import type { ReactNode } from 'react'
 
 import Figure from '../../atom/Figure'
-import GalleryList from '../../molecule/GalleryList'
+import { GalleryList } from '../../molecule/GalleryList'
 
 export type GalleryInnerProps = {
   alignBottom?: boolean
-  colorMain?: string
   caption?: ReactNode
   children?: ReactNode
+  colorMain?: string
 }
 
 function GalleryInner(props: GalleryInnerProps) {
   const {
+    alignBottom,
     caption,
     children,
-    alignBottom,
     colorMain,
     ...rest
   } = props
@@ -26,9 +26,9 @@ function GalleryInner(props: GalleryInnerProps) {
         caption={caption}
       >
         <GalleryList
-          noMargin
           alignBottom={alignBottom}
           colorMain={colorMain}
+          noMargin
         >
           {children}
         </GalleryList>

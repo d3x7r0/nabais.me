@@ -3,13 +3,13 @@ import isString from 'lodash-es/isString'
 const PROCESSING_URI_LOCATION_REGEX = /(\w)(?:\/)([^/]+)$/
 
 export function addProcessing(src?: string, opts: {
-  width?: number,
-  height?: number,
-  maxWidth?: number,
-  fit?: string,
-  format?: string,
-  placeholder?: boolean
   crop?: string
+  fit?: string
+  format?: string
+  height?: number
+  maxWidth?: number
+  placeholder?: boolean
+  width?: number
 } = {}) {
   if (!isString(src)) {
     return src

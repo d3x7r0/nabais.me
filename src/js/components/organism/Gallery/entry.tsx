@@ -1,27 +1,28 @@
-import type { JSX, ReactNode} from "react";
+import type { FigureProps } from '../../atom/Figure'
+import type { JSX, ReactNode } from 'react'
 
-import LightboxEntry from '../../molecule/Lightbox'
-import Figure, {type FigureProps} from '../../atom/Figure'
+import Figure from '../../atom/Figure'
+import { LightboxEntry } from '../../molecule/Lightbox'
 
-export type GalleryEntryProps = Omit<FigureProps, 'children'> & {
-  href?: string
+export type GalleryEntryProps = {
   alt?: string
-  lightbox?: string
+  href?: string
   ImgElement?: JSX.ElementType
+  lightbox?: string
   picture: {
-    src: string
     alt?: string
     caption?: ReactNode
+    src: string
   }
-}
+} & Omit<FigureProps, 'children'>
 
 function GalleryEntry(props: GalleryEntryProps) {
   const {
-    picture,
     alt,
     href,
-    lightbox,
     ImgElement = 'img',
+    lightbox,
+    picture,
     ...rest
   } = props
 
@@ -34,9 +35,9 @@ function GalleryEntry(props: GalleryEntryProps) {
   if (lightbox) {
     inner = (
       <LightboxEntry
-        src={href ?? picture.src}
-        group={lightbox}
         caption={picture.caption || rest.caption}
+        group={lightbox}
+        src={href ?? picture.src}
       >
         {img}
       </LightboxEntry>

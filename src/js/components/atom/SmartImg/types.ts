@@ -1,47 +1,12 @@
-import type {ComponentPropsWithoutRef, ReactNode} from 'react'
-
-export type PulitzerImageFormat = 'png' | 'jpg' | 'jpeg' | 'webp' | 'avif'
-
-export type PulitzerSettings = {
-  min?: number
-  max?: number
-  width?: number
-  height?: number
-  fit?: boolean
-  maxWidth?: number
-  sizes?: string
-  lazy?: boolean
-  placeholder?: boolean | string
-  crop?: string | { width: number; height: number }
-  formats: PulitzerImageFormat[]
-}
-
-export type SmartImgContext = {
-  minSize?: number
-  maxSize?: number
-  defaultSize?: number
-  sizes?: string
-  lazy?: boolean
-  placeholder?: boolean | string
-  crop?: string | { width: number; height: number }
-  formats: PulitzerImageFormat[]
-}
-
-export type SmartImgProps = ComponentPropsWithoutRef<'picture'> &
-  Partial<Omit<SmartImgContext, 'formats'>> & {
-    src?: string
-    formats?: PulitzerImageFormat[]
-    imgProps?: ComponentPropsWithoutRef<'img'>
-    width?: number | string
-    height?: number | string
-    alt?: string
-  }
+import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 export type PulitzerFormatDef = {
   format: PulitzerImageFormat
   type: string
   enabled: (settings: PulitzerSettings, contentType?: string) => boolean
 }
+
+export type PulitzerImageFormat = 'avif' | 'jpeg' | 'jpg' | 'png' | 'webp'
 
 export type PulitzerProcessingOpts = {
   crop?: string
@@ -50,6 +15,41 @@ export type PulitzerProcessingOpts = {
   placeholder?: boolean
 }
 
-export type SmartImgProviderProps = Partial<SmartImgContext> & {
-  children?: ReactNode
+export type PulitzerSettings = {
+  crop?: { height: number, width: number } | string
+  fit?: boolean
+  formats: PulitzerImageFormat[]
+  height?: number
+  lazy?: boolean
+  max?: number
+  maxWidth?: number
+  min?: number
+  placeholder?: boolean | string
+  sizes?: string
+  width?: number
 }
+
+export type SmartImgContextDetails = {
+  crop?: { height: number, width: number } | string
+  defaultSize?: number
+  formats: PulitzerImageFormat[]
+  lazy?: boolean
+  maxSize?: number
+  minSize?: number
+  placeholder?: boolean | string
+  sizes?: string
+}
+
+export type SmartImgProps = {
+  alt?: string
+  formats?: PulitzerImageFormat[]
+  height?: number | string
+  imgProps?: ComponentPropsWithoutRef<'img'>
+  src?: string
+  width?: number | string
+}
+& ComponentPropsWithoutRef<'picture'> & Partial<Omit<SmartImgContextDetails, 'formats'>>
+
+export type SmartImgProviderProps = {
+  children?: ReactNode
+} & Partial<SmartImgContextDetails>

@@ -1,26 +1,28 @@
-import type {JSX} from "react";
-import {useMemo} from "react";
-import {GalleryListEntry} from '../../molecule/GalleryList'
-import {LightboxWrapper} from '../../molecule/Lightbox'
+import type { GalleryEntryProps } from './entry'
+import type { GalleryInnerProps } from './inner'
+import type { JSX } from 'react'
 
-import type {GalleryInnerProps} from './inner'
-import GalleryInner from './inner'
-import type {GalleryEntryProps} from './entry'
+import { useMemo } from 'react'
+
+import { GalleryListEntry } from '../../molecule/GalleryList'
+import { LightboxWrapper } from '../../molecule/Lightbox'
+
 import GalleryEntry from './entry'
+import GalleryInner from './inner'
 
 let COUNTER = 0
 
-export type GalleryProps = GalleryInnerProps & {
-  lightbox?: boolean
+export type GalleryProps = {
   entries: GalleryEntryProps[]
   ImgElement?: JSX.ElementType
-}
+  lightbox?: boolean
+} & GalleryInnerProps
 
 const Gallery = function Gallery(props: GalleryProps) {
   const {
-    lightbox = false,
     entries = [],
     ImgElement,
+    lightbox = false,
     ...rest
   } = props
 
@@ -48,8 +50,8 @@ const Gallery = function Gallery(props: GalleryProps) {
         <GalleryListEntry key={entry.id || idx}>
           <GalleryEntry
             {...entry}
-            lightbox={lightboxGroup}
             ImgElement={ImgElement}
+            lightbox={lightboxGroup}
           />
         </GalleryListEntry>
       ))}

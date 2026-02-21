@@ -1,12 +1,12 @@
-import {createContext} from "react";
-
 import type { LightboxContextValue } from './types'
 
+import { createContext } from 'react'
+
 export const LightboxContext = createContext<LightboxContextValue>({
-  register: () => {},
-  unregister: () => {},
-  open: () => {},
-  close: () => {},
+  close() {},
+  open() {},
+  register() {},
+  unregister() {},
 })
 
 export const LightboxProvider = LightboxContext.Provider

@@ -1,28 +1,28 @@
-import type {ReactNode} from "react";
+import type { ReactNode } from 'react'
 
 export type LightboxContextValue = {
-  register: (id: string, data: Omit<LightboxEntry, 'id' | 'group'>, group?: string) => void
-  unregister: (id: string, group?: string) => void
-  open: (id: string, group?: string) => void
   close: () => void
-}
-
-export type LightboxState = {
-  open: boolean,
-  group?: string
-  idx?: number
+  open: (id: string, group?: string) => void
+  register: (id: string, data: Omit<LightboxEntry, 'group' | 'id'>, group?: string) => void
+  unregister: (id: string, group?: string) => void
 }
 
 export type LightboxEntry = {
-  src: string,
-  id: string
   caption?: ReactNode
-  group: string,
+  group: string
+  id: string
+  src: string
 }
 
 export type LightboxGroupEntry = {
-  id: string,
   data: LightboxEntry
+  id: string
 }
 
 export type LightboxGroupState = Record<string, LightboxGroupEntry[]>
+
+export type LightboxState = {
+  group?: string
+  idx?: number
+  open: boolean
+}

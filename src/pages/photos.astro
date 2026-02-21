@@ -1,9 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { PhotosImageEntry } from '../js/components/page/Photos'
+import type { CollectionEntry } from 'astro:content'
+
 import { getCollection } from 'astro:content'
 
+import PhotosPage from '../js/components/page/Photos'
 import { TITLES } from '../js/config'
-import PhotosPage, {type PhotosImageEntry} from '../js/components/page/Photos'
 import PageLayout from '../layouts/default.astro'
 
 const photos: CollectionEntry<'photos'>[] = await getCollection('photos')
@@ -11,7 +13,7 @@ const photos: CollectionEntry<'photos'>[] = await getCollection('photos')
 const BASE_PHOTOS_URL = import.meta.env.PUBLIC_BASE_PHOTOS_URL ?? Astro.site?.toString()
 const BASE_PHOTOS_PATH = '/static/photos'
 
-const images: PhotosImageEntry[] = photos.map(entry => {
+const images: PhotosImageEntry[] = photos.map((entry) => {
   const href = new URL(`${BASE_PHOTOS_PATH}/${entry.id}`, BASE_PHOTOS_URL).toString()
 
   return {
@@ -24,8 +26,12 @@ const images: PhotosImageEntry[] = photos.map(entry => {
 
 <PageLayout title={TITLES.PHOTOS}>
   {BASE_PHOTOS_URL && (
-    <link rel="preconnect" href={BASE_PHOTOS_URL} slot="head" />
+    <link
+      href={BASE_PHOTOS_URL}
+      rel="preconnect"
+      slot="head"
+    />
   )}
 
-  <PhotosPage images={images} client:only />
+  <PhotosPage client:only="react" images={images} />
 </PageLayout>

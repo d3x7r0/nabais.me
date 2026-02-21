@@ -1,32 +1,33 @@
-import type {ComponentProps, ReactNode} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, ReactNode } from 'react'
 
-import {useAltDominantColor, useBgColor, useBorderColor} from '../../../hooks/color'
+import { clsx } from 'clsx'
+
+import { useAltDominantColor, useBgColor, useBorderColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
 const DEFAULT_CLOSE_LABEL = 'Close'
 
-export type ToastProps = ComponentProps<'div'> & {
-  closed?: boolean,
-  onClose?: () => void,
-  closeLabel?: ReactNode,
-  colorMain?: string,
-  colorBackground?: string,
-  colorBorder?: string,
-}
+export type ToastProps = {
+  closed?: boolean
+  closeLabel?: ReactNode
+  colorBackground?: string
+  colorBorder?: string
+  colorMain?: string
+  onClose?: () => void
+} & ComponentProps<'div'>
 
 function Toast(props: ToastProps) {
   const {
-    className,
     children,
-    closeLabel = DEFAULT_CLOSE_LABEL,
-    onClose,
+    className,
     closed,
-    style,
-    colorMain,
+    closeLabel = DEFAULT_CLOSE_LABEL,
     colorBackground,
     colorBorder,
+    colorMain,
+    onClose,
+    style,
     ...rest
   } = props
 
@@ -54,8 +55,8 @@ function Toast(props: ToastProps) {
   return (
     <div
       {...rest}
-      style={computedStyle}
       className={computedClassName}
+      style={computedStyle}
     >
       <div className={styles['m-toast__inner']}>
         <div className={styles['m-toast__content']}>
@@ -63,9 +64,9 @@ function Toast(props: ToastProps) {
         </div>
 
         <button
-          type="button"
           className={styles['m-toast__close']}
           onClick={onClose}
+          type="button"
         >
           {closeLabel}
         </button>

@@ -1,21 +1,22 @@
+import type { PulitzerImageFormat, PulitzerProcessingOpts, PulitzerSettings } from './types'
+
 import isString from 'lodash-es/isString'
 
-import {addProcessing} from './processing.ts'
-import {guessContentType} from './utils.ts'
-import {calculateSizes} from './sizes.ts'
-import {FORMATS} from './constants'
-import type {PulitzerImageFormat, PulitzerProcessingOpts, PulitzerSettings,} from './types'
+import { FORMATS } from './constants'
+import { addProcessing } from './processing.ts'
+import { calculateSizes } from './sizes.ts'
+import { guessContentType } from './utils.ts'
 
 export function buildSources(
   src: string | undefined,
-  settings: PulitzerSettings
-): [string, Array<{ format: PulitzerImageFormat, type: string, sizes: number[], srcSet: string }>] {
+  settings: PulitzerSettings,
+): [string, Array<{ format: PulitzerImageFormat, sizes: number[], srcSet: string, type: string }>] {
   const processingOpts: PulitzerProcessingOpts = {}
 
   if (settings.crop) {
-    processingOpts.crop = isString(settings.crop) ?
-      settings.crop :
-      `${settings.crop.width}x${settings.crop.height}`
+    processingOpts.crop = isString(settings.crop)
+      ? settings.crop
+      : `${settings.crop.width}x${settings.crop.height}`
   }
 
   const sources = src ? buildSourceSet(settings, src, processingOpts) : []
@@ -24,41 +25,10 @@ export function buildSources(
   return [imgSrc, sources]
 }
 
-function buildSourceSet(
-  settings: PulitzerSettings,
-  src: string,
-  processingOpts: PulitzerProcessingOpts
-): Array<{ format: PulitzerImageFormat, type: string, sizes: number[], srcSet: string }> {
-  const contentType = guessContentType(src)
-
-  const sizes = calculateSizes(settings)
-
-  return FORMATS
-    .filter(f => f.type === contentType || f.enabled(settings, contentType))
-    .map(f => {
-      const srcSet = sizes.map((size) => {
-        const sizeSrc = addProcessing(src, {
-          ...processingOpts,
-          ...(f.type === contentType ? {} : {format: f.format}),
-          maxWidth: size,
-        })
-
-        return `${sizeSrc} ${size}w`
-      }).join(', ')
-
-      return {
-        format: f.format,
-        type: f.type,
-        sizes: sizes,
-        srcSet,
-      }
-    })
-}
-
 function buildImageSrc(
   settings: PulitzerSettings,
   src: string | undefined,
-  processingOpts: PulitzerProcessingOpts
+  processingOpts: PulitzerProcessingOpts,
 ): string | undefined {
   if (settings.placeholder === true) {
     return addProcessing(src, {
@@ -79,4 +49,35 @@ function buildImageSrc(
   }
 
   return addProcessing(src, processingOpts)
+}
+
+function buildSourceSet(
+  settings: PulitzerSettings,
+  src: string,
+  processingOpts: PulitzerProcessingOpts,
+): Array<{ format: PulitzerImageFormat, sizes: number[], srcSet: string, type: string }> {
+  const contentType = guessContentType(src)
+
+  const sizes = calculateSizes(settings)
+
+  return FORMATS
+    .filter(f => f.type === contentType || f.enabled(settings, contentType))
+    .map((f) => {
+      const srcSet = sizes.map((size) => {
+        const sizeSrc = addProcessing(src, {
+          ...processingOpts,
+          ...(f.type === contentType ? {} : { format: f.format }),
+          maxWidth: size,
+        })
+
+        return `${sizeSrc} ${size}w`
+      }).join(', ')
+
+      return {
+        format: f.format,
+        sizes,
+        srcSet,
+        type: f.type,
+      }
+    })
 }

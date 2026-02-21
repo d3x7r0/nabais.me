@@ -1,6 +1,4 @@
-@use "../../../../css/00_base/variables";
-
-variables.$loadingDuration: 2s;
+@use "../../../../css/00_base/variables" as v;
 
 .a-spinner {
   display: block;
@@ -11,7 +9,7 @@ variables.$loadingDuration: 2s;
   width: 2.1em;
 
   &__block {
-    animation-duration: variables.$loadingDuration;
+    animation-duration: v.$loadingDuration;
     animation-fill-mode: forwards;
     animation-iteration-count: 0;
     animation-timing-function: ease-in-out;
@@ -22,25 +20,25 @@ variables.$loadingDuration: 2s;
 
     &--one {
       animation-name: a-spinner--one;
-      background: variables.$spinnerColor;
+      background: v.$spinnerColor;
       transform: translate(0, 0);
     }
 
     &--two {
       animation-name: a-spinner--two;
-      background: variables.$spinnerAltColor;
+      background: v.$spinnerAltColor;
       transform: translate(1.1em, 0);
     }
 
     &--three {
       animation-name: a-spinner--three;
-      background: variables.$spinnerColor;
+      background: v.$spinnerColor;
       transform: translate(1.1em, 1.1em);
     }
 
     &--four {
       animation-name: a-spinner--four;
-      background: variables.$spinnerAltColor;
+      background: v.$spinnerAltColor;
       transform: translate(0, 1.1em);
     }
   }

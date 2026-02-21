@@ -1,25 +1,26 @@
+import type { ReactNode } from 'react'
+
+import { clsx } from 'clsx'
 import capitalize from 'lodash-es/capitalize'
-import clsx from 'clsx'
 
-import IconText from '../../atom/IconText'
 import { SIDE } from '../../../constants'
+import IconText from '../../atom/IconText'
 
-import styles from './index.module.scss'
 import { ICONS } from './constants'
-import type {ReactNode} from "react";
+import styles from './index.module.scss'
+
+export type ImageDetailsEntryProps = {
+  children?: ReactNode
+  className?: string
+  label?: ICON_LABEL
+}
 
 type ICON_LABEL = keyof typeof ICONS
 
-export type ImageDetailsEntryProps = {
-  label?: ICON_LABEL
-  className?: string
-  children?: ReactNode
-}
-
 function ImageDetailsEntry(props: ImageDetailsEntryProps) {
   const {
-    label,
     children,
+    label,
   } = props
 
   const Icon = label ? ICONS[label] : undefined

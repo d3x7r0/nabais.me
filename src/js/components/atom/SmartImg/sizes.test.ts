@@ -85,12 +85,12 @@ describe('components/atom/SmartImg', () => {
     })
 
     it('handles min and max values correctly', () => {
-      const result1 = calculateSizes({ min: 0, max: 100 })
+      const result1 = calculateSizes({ max: 100, min: 0 })
       expect(result1).toEqual([
         120,
       ])
 
-      const result2 = calculateSizes({ min: 300, max: 1300 })
+      const result2 = calculateSizes({ max: 1300, min: 300 })
       expect(result2).toEqual([
         320,
         480,
@@ -100,7 +100,7 @@ describe('components/atom/SmartImg', () => {
         1600,
       ])
 
-      const result3 = calculateSizes({ min: 800, max: 4000 })
+      const result3 = calculateSizes({ max: 4000, min: 800 })
       expect(result3).toEqual([
         920,
         1280,

@@ -1,46 +1,48 @@
-import type {CollectionEntry} from "astro:content";
-import {type ComponentProps, useMemo, useState} from 'react'
+import type { SliderEntry } from '../../organism/ImageSlider'
+import type { CollectionEntry } from 'astro:content'
+import type { ComponentProps } from 'react'
+
 import classNames from 'clsx'
+import { useMemo, useState } from 'react'
 
 import fontStyles from '../../../../css/06_utils/fonts.module.scss'
-import type {SliderEntry} from '../../organism/ImageSlider'
-import ImageSlider from '../../organism/ImageSlider'
 import ImageDetails from '../../organism/ImageDetails'
-
-import NBBSmartImg, {SmartImgSettingsProvider} from './smart-img'
+import ImageSlider from '../../organism/ImageSlider'
 
 import styles from './index.module.scss'
+import NBBSmartImg from './SmartImg'
+import { SmartImgSettingsProvider } from './SmartImg/provider.ts'
 
-export type PhotosImageEntry = CollectionEntry<'photos'>['data'] & {
+export type PhotosImageEntry = {
   href: string
-  picture?: ComponentProps<'img'> & {
+  picture?: {
     caption?: string
-  }
-}
+  } & ComponentProps<'img'>
+} & CollectionEntry<'photos'>['data']
 
 export type PhotosProps = {
   images?: PhotosImageEntry[]
 }
 
 const RATIO = {
-  width: 3,
   height: 2,
+  width: 3,
 }
 
 const BREAKPOINT = 720
 
 function Photos(props: PhotosProps) {
-  const {images = []} = props
+  const { images = [] } = props
   const [activeSlide, setActiveSlide] = useState(0)
 
   const entries: SliderEntry[] = useMemo(
     () => images.map((entry) => {
       const {
-        href,
         alt,
         caption,
-        picture = {},
+        href,
         meta,
+        picture = {},
       } = entry
 
       const src = href
@@ -78,11 +80,11 @@ function Photos(props: PhotosProps) {
         href: src,
         picture: {
           ...picture,
-          ...(pictureCaption ? {caption: pictureCaption} : {}),
-          src,
+          ...(pictureCaption ? { caption: pictureCaption } : {}),
           alt: alt || '',
           className: classNames(picture.className, styles['p-photos__image']),
           loading: 'lazy',
+          src,
         },
         ratio: RATIO,
       }
@@ -98,20 +100,22 @@ function Photos(props: PhotosProps) {
   return (
     <SmartImgSettingsProvider
       crop="3x2"
-      sizes={`(max-width: ${BREAKPOINT / 0.65}px) 95vw, 65vw`}
-      maxSize={1440}
       defaultSize={320}
+      maxSize={1440}
+      sizes={`(max-width: ${BREAKPOINT / 0.65}px) 95vw, 65vw`}
     >
       <ImageSlider
-        ImgComponent={NBBSmartImg}
         className={fontStyles['u-font-roboto-condensed']}
         entries={entries}
+        ImgComponent={NBBSmartImg}
         onSlideChange={(idx: number) => setActiveSlide(idx)}
       />
 
-      {meta[activeSlide] ? (
-        <ImageDetails {...meta[activeSlide]} />
-      ) : null}
+      {meta[activeSlide]
+        ? (
+            <ImageDetails {...meta[activeSlide]} />
+          )
+        : null}
     </SmartImgSettingsProvider>
   )
 }

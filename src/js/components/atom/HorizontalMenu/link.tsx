@@ -1,25 +1,26 @@
-import type {JSX} from "react";
-import clsx from 'clsx'
+import type { JSX } from 'react'
 
-import {useAltColor, useAltDominantColor} from '../../../hooks/color'
+import { clsx } from 'clsx'
+
+import { useAltColor, useAltDominantColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
-export type HorizontalMenuLinkProps = JSX.IntrinsicElements['a'] & {
-  active?: boolean,
-  accentColor?: string,
-  hoverColor?: string,
-}
+export type HorizontalMenuLinkProps = {
+  accentColor?: string
+  active?: boolean
+  hoverColor?: string
+} & JSX.IntrinsicElements['a']
 
 function HorizontalMenuLink(props: HorizontalMenuLinkProps) {
   const {
-    active,
-    className,
-    href,
-    children,
-    style,
     accentColor,
+    active,
+    children,
+    className,
     hoverColor,
+    href,
+    style,
     ...rest
   } = props
 
@@ -42,9 +43,9 @@ function HorizontalMenuLink(props: HorizontalMenuLinkProps) {
   return (
     <a
       {...rest}
+      className={resolvedClassName}
       href={href}
       style={computedStyle}
-      className={resolvedClassName}
     >
       {children}
     </a>

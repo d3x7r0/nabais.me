@@ -1,17 +1,18 @@
-import type {ReactNode} from "react";
-import clsx from 'clsx'
+import type { ReactNode } from 'react'
+
+import { clsx } from 'clsx'
 
 import styles from './index.module.scss'
 
 export type ContentWrapperProps = {
-  className?: string
   children?: ReactNode
+  className?: string
 }
 
 function ContentWrapper(props: ContentWrapperProps) {
   const {
-    className,
     children,
+    className,
     ...rest
   } = props
 

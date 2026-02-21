@@ -1,30 +1,31 @@
-import type {ComponentProps, CSSProperties} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, CSSProperties } from 'react'
 
-import {SIDE} from '../../../constants'
-import {useCSSVariable} from '../../../hooks/css'
+import { clsx } from 'clsx'
+
+import { SIDE } from '../../../constants'
+import { useCSSVariable } from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
-export type VerticalListProps = ComponentProps<'ul'> & {
+export type VerticalListProps = {
+  grid?: boolean
+  gridMobile?: boolean
+  gridWidthLarge?: number
+  gridWidthSmall?: number
+  noMargin?: boolean
   side?: SIDE
-  noMargin?: boolean,
-  grid?: boolean,
-  gridMobile?: boolean,
-  gridWidthSmall?: number,
-  gridWidthLarge?: number,
-}
+} & ComponentProps<'ul'>
 
 function VerticalList(props: VerticalListProps) {
   const {
     children,
     className,
-    side = SIDE.LEFT,
     grid,
     gridMobile,
-    noMargin,
-    gridWidthSmall = 2,
     gridWidthLarge = 4,
+    gridWidthSmall = 2,
+    noMargin,
+    side = SIDE.LEFT,
     ...rest
   } = props
 
@@ -37,18 +38,18 @@ function VerticalList(props: VerticalListProps) {
     className,
     styles['m-vertical-list'],
     {
-      [styles['m-vertical-list--right']]: side === SIDE.RIGHT,
-      [styles['m-vertical-list--no-margin']]: noMargin,
-      [styles['m-vertical-list--grid']]: grid,
       [styles['m-vertical-list--grid-mobile']]: gridMobile,
+      [styles['m-vertical-list--grid']]: grid,
+      [styles['m-vertical-list--no-margin']]: noMargin,
+      [styles['m-vertical-list--right']]: side === SIDE.RIGHT,
     },
   )
 
   return (
     <ul
       {...rest}
-      style={computedStyle}
       className={resolvedClassName}
+      style={computedStyle}
     >
       {children}
     </ul>

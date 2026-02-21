@@ -1,5 +1,6 @@
-import type {ComponentProps, ReactNode} from "react";
-import clsx from 'clsx'
+import type { ComponentProps } from 'react'
+
+import { clsx } from 'clsx'
 
 import { useCSSVariable } from '../../../hooks/css'
 
@@ -7,20 +8,20 @@ import styles from './index.module.scss'
 
 const BACKGROUND_CHARACTER_LIMIT = 160
 
-type BoxLinkProps = ComponentProps<'article'> & {
-  title: string
-  href: string
-  description?: string
+type BoxLinkProps = {
   big?: boolean
-}
+  description?: string
+  href: string
+  title: string
+} & ComponentProps<'article'>
 
 // TODO: support image background instead of text
 function BoxLink(props: BoxLinkProps) {
   const {
-    title,
-    href,
-    description,
     big = false,
+    description,
+    href,
+    title,
     ...rest
   } = props
 
@@ -31,10 +32,10 @@ function BoxLink(props: BoxLinkProps) {
 
   return (
     <article
-      style={style}
       className={clsx(styles['a-box-link'], {
         [styles['p-page__entry--big']]: big,
       })}
+      style={style}
       {...rest}
     >
       <a className={styles['a-box-link__link']} href={href}>

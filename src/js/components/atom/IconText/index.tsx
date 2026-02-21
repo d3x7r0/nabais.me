@@ -1,46 +1,53 @@
-import type {CSSProperties, JSX, ReactNode} from "react";
-import clsx from 'clsx'
+import type { CSSProperties, JSX, ReactNode } from 'react'
 
-import {SIDE} from '../../../constants'
-import {useAltDominantColor} from '../../../hooks/color'
+import { clsx } from 'clsx'
+
+import { SIDE } from '../../../constants'
+import { useAltDominantColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
 export type IconTextProps = {
-  iconColor?: string,
-  side?: SIDE
-  IconComponent?: JSX.ElementType
-  className?: string
-  style?: CSSProperties
   children?: ReactNode
+  className?: string
+  iconColor?: string
+  IconComponent?: JSX.ElementType
+  side?: SIDE
+  style?: CSSProperties
 }
 
 function IconText(props: IconTextProps) {
   const {
+    children,
     className,
-    style,
     iconColor,
     IconComponent,
     side = SIDE.RIGHT,
-    children,
+    style,
     ...rest
   } = props
 
   const computedStyle = useAltDominantColor(iconColor, style)
 
-  const icon = IconComponent ? (
-    <IconComponent role="img" className={styles['a-icon-text__icon']} />
-  ) : null
+  const icon = IconComponent
+    ? (
+        <IconComponent className={styles['a-icon-text__icon']} role="img" />
+      )
+    : null
 
   const hasLeftIcon = side === SIDE.LEFT
 
   return (
     <span
       {...rest}
-      style={computedStyle}
       className={clsx(className, styles['a-icon-text'])}
+      style={computedStyle}
     >
-      {hasLeftIcon ? icon : null} {children} {hasLeftIcon ? null : icon}
+      {hasLeftIcon ? icon : null}
+      {' '}
+      {children}
+      {' '}
+      {hasLeftIcon ? null : icon}
     </span>
   )
 }

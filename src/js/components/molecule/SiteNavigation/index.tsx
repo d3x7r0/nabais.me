@@ -1,21 +1,22 @@
-import type {ReactNode} from "react";
-import clsx from 'clsx'
+import type { ReactNode } from 'react'
+
+import { clsx } from 'clsx'
 
 import styles from './index.module.scss'
 
 export type SiteNavigationProps = {
-  className?: string
   children?: ReactNode
+  className?: string
 }
 
 function SiteNavigation(props: SiteNavigationProps) {
   const {
-    className,
     children,
+    className,
   } = props
 
   return (
-    <nav role="navigation" className={clsx(className, styles['m-site-navigation'])}>
+    <nav className={clsx(className, styles['m-site-navigation'])} role="navigation">
       {children}
     </nav>
   )

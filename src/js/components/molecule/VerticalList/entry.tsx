@@ -1,5 +1,6 @@
-import type { ComponentProps } from "react";
-import clsx from 'clsx'
+import type { ComponentProps } from 'react'
+
+import { clsx } from 'clsx'
 
 import styles from './index.module.scss'
 
@@ -7,8 +8,8 @@ export type VerticalListEntryProps = ComponentProps<'li'>
 
 function VerticalListEntry(props: VerticalListEntryProps) {
   const {
-    className,
     children,
+    className,
     ...rest
   } = props
 

@@ -1,43 +1,50 @@
-import type {ComponentProps, JSX} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, JSX } from 'react'
+
+import { clsx } from 'clsx'
 
 import { SIDE } from '../../../constants'
 import { useAltDominantColor } from '../../../hooks/color'
 
 import styles from './index.module.scss'
 
-export type IconLinkProps = ComponentProps<'a'> & {
+export type IconLinkProps = {
   iconColor?: string
-  side?: SIDE
   IconComponent?: JSX.ElementType
-}
+  side?: SIDE
+} & ComponentProps<'a'>
 
 function IconLink(props: IconLinkProps) {
   const {
+    children,
     className,
-    style,
     iconColor,
     IconComponent,
     side = SIDE.RIGHT,
-    children,
+    style,
     ...rest
   } = props
 
   const computedStyle = useAltDominantColor(iconColor, style)
 
-  const icon = IconComponent ? (
-    <IconComponent role="img" className={styles['a-icon-link__icon']} />
-  ) : null
+  const icon = IconComponent
+    ? (
+        <IconComponent className={styles['a-icon-link__icon']} role="img" />
+      )
+    : null
 
   const hasLeftIcon = side === SIDE.LEFT
 
   return (
     <a
       {...rest}
-      style={computedStyle}
       className={clsx(className, styles['a-icon-link'])}
+      style={computedStyle}
     >
-      {hasLeftIcon ? icon : null} {children} {hasLeftIcon ? null : icon}
+      {hasLeftIcon ? icon : null}
+      {' '}
+      {children}
+      {' '}
+      {hasLeftIcon ? null : icon}
     </a>
   )
 }

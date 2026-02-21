@@ -1,21 +1,22 @@
+import type { MenuEntries } from '../../../types'
+import type { HorizontalNavMenuProps } from '../../atom/HorizontalMenu'
+
 import { useMemo } from 'react'
 
-import type { HorizontalNavMenuProps } from '../../atom/HorizontalMenu'
 import { HorizontalNavMenu } from '../../atom/HorizontalMenu'
-import type { MenuEntries } from '../../../types'
 
-import { transformEntries } from './utils'
 import SiteMenuEntry from './entry'
+import { transformEntries } from './utils'
 
-export type SiteMenuProps = Omit<HorizontalNavMenuProps, 'scroll'> & {
-  pathname?: string
+export type SiteMenuProps = {
   entries: MenuEntries
-}
+  pathname?: string
+} & Omit<HorizontalNavMenuProps, 'scroll'>
 
 function SiteMenu(props: SiteMenuProps) {
   const {
-    pathname,
     entries,
+    pathname,
     ...rest
   } = props
 
@@ -33,10 +34,10 @@ function SiteMenu(props: SiteMenuProps) {
       {...rest}
     >
       {effectiveEntries.map(
-        (entry) => (
+        entry => (
           <SiteMenuEntry
-            key={entry.path}
             data-astro-prefetch="hover"
+            key={entry.path}
             {...entry}
           />
         ),

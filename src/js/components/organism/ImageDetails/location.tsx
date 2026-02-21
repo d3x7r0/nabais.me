@@ -1,4 +1,4 @@
-import type {ReactNode} from "react";
+import type { ReactNode } from 'react'
 
 const MAP_LABEL = 'Map'
 
@@ -9,8 +9,8 @@ export type ImageDetailsLocationProps = {
 
 function ImageDetailsLocation(props: ImageDetailsLocationProps): ReactNode {
   const {
-    value,
     href,
+    value,
   } = props
 
   if (!href) {
@@ -23,7 +23,15 @@ function ImageDetailsLocation(props: ImageDetailsLocationProps): ReactNode {
     return map
   }
 
-  return (<>{value} [{map}]</>)
+  return (
+    <>
+      {value}
+      {' '}
+      [
+      {map}
+      ]
+    </>
+  )
 }
 
 export default ImageDetailsLocation

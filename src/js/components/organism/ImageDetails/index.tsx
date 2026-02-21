@@ -1,28 +1,29 @@
-import type {ComponentProps, ReactNode} from "react";
-import clsx from 'clsx'
+import type { ComponentProps, ReactNode } from 'react'
 
-import styles from './index.module.scss'
+import { clsx } from 'clsx'
+
 import ImageDetailsEntry from './entry'
+import styles from './index.module.scss'
 import ImageDetailsLocation from './location'
 
-export type ImageDetailsProps = ComponentProps<'dl'> & {
-  description?: ReactNode
-  time?: ReactNode
+export type ImageDetailsProps = {
   camera?: ReactNode
+  description?: ReactNode
   lens?: ReactNode
   location?: ReactNode
   map?: string
-}
+  time?: ReactNode
+} & ComponentProps<'dl'>
 
 function ImageDetails(props: ImageDetailsProps) {
   const {
-    description,
-    time,
     camera,
+    className,
+    description,
     lens,
     location,
     map,
-    className,
+    time,
     ...rest
   } = props
 
@@ -31,35 +32,45 @@ function ImageDetails(props: ImageDetailsProps) {
       {...rest}
       className={clsx(styles['o-image-details'], className)}
     >
-      {description ? (
-        <ImageDetailsEntry label="description">
-          {description}
-        </ImageDetailsEntry>
-      ) : null}
+      {description
+        ? (
+            <ImageDetailsEntry label="description">
+              {description}
+            </ImageDetailsEntry>
+          )
+        : null}
 
-      {time ? (
-        <ImageDetailsEntry label="time">
-          {time}
-        </ImageDetailsEntry>
-      ) : null}
+      {time
+        ? (
+            <ImageDetailsEntry label="time">
+              {time}
+            </ImageDetailsEntry>
+          )
+        : null}
 
-      {camera ? (
-        <ImageDetailsEntry label="camera">
-          {camera}
-        </ImageDetailsEntry>
-      ) : null}
+      {camera
+        ? (
+            <ImageDetailsEntry label="camera">
+              {camera}
+            </ImageDetailsEntry>
+          )
+        : null}
 
-      {lens ? (
-        <ImageDetailsEntry label="lens">
-          {lens}
-        </ImageDetailsEntry>
-      ) : null}
+      {lens
+        ? (
+            <ImageDetailsEntry label="lens">
+              {lens}
+            </ImageDetailsEntry>
+          )
+        : null}
 
-      {(location || map) ? (
-        <ImageDetailsEntry label="location">
-          <ImageDetailsLocation value={location} href={map} />
-        </ImageDetailsEntry>
-      ) : null}
+      {(location || map)
+        ? (
+            <ImageDetailsEntry label="location">
+              <ImageDetailsLocation href={map} value={location} />
+            </ImageDetailsEntry>
+          )
+        : null}
     </dl>
   )
 }

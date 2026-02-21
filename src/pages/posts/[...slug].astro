@@ -1,8 +1,10 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
-import Layout from '../../layouts/default.astro'
+import { getCollection } from 'astro:content'
+
 import ContentWrapper from '../../js/components/molecule/ContentWrapper'
+import Layout from '../../layouts/default.astro'
 
 export type Props = {
   entry: CollectionEntry<'posts'>
@@ -20,12 +22,20 @@ const entry: CollectionEntry<'posts'> = Astro.props.entry
 const { Content } = await entry.render()
 ---
 <Layout
-  title={entry.data.title}
   description={entry.data.description}
   keywords={entry.data.tags}
+  title={entry.data.title}
 >
-  <meta slot="head" property="og:type" content="article" />
-  <meta slot="head" property="article:published_time" content={entry.data.publishedAt.toISOString()} />
+  <meta
+    content="article"
+    property="og:type"
+    slot="head"
+  />
+  <meta
+    content={entry.data.publishedAt.toISOString()}
+    property="article:published_time"
+    slot="head"
+  />
 
   <ContentWrapper>
     <Content />

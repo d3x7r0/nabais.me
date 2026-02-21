@@ -1,4 +1,4 @@
-import type { PulitzerImageFormat, PulitzerFormatDef } from './types'
+import type { PulitzerFormatDef, PulitzerImageFormat } from './types'
 
 export const SMART_IMG_PROPS = [
   'minSize',
@@ -32,12 +32,12 @@ export const FORMATS: PulitzerFormatDef[] = [
   {
     format: 'avif',
     type: 'image/avif',
-    enabled: (settings) => settings.formats.includes('avif'),
+    enabled: settings => settings.formats.includes('avif'),
   },
   {
     format: 'webp',
     type: 'image/webp',
-    enabled: (settings) => settings.formats.includes('webp'),
+    enabled: settings => settings.formats.includes('webp'),
   },
   {
     format: 'png',
@@ -48,13 +48,13 @@ export const FORMATS: PulitzerFormatDef[] = [
   {
     format: 'jpeg',
     type: 'image/jpeg',
-    enabled: (settings, contentType) => {
+    enabled(settings, contentType) {
       const { formats } = settings
       // Enable JPEG if original image is JPEG or one of WebP/AVIF which have low browser support
       return (formats.includes('jpeg') || formats.includes('jpg')) && (
-        contentType === 'image/jpeg' ||
-        contentType === 'image/webp' ||
-        contentType === 'image/avif'
+        contentType === 'image/jpeg'
+        || contentType === 'image/webp'
+        || contentType === 'image/avif'
       )
     },
   },

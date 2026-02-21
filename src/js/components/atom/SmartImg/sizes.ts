@@ -14,10 +14,10 @@ const IMAGE_SIZES = [
 ]
 
 export function calculateSizes(
-  options: { min?: number, max?: number } = {},
+  options: { max?: number, min?: number } = {},
   candidates: number[] = IMAGE_SIZES,
 ): number[] {
-  const { min, max } = options
+  const { max, min } = options
 
   let result = Array.from(candidates)
 

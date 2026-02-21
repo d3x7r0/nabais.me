@@ -1,24 +1,25 @@
-import type {CSSProperties} from "react";
-import clsx from 'clsx'
+import type { CSSProperties } from 'react'
 
-import {useCSSVariable} from '../../../hooks/css'
+import { clsx } from 'clsx'
+
+import { useCSSVariable } from '../../../hooks/css'
 
 import styles from './index.module.scss'
 
 export type SpinnerProps = {
-  active?: boolean,
-  colorMain?: string,
-  colorAlt?: string,
-  className?: string,
-  style?: CSSProperties,
+  active?: boolean
+  className?: string
+  colorAlt?: string
+  colorMain?: string
+  style?: CSSProperties
 }
 
 function Spinner(props: SpinnerProps) {
   const {
-    className,
     active,
-    colorMain,
+    className,
     colorAlt,
+    colorMain,
     style,
     ...rest
   } = props
@@ -38,32 +39,36 @@ function Spinner(props: SpinnerProps) {
   return (
     <div
       {...rest}
-      style={computedStyle}
       className={clsx(
         className,
         styles['a-spinner'],
         { [styles['a-spinner--active']]: active },
       )}
+      style={computedStyle}
     >
       <div className={clsx(
         styles['a-spinner__block'],
         styles['a-spinner__block--four'],
-      )} />
+      )}
+      />
 
       <div className={clsx(
         styles['a-spinner__block'],
         styles['a-spinner__block--three'],
-      )} />
+      )}
+      />
 
       <div className={clsx(
         styles['a-spinner__block'],
         styles['a-spinner__block--two'],
-      )} />
+      )}
+      />
 
       <div className={clsx(
         styles['a-spinner__block'],
         styles['a-spinner__block--one'],
-      )} />
+      )}
+      />
     </div>
   )
 }

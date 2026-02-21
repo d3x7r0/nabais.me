@@ -1,27 +1,28 @@
-import type {CSSProperties, ReactNode} from "react";
-import clsx from 'clsx'
+import type { Ratio } from '../../utils'
+import type { CSSProperties, ReactNode } from 'react'
 
-import type {Ratio} from '../../utils'
-import {getRatio} from '../../utils'
-import {useCSSVariable} from '../../../hooks/css'
+import { clsx } from 'clsx'
+
+import { useCSSVariable } from '../../../hooks/css'
+import { getRatio } from '../../utils'
 
 import styles from './index.module.scss'
 
 export type RatioBoxProps = {
+  children?: ReactNode
   className?: string
-  style?: CSSProperties
   contentClassName?: string
   ratio?: Ratio
-  children?: ReactNode
+  style?: CSSProperties
 }
 
 const RatioBox = function RatioBox(props: RatioBoxProps) {
   const {
-    className,
     children,
+    className,
+    contentClassName,
     ratio,
     style,
-    contentClassName,
     ...rest
   } = props
 

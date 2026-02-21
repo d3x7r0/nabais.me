@@ -1,12 +1,13 @@
+import type { SiteFooterProps } from './components/organism/SiteFooter'
+import type { MenuEntries } from './types'
+
 import {
   SiGithub,
   SiInstagram,
   SiMastodon,
 } from '@icons-pack/react-simple-icons'
 
-import type { SiteFooterProps } from './components/organism/SiteFooter'
-import type { MenuEntries } from './types'
-import SiLinkedin from "./components/atom/SiLinkedin"
+import SiLinkedin from './components/atom/SiLinkedin'
 
 export const SITE_DESCRIPTION = 'Personal homepage of Luís Nabais, professional Web Software Engineer'
 
@@ -29,26 +30,26 @@ export const SITE_KEYWORDS = [
 ]
 
 export const TITLES = {
-  HOME: 'Home',
   ABOUT: 'About Me',
   BLOG: 'Blog',
   COOKIE_POLICY: 'Cookie Policy',
   CV: 'CV',
+  HOME: 'Home',
+  NOT_FOUND: 'Page not Found',
   PHOTOS: 'Photos',
   SITE: 'Nabais.me',
-  NOT_FOUND: 'Page not Found',
 }
 
 export const TITLE_SEPARATOR = ' // '
 
 export const PATHS = {
-  HOME: '/',
   ABOUT: '/about-me',
   BLOG: '/posts',
   BLOG_ARCHIVE: '/posts/archive',
   BLOG_TAGS: '/posts/tags',
   COOKIE_POLICY: '/cookie-policy',
   CV: '/cv',
+  HOME: '/',
   PHOTOS: '/photos',
 }
 
@@ -78,55 +79,54 @@ export const MENU_ENTRIES: MenuEntries = {
   // },
 
   ABOUT: {
-    path: PATHS.ABOUT,
     label: 'About me',
-  },
-
-  CV: {
-    path: PATHS.CV,
-    label: 'CV',
-  },
-
-  PHOTOS: {
-    path: PATHS.PHOTOS,
-    label: 'Photography',
+    path: PATHS.ABOUT,
   },
 
   BLOG: {
-    path: 'https://blog.nonsensebb.com',
     label: 'Blog',
+    path: 'https://blog.nonsensebb.com',
+  },
+
+  CV: {
+    label: 'CV',
+    path: PATHS.CV,
+  },
+
+  PHOTOS: {
+    label: 'Photography',
+    path: PATHS.PHOTOS,
   },
 }
 
 export const SOCIAL_LINKS: SiteFooterProps['entries'] = [
   {
-    id: 'mastodon',
     href: 'https://mastodon.social/@d3x7r0',
     IconComponent: SiMastodon,
+    id: 'mastodon',
     label: 'Mastodon',
     rel: 'me',
   },
   {
-    id: 'instagram',
     href: 'https://www.instagram.com/d3x7r0/',
     IconComponent: SiInstagram,
+    id: 'instagram',
     label: 'Instagram',
     rel: 'me',
   },
   {
-    id: 'linkedin',
     href: 'https://www.linkedin.com/in/luismiguelnabais',
     IconComponent: SiLinkedin,
+    id: 'linkedin',
     label: 'LinkedIn',
     rel: 'me',
   },
   {
-    id: 'github',
     href: 'https://github.com/d3x7r0/',
     IconComponent: SiGithub,
+    id: 'github',
     label: 'Github',
   },
 ]
-
 
 export const ENABLE_TRANSFORMED_IMAGES = import.meta.env?.PUBLIC_ENABLE_TRANSFORMED_IMAGES !== 'false'
